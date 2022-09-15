@@ -76,7 +76,20 @@ $sql = mysqli_query($con,"select distinct(eor.token_id) as token_id,eor.time, eo
 												</tr>
 											</thead>
 											<tbody>
-
+												<?php
+													while($run = mysqli_fetch_assoc($sql))
+													{
+														echo '<tr>
+														<td>'.$run['id'].'</td>
+														<td>'.$run['token_id'].'</td>
+														<td>'.$run['name'].'</td>
+														<td>'.$run['patient_phone_number'].'</td>
+														<td><a href="semi-bill-ip.php?pid='.$run['id'].'&tid='.$run['token_id'].'&name='.$run['name'].'" class="btn btn-primary">
+														<i class="fas fa-eye">VIEW-BILL</i>
+														</a><td>
+														</tr>';
+													}
+												?>
 											</tbody>
 										</table>
 									</div>
