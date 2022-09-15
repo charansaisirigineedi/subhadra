@@ -106,8 +106,11 @@ include "check.php";
 														$sql = mysqli_query($con,"SELECT id as pi,name ,patient_phone_number as ppn ,edd from patient_primary_information where monthname(edd)='$month' order by edd asc");
 														while($run = mysqli_fetch_assoc($sql))
 														{
+															$original_date = $run['edd'];
+															$timestamp = strtotime($original_date);
+															$new_date = date("d-m-Y", $timestamp);
 															echo '<tr>
-															<td>'.$run['edd'].'</td>
+															<td>'.$new_date.'</td>
 															
 															<td>'.$run['name'].'</td>
 															<td>'.$run['ppn'].'</td>
