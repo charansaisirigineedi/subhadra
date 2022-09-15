@@ -3,7 +3,7 @@
 include 'connect.php';
 session_start();
 include "check.php";
-$sql = mysqli_query($con,"select distinct(eor.token_id) as token_id, eor.patient_id as id,  ppi.name as name, ppi.patient_phone_number as patient_phone_number from  patient_billing_details eor, patient_primary_information ppi where eor.patient_id = ppi.id order by time desc");
+$sql = mysqli_query($con,"select distinct(eor.token_id) as token_id, eor,time, eor.patient_id as id,  ppi.name as name, ppi.patient_phone_number as patient_phone_number from  patient_billing_details eor, patient_primary_information ppi where eor.patient_id = ppi.id order by time desc");
 ?>
 
 
@@ -76,7 +76,20 @@ $sql = mysqli_query($con,"select distinct(eor.token_id) as token_id, eor.patient
 												</tr>
 											</thead>
 											<tbody>
-												
+											<?php
+												while($run = mysqli_fetch_assoc($sql))
+												{
+													echo '<tr>
+													<td>'.$run['id'].'</td>
+													<td>'.$run['token_id'].'</td>
+													<td>'.$run['name'].'</td>
+													<td>'.$run['patient_phone_number'].'</td>
+													<td><a href="semi-bill-ip.php?pid='.$run['id'].'&tid='.$run['token_id'].'&name='.$run['name'].'" class="btn btn-primary">
+													<i class="fas fa-eye">VIEW-BILL</i>
+													</a><td>
+													</tr>';
+												}
+											?>
 											</tbody>
 										</table>
 									</div>
