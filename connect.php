@@ -1,6 +1,6 @@
 <?php
 
-$con = new mysqli('localhost','root','','test');
+$con = new mysqli('localhost','root','','subhadra');
 
 if(!$con)
 {
