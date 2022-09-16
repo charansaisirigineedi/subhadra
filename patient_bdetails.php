@@ -6,11 +6,12 @@ session_start();
 
 $sql = mysqli_query($con,"select distinct(eor.token_id) as tid, 
  eor.id as pid,eor.date as date,ppi.name as name, ppi.patient_phone_number
- as patient_phone_number from  existing_op_record eor,
-  patient_primary_information ppi,eor.time where eor.id = ppi.id order by eor.time desc");
+ as patient_phone_number,eor.time from  existing_op_record eor,
+  patient_primary_information ppi where eor.id = ppi.id order by eor.time desc");
 
  $sql1 = mysqli_query($con,"select distinct(eor.token_id) as tid, 
- eor.patient_id as pid,eor.date as date,ppi.name as name, ppi.patient_phone_number as patient_phone_number,eor.time from  patient_billing_details eor, 
+ eor.patient_id as pid,eor.date as date,ppi.name as name, ppi.patient_phone_number as patient_phone_number,
+ eor.time from  patient_billing_details eor, 
  patient_primary_information ppi where eor.patient_id = ppi.id order by eor.time desc");
 ?>
 <!DOCTYPE html>
