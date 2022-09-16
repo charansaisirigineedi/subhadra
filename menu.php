@@ -48,6 +48,12 @@
                                 <li><a href="search-ip.php">IN PATIENT BILLING ACTIVITY</a></li>
                                 <!-- <li><a href="search-eop.php">OUT PATIENT BILLING ENTRY</a></li> -->
                                 <li><a href="search-aop.php">OUT PATIENT BILLING ACTIVITY</a></li>
+                                
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-address-book"></i> <span>BILLS</span><span class="menu-arrow"></span></a>
+                            <ul>
                                 <li><a href="search-ipb.php">IN PATIENT VIEW BILLS</a></li>
                                 <li><a href="search-sopb.php">OUT PATIENT VIEW BILLS</a></li>
                                 <li><a href="iosearch.php">IN PATIENT BILLS</a></li>
