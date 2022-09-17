@@ -63,7 +63,7 @@ include "check.php";
 							<div class="col-md-6">
 									<select id='mon' name="mon" class="form-control">
 									<option selected value=''>--Select Month--</option>
-									<option value='Janaury'>Janaury</option>
+									<option value='January'>January</option>
 									<option value='February'>February</option>
 									<option value='March'>March</option>
 									<option value='April'>April</option>
@@ -93,9 +93,13 @@ include "check.php";
 											<thead>
 												<tr>
 													<th>EDD</th>
+													<th>LMP</th>
+													<th>POG</th>
 													<th>Name</th>
                                                     <th>Phone Number</th>
 													<th>Patient ID</th>
+													<th>Formula</th>
+													<th>High Risk Pregnancy</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -103,16 +107,23 @@ include "check.php";
                                                     if(isset($_POST['submit']))
 													{
 														$month = $_POST['mon'];
-														$sql = mysqli_query($con,"SELECT id as pi,name ,patient_phone_number as ppn ,edd from patient_primary_information where monthname(edd)='$month' order by edd asc");
+														$sql = mysqli_query($con,"SELECT id as pi,name ,patient_phone_number as ppn,edd,lmp,pog from patient_primary_information where monthname(edd)='$month' order by edd asc");
+														
+
 														while($run = mysqli_fetch_assoc($sql))
 														{
+															$id=$run['pi'];
+															$sql1=mysqli_query($con,"SELECT g,l,p,a,d,high_risk_pregnancy as hrp from pastrecords where patient_id='$id'");
+															$data = mysqli_fetch_assoc($sql1);
 															echo '<tr>
 															<td>'.$run['edd'].'</td>
-															
+															<td>'.$run['lmp'].'</td>
+															<td>'.$run['pog'].'</td>
 															<td>'.$run['name'].'</td>
 															<td>'.$run['ppn'].'</td>
 															<td>'.$run['pi'].'</td>
-															
+															<td>'.'<b>G</b> <sub>'.$data['g'].'</sub>'.'<b>L</b> <sub>'.$data['l'].'</sub>'.'<b>P</b> <sub>'.$data['p'].'</sub>'.'<b>A</b> <sub>'.$data['a'].'</sub>'.'<b>D</b> <sub>'.$data['d'].'</sub>'.'</td>
+															<td>'.$data['hrp'].'</td>
 															</tr>';
 														}
 													}

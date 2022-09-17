@@ -13,12 +13,13 @@ $name=$res['name'];
 if(isset($_POST['submit']))
 {
 	$g = $_POST['g'];
-	$v = $_POST['v'];
+	$l = $_POST['l'];
 	$p = $_POST['p'];
 	$a = $_POST['a'];
+	$d = $_POST['d'];
+	$hrp=$_POST['hrp'];
 
-
-	$query="INSERT INTO `pastrecords`(`patient_id`, `g`, `v`, `p`, `a`) VALUES ('$pid','$g','$v','$p','$a')";
+	$query="INSERT INTO `pastrecords`(`patient_id`, `g`, `l`, `p`, `a`, `d`, `high_risk_pregnancy`) VALUES ('$pid','$g','$l','$p','$a','$d','$hrp')";
 
     $run = mysqli_query($con, $query);
     echo "<script>document.location='ou_list.php'</script>";
@@ -118,10 +119,10 @@ if(isset($_POST['submit']))
                                             </div>
 											<div class="col-md-2">
 											  <div class="form-group">
-										            <label>V</label>
-										            <input type="number" min=0 name="v" id="v"  class="form-control">
+										            <label>L</label>
+										            <input type="number" min=0 name="l" id="l"  class="form-control">
 													<div class="invalid-feedback">
-														Please choose "V"
+														Please choose "L"
                                                     </div>
 									            </div>
                                             </div>
@@ -140,6 +141,28 @@ if(isset($_POST['submit']))
 													<div class="invalid-feedback">
 														Please choose "A"
                                                     </div>
+									            </div>
+											</div>
+											<div class="col-md-2">
+											  <div class="form-group">
+										            <label>D</label>
+										            <input type="number"  min=0 name="d" id="d" class="form-control">
+													<div class="invalid-feedback">
+														Please choose "R"
+                                                    </div>
+									            </div>
+											</div>
+											<div class="col-md-2">
+											  <div class="form-group">
+										            <label>High Rist Pregnancy</label>
+										            <input list="charges" name="hrp" id="hrp" class="form-control">
+													<datalist id="charges">
+													
+                                                        <option value="Bp">
+                                                        <option value="Sugar">
+                                                        <option value="Heart Stroke" >
+                                                        <option value="Fits">
+                                                    </datalist>
 									            </div>
 											</div>
 											
@@ -167,9 +190,11 @@ if(isset($_POST['submit']))
 													<th>PATIENT_ID</th>
 													<th>NAME</th>
 													<th>G</th>
-													<th>V</th>
+													<th>L</th>
 													<th>P</th>
 													<th>A</th>
+													<th>D</th>
+													<th>High Risk Pregnancy</th>
 													<th>DATE</th>
 												</tr>
 											</thead>
@@ -177,7 +202,7 @@ if(isset($_POST['submit']))
 												<?php
 													if(true)
 													{
-														$query="SELECT `patient_id`, `g`, `v`, `p`,`a`,`date` FROM `pastrecords` order by date desc";
+														$query="SELECT `patient_id`, `g`, `l`, `p`, `a`, `d`, `high_risk_pregnancy`as `hrp`, `date` FROM `pastrecords` ORDER BY date";
 														$gen=mysqli_query($con,$query);
 														$i = 0;
 														foreach($gen as $data)
@@ -191,9 +216,11 @@ if(isset($_POST['submit']))
 															'<tr><td>'.$pid.'</td>
 															<td>'.$name.'</td>
 															<td>'.$data['g'].'</td>
-															<td>'.$data['v'].'</td>
+															<td>'.$data['l'].'</td>
 															<td>'.$data['p'].'</td>
 															<td>'.$data['a'].'</td>
+															<td>'.$data['d'].'</td>
+															<td>'.$data['hrp'].'</td>
 															<td>'.$newDate.'</td>
 															<td></tr>';
 														}
