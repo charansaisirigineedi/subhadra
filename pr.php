@@ -178,60 +178,7 @@ if(isset($_POST['submit']))
 										</div>
 									</form>
 
-					      <div class="card">
-								<div class="card-header">
-									<h5 class="card-title">Booking Details<?#php echo $rund['name']; ?></h5>
-								</div>
-								<div class="card-body">
-									<div class="table-responsive">
-										<table class="table table-striped mb-0">
-											<thead>
-												<tr>
-													<th>PATIENT_ID</th>
-													<th>NAME</th>
-													<th>G</th>
-													<th>L</th>
-													<th>P</th>
-													<th>A</th>
-													<th>D</th>
-													<th>High Risk Pregnancy</th>
-													<th>DATE</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php
-													if(true)
-													{
-														$query="SELECT `patient_id`, `g`, `l`, `p`, `a`, `d`, `high_risk_pregnancy`as `hrp`, `date` FROM `pastrecords` ORDER BY date";
-														$gen=mysqli_query($con,$query);
-														$i = 0;
-														foreach($gen as $data)
-														{
-															$str = $data['date'];
-															$delimiter = ' ';
-															$words = explode($delimiter, $str);
-															$newDate = date("d-m-Y", strtotime($words[0]));  
-
-															echo 
-															'<tr><td>'.$pid.'</td>
-															<td>'.$name.'</td>
-															<td>'.$data['g'].'</td>
-															<td>'.$data['l'].'</td>
-															<td>'.$data['p'].'</td>
-															<td>'.$data['a'].'</td>
-															<td>'.$data['d'].'</td>
-															<td>'.$data['hrp'].'</td>
-															<td>'.$newDate.'</td>
-															<td></tr>';
-														}
-													}
-												?>
-											</tbody>	
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>
+					     
 				</div>
 			</div>
 					

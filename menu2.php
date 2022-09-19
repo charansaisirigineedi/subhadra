@@ -57,9 +57,8 @@
                         <li class="submenu">
                             <a href="#"><i class="fas fa-filter"></i><span>FILTERS</span> <span class="menu-arrow"></span></a>
                             <ul>
-                            <li><a href="edd.php"><i class="fas fa-filter fa-lx"></i>EDD</a></li>
-                            <li><a href="lmp.php"><i class="fas fa-filter fa-lx"></i>LMP</a></li>
-                            <li><a href="pog.php"><i class="fas fa-filter fa-lx"></i>POG</a></li>
+                            <li><a href="d-edd.php"><i class="fas fa-filter fa-lx"></i>EDD</a></li>
+                           
                             </ul>
                         </li>
                         <!-- <li class="submenu">

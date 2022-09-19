@@ -5,7 +5,6 @@ include 'connect.php';
 session_start();
 include "check.php";
 
-
 ?>
 
 
@@ -40,7 +39,7 @@ include "check.php";
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'menu.php'; ?>
+			<?php include 'menu2.php'; ?>
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -59,32 +58,32 @@ include "check.php";
 						</div>
 					</div>
 					<!-- /Page Header -->
-					<div class="row">
-					<form method="post" class="needs-validation" novalidate>
-					    <div class="row">
-							
-							<div class="col-md-3">
-							<label>Select From Date</label>
-								<div class="form-group">
-								<input type="date" name="fromdate" id="fromdate" class="form-control"> 
-                           </div>	</div>	
-						  
-						   <div class="col-md-3">
-						   <div class="form-group">
-						      <label>Select To Date</label>
-						        <input type="date" name="todate" id="todate" class="form-control">		
-							</div></div>
-							<div class="col-md-3">
-							<label></label>
-							<label></label>
-							<div class="form-group">
-						
+						<form method="post">
+							<div class="row">
+							<div class="col-md-6">
+									<select id='mon' name="mon" class="form-control">
+									<option selected value=''>--Select Month--</option>
+									<option value='January'>January</option>
+									<option value='February'>February</option>
+									<option value='March'>March</option>
+									<option value='April'>April</option>
+									<option value='May'>May</option>
+									<option value='June'>June</option>
+									<option value='July'>July</option>
+									<option value='August'>August</option>
+									<option value='September'>September</option>
+									<option value='October'>October</option>
+									<option value='November'>November</option>
+									<option value='December'>December</option>
+									</select> 
+							</div>
+							<div class="col-md-6">
 							<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 							</div>
 							</div>
-						</form>	</div>			
+						</form>					
 						<br>
-					
+											
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="card">
@@ -93,39 +92,58 @@ include "check.php";
 										<table id= "myTable" class="table table-striped">
 											<thead>
 												<tr>
+													<th>EDD</th>
+													<th>LMP</th>
+													<th>POG</th>
 													<th>Name</th>
                                                     <th>Phone Number</th>
 													<th>Patient ID</th>
-													<th>Date </th>
-													<th>Patient Type</th>
+													<th>Formula</th>
+													<th>High Risk Pregnancy</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php
-												if(isset($_POST['submit']))
-												{
-													$frdate = $_POST['fromdate'];
-													$todate = $_POST['todate'];
-													$sql = mysqli_query($con,"SELECT id as pi,name,patient_phone_number as ppn,date(date) as d from patient_primary_information where date(date) between '$frdate' and '$todate'  order by date asc");
-													while($run = mysqli_fetch_assoc($sql))
+                                                    if(isset($_POST['submit']))
 													{
-														$pid=$run['pi'];
-														$sql1=mysqli_query($con,"select patient_id as id from patient_inpatient_form where patient_id='$pid'");
-														$data=mysqli_fetch_assoc($sql1);
-														echo '<tr>
-														<td>'.$run['name'].'</td>
-														<td>'.$run['ppn'].'</td>
-														<td>'.$run['pi'].'</td>
-														<td>'.$run['d'].'</td>';
-													    if(!empty($data['id']))
+														$month = $_POST['mon'];
+														$sql = mysqli_query($con,"SELECT id as pi,name ,patient_phone_number as ppn,edd,lmp,pog from patient_primary_information where monthname(edd)='$month' order by edd asc");
+														
+
+														while($run = mysqli_fetch_assoc($sql))
 														{
-														echo '<td>In Patient</td>';
+															$id=$run['pi'];
+															$sql1=mysqli_query($con,"SELECT g,l,p,a,d,high_risk_pregnancy as hrp from pastrecords where patient_id='$id'");
+															$data = mysqli_fetch_assoc($sql1);
+															if($data['hrp'])
+															{
+															echo '<tr>
+															<td>'.$run['edd'].'</td>
+															<td>'.$run['lmp'].'</td>
+															<td>'.$run['pog'].'</td>
+															<td>'.$run['name'].'</td> 
+															<td>'.$run['ppn'].'</td>
+															<td>'.$run['pi'].'</td>
+															<td>'.'<b>G</b> <sub>'.$data['g'].'</sub>'.'<b>L</b> <sub>'.$data['l'].'</sub>'.'<b>P</b> <sub>'.$data['p'].'</sub>'.'<b>A</b> <sub>'.$data['a'].'</sub>'.'<b>D</b> <sub>'.$data['d'].'</sub>'.'</td>
+														    <td  class="badge badge-danger">'.$data['hrp'].'</td></tr>';
+															}
+															else
+															{
+																echo '<tr>
+																<td>'.$run['edd'].'</td>
+																<td>'.$run['lmp'].'</td>
+																<td>'.$run['pog'].'</td>
+																<td>'.$run['name'].'</td> 
+																<td>'.$run['ppn'].'</td>
+																<td>'.$run['pi'].'</td>
+																<td>'.'<b>G</b> <sub>'.$data['g'].'</sub>'.'<b>L</b> <sub>'.$data['l'].'</sub>'.'<b>P</b> <sub>'.$data['p'].'</sub>'.'<b>A</b> <sub>'.$data['a'].'</sub>'.'<b>D</b> <sub>'.$data['d'].'</sub>'.'</td>
+																<td>'.$data['hrp'].'</td></div></tr>';
 														}
-														else { echo '<td>Out Patient</td>'; }
-													
-														echo '</tr>';
+															
+														    
+														
+														}
 													}
-												}
                                                 ?>
 											</tbody>
 										</table>

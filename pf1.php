@@ -191,7 +191,7 @@ if(isset($_POST['submit']))
 														<label class="form-check-label" for="gender_male">Male</label>
 													</div>
 													<div class="form-check form-check-inline">
-														<input class="form-check-input" type="radio" name="gender" id="gender_female" value="F">
+														<input class="form-check-input" type="radio" name="gender" id="gender_female" value="F" checked>
 														<label class="form-check-label" for="gender_female">Female</label>
 													</div>
 													<div class="invalid-feedback">
