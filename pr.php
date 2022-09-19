@@ -10,6 +10,8 @@ $sql=mysqli_query($con,"select name,lmp,edd,pog from patient_primary_information
 $res=mysqli_fetch_assoc($sql);
 $name=$res['name'];
 
+$sql1=mysqli_query($con,"select * from pastrecords where patient_id='$pid'");
+$res1=mysqli_fetch_assoc($sql1);
 if(isset($_POST['submit']))
 {
 	$g = $_POST['g'];
@@ -18,13 +20,21 @@ if(isset($_POST['submit']))
 	$a = $_POST['a'];
 	$d = $_POST['d'];
 	$hrp=$_POST['hrp'];
-
-	$query="INSERT INTO `pastrecords`(`patient_id`, `g`, `l`, `p`, `a`, `d`, `high_risk_pregnancy`) VALUES ('$pid','$g','$l','$p','$a','$d','$hrp')";
-
-    $run = mysqli_query($con, $query);
+    if(!empty($res1))
+	{
+		$id=$res1['patient_id'];
+		$query1="UPDATE `pastrecords` SET `g`='$g',`l`='$l',`p`='$p',`a`='$a',`d`='$d',`high_risk_pregnancy`='$hrp' WHERE patient_id='$id'";
+		$run1 = mysqli_query($con, $query1);
+	}
+	else
+	{
+	    $query="INSERT INTO `pastrecords`(`patient_id`, `g`, `l`, `p`, `a`, `d`, `high_risk_pregnancy`) VALUES ('$pid','$g','$l','$p','$a','$d','$hrp')";
+        $run = mysqli_query($con, $query);
+	}		
     echo "<script>document.location='ou_list.php'</script>";
 
 }
+
 ?>
 
 
