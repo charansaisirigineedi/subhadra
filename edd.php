@@ -4,7 +4,7 @@ include 'connect.php';
 
 session_start();
 include "check.php";
-
+error_reporting(E_ERROR | E_PARSE);
 ?>
 
 
@@ -115,16 +115,30 @@ include "check.php";
 															$id=$run['pi'];
 															$sql1=mysqli_query($con,"SELECT g,l,p,a,d,high_risk_pregnancy as hrp from pastrecords where patient_id='$id'");
 															$data = mysqli_fetch_assoc($sql1);
+															if($data['hrp'])
+															{
 															echo '<tr>
 															<td>'.$run['edd'].'</td>
 															<td>'.$run['lmp'].'</td>
 															<td>'.$run['pog'].'</td>
-															<td>'.$run['name'].'</td>
+															<td>'.$run['name'].'</td> 
 															<td>'.$run['ppn'].'</td>
 															<td>'.$run['pi'].'</td>
-															<td>'.'<b>G</b> <sub>'.$data['g'].'</sub>'.'<b>L</b> <sub>'.$data['l'].'</sub>'.'<b>P</b> <sub>'.$data['p'].'</sub>'.'<b>A</b> <sub>'.$data['a'].'</sub>'.'<b>D</b> <sub>'.$data['d'].'</sub>'.'</td>
-															<td>'.$data['hrp'].'</td>
-															</tr>';
+															<td>'.'G<sub><b>'.$data['g'].'</b></sub>'.'L<sub><b>'.$data['l'].'</b></sub>'.'P<sub><b>'.$data['p'].'</b></sub>'.'A<sub><b>'.$data['a'].'</b></sub>'.'D<sub><b>'.$data['d'].'</b></sub>'.'</td>
+														    <td><button class="btn btn-danger">'.$data['hrp'].'</button></td></tr>';
+															}
+															else
+															{
+																echo '<tr>
+																<td>'.$run['edd'].'</td>
+																<td>'.$run['lmp'].'</td>
+																<td>'.$run['pog'].'</td>
+																<td>'.$run['name'].'</td> 
+																<td>'.$run['ppn'].'</td>
+																<td>'.$run['pi'].'</td>
+																<td>'.'G<sub><b>'.$data['g'].'</b></sub>'.'L<sub><b>'.$data['l'].'</b></sub>'.'P<sub><b>'.$data['p'].'</b></sub>'.'A<sub><b>'.$data['a'].'</b></sub>'.'D<sub><b>'.$data['d'].'</b></sub>'.'</td>
+														    <td>'.$data['hrp'].'</button></td></tr>';
+														}	
 														}
 													}
                                                 ?>

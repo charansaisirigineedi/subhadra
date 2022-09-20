@@ -124,8 +124,8 @@ include "check.php";
 															<td>'.$run['name'].'</td> 
 															<td>'.$run['ppn'].'</td>
 															<td>'.$run['pi'].'</td>
-															<td>'.'<b>G</b> <sub>'.$data['g'].'</sub>'.'<b>L</b> <sub>'.$data['l'].'</sub>'.'<b>P</b> <sub>'.$data['p'].'</sub>'.'<b>A</b> <sub>'.$data['a'].'</sub>'.'<b>D</b> <sub>'.$data['d'].'</sub>'.'</td>
-														    <td  class="badge badge-danger">'.$data['hrp'].'</td></tr>';
+															<td>'.'G<sub><b>'.$data['g'].'</b></sub>'.'L<sub><b>'.$data['l'].'</b></sub>'.'P<sub><b>'.$data['p'].'</b></sub>'.'A<sub><b>'.$data['a'].'</b></sub>'.'D<sub><b>'.$data['d'].'</b></sub>'.'</td>
+														    <td><button class="btn btn-danger">'.$data['hrp'].'</button></td></tr>';
 															}
 															else
 															{
@@ -136,7 +136,7 @@ include "check.php";
 																<td>'.$run['name'].'</td> 
 																<td>'.$run['ppn'].'</td>
 																<td>'.$run['pi'].'</td>
-																<td>'.'<b>G</b> <sub>'.$data['g'].'</sub>'.'<b>L</b> <sub>'.$data['l'].'</sub>'.'<b>P</b> <sub>'.$data['p'].'</sub>'.'<b>A</b> <sub>'.$data['a'].'</sub>'.'<b>D</b> <sub>'.$data['d'].'</sub>'.'</td>
+																<td>'.'G<sub><b>'.$data['g'].'</b></sub>'.'L<sub><b>'.$data['l'].'</b></sub>'.'P<sub><b>'.$data['p'].'</b></sub>'.'A<sub><b>'.$data['a'].'</b></sub>'.'D<sub><b>'.$data['d'].'</b></sub>'.'</h2></td>
 																<td>'.$data['hrp'].'</td></div></tr>';
 														}
 															
