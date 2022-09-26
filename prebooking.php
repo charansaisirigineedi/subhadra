@@ -121,14 +121,9 @@ if(isset($_POST['ouadd']))
 							</div>
 						</div>
 					</div>
-					<div class="text-end">
-						<form method="post">
-							<button type="submit" name="finish" class="btn btn-primary">Finish</button>										
-						</form>
-					</div>
 					<div class="card">
 								<div class="card-header">
-									<h5 class="card-title">Booking Details<?#php echo $rund['name']; ?></h5>
+									<h5 class="card-title">Booking Details</h5>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
