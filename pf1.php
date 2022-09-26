@@ -20,7 +20,7 @@ if(isset($_POST['submit']))
 	$gen=$_POST['gender'];
 	$wb=$_POST['wb'];
 
-	$query="INSERT INTO `patient_pregnancy_information`(`id`, `token_id`, `mother_age_at_time_of_marriage`, `mother_age_at_time_of_delivery`, `type_of_delivery`, `number_of_kids_including_this`, `no.of.weeks`, `gender`, `weight`, `time`) VALUES ('$pid','$token','$mam','$mad','$td','$tk','$now','$wb','$gen', CURRENT_TIMESTAMP)";
+	$query="INSERT INTO `patient_pregnancy_information`(`id`, `token_id`, `mother_age_at_time_of_marriage`, `mother_age_at_time_of_delivery`, `type_of_delivery`, `number_of_kids_including_this`, `no.of.weeks`, `gender`, `weight`) VALUES ('$pid','$token','$mam','$mad','$td','$tk','$now','$wb','$gen')";
 
 
     $run = mysqli_query($con, $query);
