@@ -9,32 +9,6 @@ $pid = $_GET['pid'];
 $name=$_GET['name'];
 $token=$_GET['tid'];
 date_default_timezone_set("Asia/Kolkata");
-$e = strval(date('Ymd'));
-$d  = substr($e,0,4).'-'.substr($e,4,2).'-'.substr($e,6,2);
-function autoincemp()
-{
-    global $value2;
-    global $con;
-    $query = "select token_id from patient_inpatient_form order by token_id desc LIMIT 1";
-    $stmt = mysqli_query($con,$query);
-    $rowcount=$stmt->num_rows;
-    if ($rowcount > 0) {
-    
-      $row = mysqli_fetch_assoc($stmt);
-        $value2 = $row['token_id'];
-        $value2 = substr($value2,6);
-        $value2 = (int)$value2 + 1;
-        $str=date("dmy");
-        $value2 = $str.sprintf('%s',$value2);
-        $value = $value2;
-        return $value;
-    } else {
-        $str=date("dmy");
-        $value2 = $str.sprintf('%s',1);
-        $value = $value2;
-        return $value;
-    }
-}
 
 if(isset($_POST['submit']))
 {
