@@ -77,13 +77,13 @@ if(isset($_POST['submit']))
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Token ID</label>
-									<input type="text" name="pid" class="form-control" disabled="disabled" value='<?php echo $token; ?>'>
+									<input type="text" name="pid" class="form-control" readonly="readonly" value='<?php echo $token; ?>'>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Patient ID</label>
-									<input type="text" name="pid" class="form-control" disabled="disabled" value=<?php echo  $pid;?>>
+									<input type="text" name="pid" class="form-control" readonly="readonly" value=<?php echo  $pid;?>>
 								</div>
 							</div>
 						</div>
