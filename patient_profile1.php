@@ -38,14 +38,14 @@ $res = mysqli_fetch_assoc($run);
     <body>
 	
 		<!-- Main Wrapper -->
-        <div class="main-wrapper">
+        <!-- <div class="main-wrapper"> -->
 		
-			<?php include 'menu.php';?>
+			<?php #include 'menu.php';?>
 			<!-- Page Wrapper -->
-            <div class="page-wrapper">
-                <div class="content container-fluid">
+            <!-- <div class="page-wrapper">
+                <div class="content container-fluid"> -->
 				
-					<div class="page-header">
+					<!-- <div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
 								<h3 class="page-title">Patient Details</h3>
@@ -55,7 +55,7 @@ $res = mysqli_fetch_assoc($run);
 								</ul>
 							</div>
 						</div>
-                    </div>
+                    </div> -->
 					<div class="card">
 						<div class="card-body">
                         <div class="about-info">
@@ -133,17 +133,17 @@ $res = mysqli_fetch_assoc($run);
 							</div>
 						</div>
 					</div>				
-				</div>
+				<!-- </div> -->
 				
 				<!-- Footer -->
 				<!-- <footer>
 					<p>Copyright © 2020 Dreamguys.</p>					
 				</footer> -->
 				<!-- /Footer -->
-			</div>
+			<!-- </div> -->
 			<!-- /Page Wrapper -->
 		
-        </div>
+        <!-- </div> -->
 		<!-- /Main Wrapper -->
 		
 		<!-- jQuery -->

@@ -13,6 +13,9 @@ $sum = 0;
 $query = "select name,patient_phone_number,permanent_address from patient_primary_information where id='$pid'";
 $run   = mysqli_query($con,$query);
 $res   = mysqli_fetch_assoc($run);
+$query2= "select doctor_name from patient_surgery_form where id='$pid' and token_id='$tid'";
+$run2 = mysqli_query($con,$query2);
+$res2  = mysqli_fetch_assoc($run2);
 
 $query1 = "select s.date as date, s.charge_name as names,s.quantity as quantity,s.price as price from out_patient_billing_details as s 
 where s.patient_id='$pid' and s.token_id='$tid' order by s.price desc";
@@ -64,9 +67,10 @@ $res1   = mysqli_fetch_assoc($run);
 					</div>
 				</div>
 				<div class="content container-fluid">
-					<!-- <form>
-						<button id="cmd">generate PDF</button>
-					</from> -->
+					<form>
+						<input type="text" placeholder="Doctor Name" onchange="dsubmit()" name="dname" id="dname">
+					</from>
+
 					<div class="row justify-content-center">
 						<div class="col-xl-10">
 							<div class="card invoice-info-card">
@@ -112,7 +116,7 @@ $res1   = mysqli_fetch_assoc($run);
 												<div class="invoice-info invoice-info2">
 													<strong class="customer-text-one">Consultant Doctor</strong>
 													<p class="invoice-details">
-														Dr M Subhadra<br>
+													<input type="text" name="Dname" id="Dname" value='<?php echo $res2['doctor_name'];?>'><br>
 														Obstetrician - Gynecologist <br>
 														Subhadra Hospital
 													</p>
@@ -222,8 +226,8 @@ $res1   = mysqli_fetch_assoc($run);
 										</div>
 									</div>
 									<div class="invoice-sign text-end">
-										<img class="img-fluid d-inline-block" src="assets/img/signature.png" alt="sign">
-										<span class="d-block"></span>
+										<!-- <img class="img-fluid d-inline-block" src="assets/img/signature.png" alt="sign">
+										<span class="d-block"></span> -->
 									</div>
 								</div>
 							</div>
@@ -257,6 +261,19 @@ $res1   = mysqli_fetch_assoc($run);
 		
 		<!-- Custom JS -->
 		<script src="assets/js/script.js"></script>
-
+<script>
+	function dsubmit() {
+			let d_name = document.getElementById("dname").value;
+			var xmlhttp=new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function() {
+				if (this.readyState==4 && this.status==200) {
+					console.log(this.responseText);
+					document.getElementById("Dname").value=this.responseText;
+				}
+			}
+			xmlhttp.open("GET","update_dname.php?pid=<?php echo $pid;?>&tid=<?php echo $tid;?>&dname="+d_name,true);
+			xmlhttp.send();
+			}
+</script>
 	</body>
 </html>

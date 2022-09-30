@@ -3,7 +3,9 @@
 include 'connect.php';
 session_start();
 include "check.php";
-$sql = mysqli_query($con,"select eor.id as id,eor.date as date, eor.token_id as token_id, ppi.name as name, ppi.patient_phone_number as patient_phone_number from  existing_op_record eor, patient_primary_information ppi where eor.id = ppi.id order by time desc");
+$sql = mysqli_query($con,"select  distinct(eor.token_id) as token_id,eor.id as id,
+ppi.name as name, ppi.patient_phone_number as patient_phone_number,eor.time
+from  existing_op_record eor, patient_primary_information ppi where eor.id = ppi.id order by eor.time desc");
 ?>
 
 

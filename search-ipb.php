@@ -3,7 +3,8 @@
 include 'connect.php';
 session_start();
 include "check.php";
-$sql = mysqli_query($con,"select distinct(eor.token_id) as token_id,eor.time, eor.patient_id as id, ppi.name as name, ppi.patient_phone_number as patient_phone_number,eor.time from patient_billing_details eor, patient_primary_information ppi where eor.patient_id = ppi.id order by eor.time DESC");
+$sql = mysqli_query($con,"select distinct(eor.token_id) as token_id, eor.patient_id as id, 
+ppi.name as name, ppi.patient_phone_number as patient_phone_number,pif.type_of_inpatient as toi from  patient_billing_details eor, patient_primary_information ppi,patient_inpatient_form pif where eor.patient_id = ppi.id  and eor.token_id=pif.token_id order by eor.time desc");
 ?>
 
 

@@ -14,8 +14,9 @@ if(isset($_POST['ouadd']))
     $mobile = $_POST['mobile'];
 	$mobile1=(int)$mobile;
 	$reason = $_POST['reason'];
+	$time=$_POST['time'];
 	$dat = $_POST['dat'];	
-	$insert2 = "INSERT INTO `prebooking`(`Name`, `Date`, `Mobile`, `Reason`) VALUES ('$name','$dat','$mobile1','$reason')";
+	$insert2 = "INSERT INTO `prebooking`(`Name`, `Date`, `time`, `Mobile`, `Reason`) VALUES VALUES ('$name','$dat','$time','$mobile1','$reason')";
 	$insert = mysqli_query($con, $insert2);
 	echo" <script>document.location='prebooking.php'</script>";
 
@@ -86,6 +87,7 @@ if(isset($_POST['ouadd']))
 														<tr>
 															<th>Name</th>
 															<th>Date</th>
+															<th>Time</th>
 															<th>Mobile No.</th>
 															<th>Reason</th>
 														
@@ -101,12 +103,16 @@ if(isset($_POST['ouadd']))
 																<input type="date" value="<?php echo $d;?>"  name="dat" id="dat" class="form-control">
 															</td>
 															<td>
+																<input type="time"  name="time" placeholder = "time" id="time" class="form-control">
+															</td>
+															<td>
 															<input type="text" pattern="[6-9]{1}[0-9]{9}" maxlength=10 name="mobile" class="form-control"required>
 															</td>
                                                             
 															<td>
 																<input type="text"  name="reason" placeholder = "Reason" id="Reason" class="form-control">
 															</td>
+															
 															
 															<td>
 																<button type="submit" name="ouadd" class="btn btn-primary">Book</button>
@@ -133,6 +139,7 @@ if(isset($_POST['ouadd']))
 													<th>S No.</th>
 													<th>Name</th>
 													<th>Date</th>
+													<th>Time</th>
 													<th>Mobile</th>
 													<th>Reason</th>
 												</tr>
@@ -141,7 +148,7 @@ if(isset($_POST['ouadd']))
 												<?php
 													if(true)
 													{
-														$query="SELECT `Name`, `Date`, `Mobile`, `Reason` FROM `prebooking` order by `Date`";
+														$query="SELECT `Name`, `Date`, `Mobile`,`time` `Reason` FROM `prebooking` order by `time`";
 														$gen=mysqli_query($con,$query);
 														$i = 0;
 														foreach($gen as $data)
@@ -151,6 +158,7 @@ if(isset($_POST['ouadd']))
 															'<tr><td>'.++$i.'</td>
 															<td>'.$data['Name'].'</td>
 															<td>'.$newDate.'</td>
+															<td>'.$data['time'].'</td>
 															<td>'.$data['Mobile'].'</td>
 															<td>'.$data['Reason'].'</td>
 															<td></tr>';

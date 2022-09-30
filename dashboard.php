@@ -209,17 +209,18 @@ if(isset($_POST['gbsubmit']))
                 <div class="row">
                 <div class="col-12 col-md-6 col-lg-6 d-flex">
                         <div class="card flex-fill"><br>
-                      <div><h4>OUT PATIENT ACTIVITY</h4></div>
+                      <div><h4>&nbsp;&nbsp;OUT PATIENT ACTIVITY</h4></div>
                             <div class="card-body">
                                 <div>
-                                    <a href="fd.php" class="btn btn-primary">NEW OUT PATIENT REGISTRATION</a>
+                                    <a href="fd.php" class="btn btn-primary">NEW OUT PATIENT REGISTRATION</a><br><br>
+                                    <a href="search-eop.php" class="btn btn-primary">EXISTING OUT PATIENT REGISTRATION</a>
                                  </div>
                             </div>  
-                            <div class="card-body">
+                            <!-- <div class="card-body">
                                 <div >
                                     <a href="search-eop.php" class="btn btn-primary">EXISTING OUT PATIENT REGISTRATION</a>
                                  </div>
-                          </div>
+                          </div> -->
                           <!-- <div class="card-body">
                                 <div>
                                     <a href="search-aop.php" class="btn btn-primary">OUT Patient Bill Activity Entry Details</a>
@@ -234,16 +235,18 @@ if(isset($_POST['gbsubmit']))
                   </div>
                     <div class="col-12 col-md-6 col-lg-6">
                     <div class="card flex-fill"><br>
-                         <div><h4>IN PATIENT ACTIVITY</h4></div>
+                         <div><h4>&nbsp;&nbsp;IN PATIENT ACTIVITY</h4></div>
                             <div class="card-body">
-                                    <a href="search.php" class="btn btn-primary">IN PATIENT Registration</a>
+                                    <a href="search.php" class="btn btn-primary">IN PATIENT Registration</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="discharge_list.php" class="btn btn-primary">Discharge Summary List</a>
                             </div>
                          <div class="card-body">
-                           <a href="search-sf.php" class="btn btn-primary">SURGERY FORM</a>
-                         </div> 
-                         <div class="card-body">
+                           <a href="search-sf.php" class="btn btn-primary">SURGERY FORM</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                            <a href="search-pf.php" class="btn btn-primary">PREGNANCY FORM</a>
-                         </div>  
+                         </div> 
+                         <!-- <div class="card-body">
+                           <a href="search-pf.php" class="btn btn-primary">PREGNANCY FORM</a>
+                         </div>   -->
                           <!-- <div class="card-body">
                                 <div>
                                     <a href="search-ip.php" class="btn btn-primary">IN Patient Bill Activity Entry Details</a>

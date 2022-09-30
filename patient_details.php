@@ -73,7 +73,6 @@ $sql = mysqli_query($con,"select * from  patient_primary_information order by da
 													<th>Patient ID</th>
 													<th>Name</th>
                                                     <th>Phone Number</th>
-													<th>View Profile</th>
 													<th>Edit Profile</th>
 												</tr>
 											</thead>
@@ -83,13 +82,8 @@ $sql = mysqli_query($con,"select * from  patient_primary_information order by da
                                                     {
                                                         echo '<tr>
                                                         <td>'.$run['id'].'</td>
-                                                        <td>'.$run['name'].'</td>
+                                                        <td><a href="patient_profile_dashboard.php?pid='.$run['id'].'">'.$run['name'].'</a></td>
                                                         <td>'.$run['patient_phone_number'].'</td>
-														<td><div class="actions">
-														<a href="patient_profile.php?pid='.$run['id'].'" class="btn btn-primary">
-															<i class="fas fa-eye">VIEW PROFILE</i>
-														</a>
-													    </div></td>
 														<td>
 														<a href="uepd.php?pid='.$run['id'].'" class="btn btn-sm bg-success-light me-">
 															<i class="fas fa-pen"></i>

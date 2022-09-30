@@ -1,14 +1,11 @@
 <?php
 
 include 'connect.php';
-
 session_start();
 include "check.php";
-
-$sql = mysqli_query($con,"select distinct(pg.token_id) as token_id,pp.id as id,pp.name as name,pp.patient_phone_number 
-as patient_phone_number,pg.type_of_inpatient as toi from  patient_inpatient_form as pg,patient_primary_information as pp 
-where pg.patient_id=pp.id  order by pp.date desc");
-
+$sql = mysqli_query($con,"select eor.token_id  as token_id,eor.id as id,eor.time as date, 
+ppi.name as name, ppi.patient_phone_number as patient_phone_number from patient_surgery_form eor,
+patient_primary_information ppi where eor.id = ppi.id order by eor.time desc");
 ?>
 
 
@@ -17,7 +14,7 @@ where pg.patient_id=pp.id  order by pp.date desc");
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>in patients-details</title>
+        <title></title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -53,10 +50,10 @@ where pg.patient_id=pp.id  order by pp.date desc");
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">IN PATIENTS LIST</h3>
+								<h3 class="page-title">DISHCHARGE LIST</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">IN PATIENTS LIST</li>
+									<li class="breadcrumb-item active">DISHCHARGE LIST</li>
 								</ul>
 							</div>
 						</div>
@@ -73,34 +70,34 @@ where pg.patient_id=pp.id  order by pp.date desc");
 										<table id= "myTable" class="table table-striped">
 											<thead>
 												<tr>
-													
+													<th>Patient ID</th>
+													<th>TOKEN ID</th>
 													<th>Name</th>
                                                     <th>Phone Number</th>
-													<th>Patient ID</th>
-													<th>Token ID</th>
-													<th>Type of Patient</th>
+                                                    <th>Discharge Submit</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php
-                        while($run = mysqli_fetch_assoc($sql))
-                        {
-                            echo '
-                            <td>'.$run['name'].'</td>
-                            <td>'.$run['patient_phone_number'].'</td>
-							<td>'.$run['id'].'</td>
-							<td>'.$run['token_id'].'</td>
-							<td>'.$run['toi'].'</td>
-							
-							
-                          </tr>';
-                        }
-                       ?>
+                                                    while($run = mysqli_fetch_assoc($sql))
+                                                    {
+                                                        echo '<tr>
+                                                        <td>'.$run['id'].'</td>
+														<td>'.$run['token_id'].'</td>
+                                                        <td>'.$run['name'].'</td>
+                                                        <td>'.$run['patient_phone_number'].'</td>
+                                                        <td><a href="discharge_summary_sub.php?pid='.$run['id'].'&tid='.$run['token_id'].'" class="btn btn-primary">
+														Discharge Summary
+													    </a><td>
+                                                        </tr>';
+                                                    }
+                                                ?>
 											</tbody>
 										</table>
 									</div>
 								</div>
 							</div>
+
 						</div>
 					</div>
 				

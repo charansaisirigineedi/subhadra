@@ -1,13 +1,13 @@
 <?php
 
 include 'connect.php';
-
 session_start();
 include "check.php";
 
-$sql = mysqli_query($con,"select distinct(pg.token_id) as token_id,pp.id as id,pp.name as name,pp.patient_phone_number 
-as patient_phone_number,pg.type_of_inpatient as toi from  patient_inpatient_form as pg,patient_primary_information as pp 
-where pg.patient_id=pp.id  order by pp.date desc");
+date_default_timezone_set("Asia/Kolkata");
+$e = strval(date('Ymd'));
+$d  = substr($e,0,4).'-'.substr($e,4,2).'-'.substr($e,6,2);
+$sql = mysqli_query($con,"SELECT `Name`, `Date`, `Mobile`, `Reason` FROM `prebooking`  where date(date) = '$d'");
 
 ?>
 
@@ -17,7 +17,7 @@ where pg.patient_id=pp.id  order by pp.date desc");
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>in patients-details</title>
+        <title>patients-details</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -43,7 +43,7 @@ where pg.patient_id=pp.id  order by pp.date desc");
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'menu.php'; ?>
+			<?php include 'menu2.php'; ?>
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -53,10 +53,10 @@ where pg.patient_id=pp.id  order by pp.date desc");
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">IN PATIENTS LIST</h3>
+								<h3 class="page-title">out patient details</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">IN PATIENTS LIST</li>
+									<li class="breadcrumb-item"><a href="ou_list.php">Dashboard</a></li>
+									<li class="breadcrumb-item active">out patient details</li>
 								</ul>
 							</div>
 						</div>
@@ -73,29 +73,28 @@ where pg.patient_id=pp.id  order by pp.date desc");
 										<table id= "myTable" class="table table-striped">
 											<thead>
 												<tr>
-													
+													<th>Patient ID</th>
 													<th>Name</th>
                                                     <th>Phone Number</th>
-													<th>Patient ID</th>
-													<th>Token ID</th>
-													<th>Type of Patient</th>
+													<th>Past Records</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php
-                        while($run = mysqli_fetch_assoc($sql))
-                        {
-                            echo '
-                            <td>'.$run['name'].'</td>
-                            <td>'.$run['patient_phone_number'].'</td>
-							<td>'.$run['id'].'</td>
-							<td>'.$run['token_id'].'</td>
-							<td>'.$run['toi'].'</td>
-							
-							
-                          </tr>';
-                        }
-                       ?>
+                                                    while($run = mysqli_fetch_assoc($sql))
+                                                    {
+                                                        echo '<tr>
+                                                        <td>'.$run['id'].'</td>
+                                                        <td>'.$run['name'].'</td>
+                                                        <td>'.$run['patient_phone_number'].'</td>
+														<td><div class="actions">
+														<a href="pr.php?pid='.$run['id'].'" class="btn btn-primary">
+															Add Past Records
+														</a>
+													    </div></td>
+                                                        </tr>';
+                                                    }
+                                                ?>
 											</tbody>
 										</table>
 									</div>
