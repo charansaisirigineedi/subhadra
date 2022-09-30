@@ -5,9 +5,9 @@ include 'connect.php';
 session_start();
 include "check.php";
 
-$sql = mysqli_query($con,"select distinct(pg.token_id) as token_id,pp.id as id,pp.name as name,pp.patient_phone_number 
-as patient_phone_number,pg.type_of_inpatient as toi,pp.date as date from  patient_inpatient_form as pg,patient_primary_information as pp 
-where pg.patient_id=pp.id  order by pp.date desc");
+$sql = mysqli_query($con,"select pp.id as id,pg.token_id as token_id,pp.name as name,pp.patient_phone_number 
+as patient_phone_number,pg.type_of_inpatient as toi from  patient_inpatient_form as pg,patient_primary_information as pp 
+where pg.patient_id=pp.id ");
 
 ?>
 
