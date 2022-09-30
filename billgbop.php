@@ -16,6 +16,7 @@ $res   = mysqli_fetch_assoc($run);
 $query2= "select doctor_name from patient_surgery_form where id='$pid' and token_id='$tid'";
 $run2 = mysqli_query($con,$query2);
 $res2  = mysqli_fetch_assoc($run2);
+
 $query1 = "select s.date as date ,s.charge_name as names,s.quantity as quantity,s.price as price from out_patient_billing_details as s 
 where s.patient_id='$pid' and s.token_id='$tid'  order by s.price desc";
 $run1   = mysqli_query($con,$query1);
