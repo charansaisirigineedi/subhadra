@@ -13,6 +13,10 @@ $query = "select name,patient_phone_number,permanent_address from patient_primar
 $run   = mysqli_query($con,$query);
 $res   = mysqli_fetch_assoc($run);
 
+$query2= "select doctor_name from patient_surgery_form where id='$pid' and token_id='$tid'";
+$run2 = mysqli_query($con,$query2);
+$res2  = mysqli_fetch_assoc($run2);
+
 $query1 = "select s.date as date ,s.charge_name as names,s.quantity as quantity,s.price as price,s.date as date from patient_billing_details as s 
 where s.patient_id='$pid' and s.token_id='$tid' order by s.price desc";
 $run1   = mysqli_query($con,$query1);
@@ -97,7 +101,7 @@ echo"<script>setTimeout(myFunction,3000);</script>";
 												<div class="invoice-info invoice-info2">
 													<strong class="customer-text-one">Consultant Doctor</strong>
 													<p class="invoice-details">
-														Dr M Subhadra<br>
+														<?php echo $res2['doctor_name']; ?><br>
 														Obstetrician - Gynecologist <br>
 														Subhadra Hospital
 													</p>
