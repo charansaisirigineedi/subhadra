@@ -21,12 +21,12 @@ if(isset($_POST['submit']))
 	$d_name= $_POST['d_name'];
 	$A_name = $_POST['A_name'];
 	$N_staff=$_POST['N_staff'];
-	$sugery="INSERT INTO `patient_surgery_form`(`id`,`token_id`, `date_of_admission`, `time_of_admisssion`,
-	 `date_of_discharge`, `time_of_discharge`, `admission_room_type`, `no_of_days_of_stay`, `doctor_name`,
-	  `anesthetist_name`,`tod`, `nursing_staff`) 
-	VALUES ('$pid','$tid','$date_admit','$time_admit','$date_dicharge','$time_discharge',
-	'$room_type','$nds','$d_name','$A_name','$tod','$N_staff')";
-	  $run = mysqli_query($con, $sugery);
+	// $sugery="INSERT INTO `patient_surgery_form`(`id`,`token_id`, `date_of_admission`, `time_of_admisssion`,
+	//  `date_of_discharge`, `time_of_discharge`, `admission_room_type`, `no_of_days_of_stay`, `doctor_name`,
+	//   `anesthetist_name`,`tod`, `nursing_staff`) 
+	// VALUES ('$pid','$tid','$date_admit','$time_admit','$date_dicharge','$time_discharge',
+	// '$room_type','$nds','$d_name','$A_name','$tod','$N_staff')";
+	//   $run = mysqli_query($con, $sugery);
 
 	  echo" <script>document.location='dashboard.php'</script>";
 }
