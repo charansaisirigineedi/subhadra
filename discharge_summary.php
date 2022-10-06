@@ -55,104 +55,76 @@ $res2 = mysqli_fetch_assoc($run2);
 
 <body>
 
-	<div class="card-header">
-		<div align="center"><b>
-				<h2>SUBHADRA HOSPITALS</h2>
-			</b>
+	<div>
+		<div align="center">
+				<h1 style="font-family:Calibri(Body);font-size:75px"><b>SUBHADRA HOSPITALS</b></h1>
+		
 		</div>
 		<div align="center">
-			<h6>&nbspJ.P.ROAD,BHIMAVARAM-534 202</h6>
+			<h4 style="font-family:Calibri(Body);font-size:40px "><b>&nbspJ.P.ROAD,BHIMAVARAM-534 202</b></h4>
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<h6><b>(Hosp.Reg.No.145/2010)</b></h6>
+				<h6 style="font-family:Calibri(Body);font-size:25px"><b>(Hosp.Reg.No.145/2010)</b></h6>
 			</div>
 			<div class="col-md-6">
 				<div class="text-end">
-					<i class="fas fa-phone">&nbsp<b>08816 222200<br>94904 222200</b></i>
+					<i style="font-size:25px">&#9742;&nbsp;<b>08816 222209<br>08816 222309</b></i>
 				</div>
 			</div>
 		</div>
-		―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+		<u><b><hr></b></u>
 		<div class="row">
 			<div class="col-md-6">
 				<div>
-					<h5><b>Dr.Sree Ramya Amulya.V</b></h5>
-					<h6>M.S.(OB/GYN),F.MAS,D.MAS</h6>
-					<h6>Obstetrician/Gynecologist,Reg.No:68984</h6>
+					<h4 style="font-family:Calibri(Body);font-size:30px"><b>Dr.Sree Ramya Amulya.V</b></h4>
+					<h6 style="font-family:Calibri(Body);font-size:20px"><b>M.S.(OB/GYN),F.MAS,D.MAS</b></h6>
+					<h6 style="font-family:Calibri(Body);font-size:20px"><b>Obstetrician/Gynecologist,Reg.No:68984</b></h6>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="text-end">
-					<h5><b>Dr.Subhashini.V&nbsp&nbsp&nbsp&nbsp&nbsp</b></h5>
-					<h6>M.B.B.S&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h6>
-					<h6>Reg.No:10111,Consultant</h6>
+					<h4 style="font-family:Calibri(Body);font-size:30px"><b>Dr.Subhashini.V</b>&nbsp;</h4>
+					<h6 style="font-family:Calibri(Body);font-size:20px"><b>M.B.B.S.</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h6>
+					<h6 style="font-family:Calibri(Body);font-size:20px"><b>Reg.No :10111,Consultant</b>&nbsp;&nbsp;</h6>
 				</div>
 			</div>
 		</div>
-		―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+		<u><hr></u>
 	</div>
-	<h3 align="center"><u>DISCHARGE SUMMARY</u></h3>
+	<h3 style="font-family:Calibri(Body);font-size:45px" align="center"><u><b>DISCHARGE SUMMARY</b></u></h3><br>
 	<div class="card-body">
-		<p><b>NAME&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp</b>&nbsp&nbsp&emsp;&emsp;&emsp;&emsp;<?php echo $res['name']; ?></p>
-		<br><br>
-		<p><b>SEX&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp</b>&nbsp&emsp;&emsp;&emsp;&emsp; <?php echo $res['gender']; ?></p>
-		<br><br>
-		<p><b>ADDRESS&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp</b>&nbsp&emsp;&emsp;&emsp;&emsp;
-			<b>C/O :</b> <?php echo $res['spouse_name'];
+		<div class="row">
+		<div class="col-md-6">
+		<p style="font-family:Calibri(Body);font-size:25px"><b>NAME &nbsp;&nbsp;&nbsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;  :</b>&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp<?php echo $res['name'];?></p></div><div class="col-md-6"><p style="font-family:Calibri(Body);font-size:25px"><b>AGE/SEX&emsp;  :&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp</b><?php echo $res['p_age']; ?>/<?php echo $res['gender']; ?></p></div></div>
+		<p style="font-family:Calibri(Body);font-size:25px"><b>ADDRESS&emsp;:</b>&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp
+			                C/O - <?php echo $res['spouse_name'];
 							echo "<br>";
-							echo "
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&emsp;&emsp;&emsp;&emsp;";
-							echo "Phone-";
+							echo "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp";
+							echo "Ph.No-";
 							echo $res['spouse_contact'];
 							echo "<br>";
-							echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	&nbsp&nbsp&emsp;&emsp;&emsp;&emsp;";
+							echo "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp";
 							echo $res['present_address'] ?>
 		</p>
-		<br><br>
-		<p><b>DOA&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				&nbsp&nbsp&nbsp&nbsp - </b>&nbsp&nbsp&emsp;&emsp;&emsp;&emsp;<?php echo $res1['date_of_admission'] ?></p>
-		<br>
-		<p><b>DOD&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				&nbsp&nbsp&nbsp&nbsp - </b> &nbsp&nbsp&emsp;&emsp;&emsp;&emsp;<?php echo $res1['date_of_discharge'] ?></p>
-		<br><br>
-		<p><b>ADMITTING DIAGNOSIS&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - </b>&nbsp&nbsp&emsp;&emsp;&emsp;&emsp; <?php echo $res2['admitting_diagnosis']; ?></label>
-			<br><br>
-		<p><b>TREATMENT GIVEN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - </b>&nbsp&nbsp&emsp;&emsp;&emsp;&emsp;<?php echo $res2['treatment_given'] ?></label>
-		<br><br><p><b>CONDITIONS AT DISCHARGE&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp - </b>
-			&nbsp&nbsp&emsp;&emsp;&emsp;&emsp;<?php echo $res2['condition_at_discharge']; ?></p>
-			<br><br>
-		<b>MOTHER - VITALS &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b><b>TEMP&nbsp&nbsp&nbsp&nbsp&nbsp-</b> <?php echo $res2['temp']; ?>
-		<br><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>PR&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp- </b><?php echo $res2['pr']; ?>
-		<br><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>BP&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp- </b><?php echo $res2['bp']; ?>
-		<br><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>H/L&nbsp&nbsp&nbsp&nbsp&nbsp- </b><?php echo $res2['h/l']; ?>
-		<br><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>BREASTS - </b><?php echo $res2['breasts']; ?>
-		<br><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>P/A &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-</b><?php echo $res2['p/a']; ?>
-		<br><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>P/V&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-</b><?php echo $res2['p/v']; ?>
-		<br><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>LOCHIA&nbsp&nbsp&nbsp&nbsp-</b><?php echo $res2['lochia']; ?>
-		<br><br><b>ADVICE ON DISCHRGE&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-</b>&nbsp&nbsp&emsp;&emsp;&emsp;&emsp;<?php echo $res2['advice_on_discharge']; ?>
-		<br><br><b> DIET&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-</b>&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp<?php echo $res2['diet']; ?>
-		<br><br><b>Activity&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-</b>&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp<?php echo $res2['activity'] ?>
-		<br><br><b>MEDICATIONS AND FOLLOW UP&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-</b>&nbsp&nbsp&emsp;&emsp;&emsp;&emsp;<?php echo $res2['medications_and_follow_up']; ?>
+		<p style="font-family:Calibri(Body);font-size:25px"><b>DOA  :</b>&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp<?php echo $res1['date_of_admission'] ?></p>
+		<p style="font-family:Calibri(Body);font-size:25px"><b>DOD&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;  :</b>&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp<?php echo $res1['date_of_discharge'] ?></p>
+		<p style="font-family:Calibri(Body);font-size:25px"><b>ADMITTING &nbsp;DIAGNOSIS&emsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;:</b>&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp<?php echo $res2['admitting_diagnosis']; ?></label>
+		<p style="font-family:Calibri(Body);font-size:25px"><b>TREATMENT &nbsp;GIVEN&emsp;&emsp;       &emsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;:</b>&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp<?php echo $res2['treatment_given'] ?></label>
+		<p style="font-family:Calibri(Body);font-size:25px"><b>CONDITIONS AT DISCHARGE&emsp;&emsp;:</b>&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp<?php echo $res2['condition_at_discharge']; ?></p>
+		<p style="font-family:Calibri(Body);font-size:25px"><b>MOTHER - VITALS </b><br>
+		<b>TEMP: </b> <?php echo $res2['temp']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<b>PR: </b><?php echo $res2['pr']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<b>BP: </b><?php echo $res2['bp']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<b>H/L: </b><?php echo $res2['h/l']; ?><br>
+		<b>BREASTS : </b><?php echo $res2['breasts']; ?><br>
+		<b>P/A:</b><?php echo $res2['p/a']; ?><br>
+		<b>P/V:</b><?php echo $res2['p/v']; ?><br>
+		<b>LOCHIA:</b><?php echo $res2['lochia']; ?>
+		<p style="font-family:Calibri(Body);font-size:25px"><b>ADVICE ON DISCHRGE:</b><?php echo $res2['advice_on_discharge']; ?><br>
+		<b> DIET&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:</b>&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp<?php echo $res2['diet']; ?><br>
+		<b>Activity&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:</b>&emsp;&emsp;&emsp;&emsp;&nbsp&nbsp<?php echo $res2['activity'] ?><br>
+		<b>MEDICATIONS AND FOLLOW UP&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:</b>&nbsp&nbsp&emsp;&emsp;&emsp;&emsp;<?php echo $res2['medications_and_follow_up']; ?>
 
 	</div>
 	<!-- jQuery -->
@@ -169,7 +141,7 @@ $res2 = mysqli_fetch_assoc($run2);
 	<!-- multiple choice -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
-	<script>setTimeout("print()", 5000);</script>
+	<!-- <script>setTimeout("print()", 1000);</script> -->
 </body>
 
 </html>

@@ -121,7 +121,7 @@ $data4    = mysqli_fetch_assoc($run4);
                                     </div>
                                     <div class="db-info">
                                         <h3><?php echo 'G<sub><b>' . $data['g'] . '</b></sub>' . 'L<sub><b>' . $data['l'] . '</b></sub>' . 'P<sub><b>' . $data['p'] . '</b></sub>' . 'A<sub><b>' . $data['a'] . '</b></sub>' . 'D<sub><b>' . $data['d'] . '</b></sub>'; ?></h3>
-                                        <h6>GVLPA</h6>
+                                        <h6>GVLPAD</h6>
                                     </div>
                                 </div>
                             </div>
