@@ -7,7 +7,9 @@ include "check.php";
 date_default_timezone_set("Asia/Kolkata");
 $e = strval(date('Ymd'));
 $d  = substr($e,0,4).'-'.substr($e,4,2).'-'.substr($e,6,2);
-$sql = mysqli_query($con,"select * from patient_primary_information where date(date) = '$d'");
+$sql = mysqli_query($con,"SELECT  pif.id as id , pif.name as name , pif.patient_phone_number 
+as patient_phone_number from patient_primary_information pif  where date(pif.date) = '$d'
+and pif.id not in (SELECT patient_id from pastrecords)");
 
 ?>
 
@@ -83,6 +85,7 @@ $sql = mysqli_query($con,"select * from patient_primary_information where date(d
 												<?php
                                                     while($run = mysqli_fetch_assoc($sql))
                                                     {
+
                                                         echo '<tr>
                                                         <td>'.$run['id'].'</td>
                                                         <td>'.$run['name'].'</td>

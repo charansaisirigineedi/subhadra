@@ -47,24 +47,20 @@ $data4    = mysqli_fetch_assoc($run4);
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/img/favicon.png">
-
+	
     <!-- Fontfamily -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
-
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-
+    
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
-
+    
     <!-- Main CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <script>
-        function myFunction() {
-            window.open("patient_profile1.php?pid=<?php echo $pid; ?>", "_blank", "toolbar=no, scrollbars=no, resizable=no, top=1000, left=1000, width=1000, height=1000");
-        }
-    </script>
+
 </head>
 
 <body>
@@ -76,8 +72,12 @@ $data4    = mysqli_fetch_assoc($run4);
 
                 <div class="page-header">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <h3 class="page-title">Welcome <button onclick="myFunction()"><?php echo $na['name']; ?></button></h3>
+                    <h3 class="page-title">Welcome <?php echo $na['name']; ?> !</h3>
+                    <div class="col-md-9">
+                            <ul class="list-links mb-4">
+                                <li class="active"><a href="patient_profile_dashboard.php?pid=<?php echo $pid;?>">Dashboard</a></li>
+                                <li><a href="patient_profile1.php?pid=<?php echo $pid;?>">Patient Profile</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -209,9 +209,18 @@ $data4    = mysqli_fetch_assoc($run4);
                         <div class="card flex-fill"><br>
                             <div>
                                 <h4>&nbsp&nbspPatient Important Dates</h4><br>
-                                    <h6><b>&nbsp&nbsp&nbspEDD&nbsp</b>:&nbsp<?php echo $data4['edd'] ?></h6><br>     
-                                    <h6><b>&nbsp&nbsp&nbspDate Of Discharge&nbsp</b>:&nbsp<?php echo $data4['date_of_discharge'] ?></h6><br>
-                                    <h6><b>&nbsp&nbsp&nbspLMP&nbsp</b>:&nbsp<?php echo $data4['lmp'] ?></h6>  
+                                    <h6><b>&nbsp&nbsp&nbspEDD&nbsp</b>:&nbsp
+                                    <?php
+                                    $newDate = date("d-m-Y", strtotime($data4['edd']));  
+                                    $dd = strval($newDate);
+                                    $newDate = date("d-m-Y", strtotime($data4['date_of_discharge']));  
+                                    $dd1 = strval($newDate);
+                                    $newDate = date("d-m-Y", strtotime($data4['lmp']));  
+                                    $dd2 = strval($newDate);
+                                    echo $dd;
+                                      ?></h6><br>     
+                                    <h6><b>&nbsp&nbsp&nbspDate Of Discharge&nbsp</b>:&nbsp<?php echo $dd1; ?></h6><br>
+                                    <h6><b>&nbsp&nbsp&nbspLMP&nbsp</b>:&nbsp<?php echo $dd2; ?></h6>  
 
                             </div>
 

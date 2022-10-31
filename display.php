@@ -54,11 +54,11 @@ include "check.php";
 	</head>
 	<body>
 	
-		<?php include 'menu.php'; ?>
-			
-			<!-- Page Wrapper -->
-			<div class="page-wrapper">
-				<div class="content container-fluid">
+	<div class="main-wrapper">
+        <?php include 'menu.php'; ?>
+        <div class="page-wrapper">
+
+            <div class="content container-fluid">
 					<div class="card">
 								<div class="card-header">
 									<h5 class="card-title">Patient Data</h5>

@@ -5,6 +5,7 @@ session_start();
 
 include "check.php";
 
+
 $pid = $_GET['pid'];
 $tid = $_GET['tid'];
 
@@ -13,15 +14,54 @@ $sum = 0;
 $query = "select name,patient_phone_number,permanent_address from patient_primary_information where id='$pid'";
 $run   = mysqli_query($con,$query);
 $res   = mysqli_fetch_assoc($run);
-$query2= "select doctor_name from patient_surgery_form where id='$pid' and token_id='$tid'";
+$query2= "select dname ,date from existing_op_record where id='$pid' and token_id='$tid'";
 $run2 = mysqli_query($con,$query2);
 $res2  = mysqli_fetch_assoc($run2);
+$dname=$res2['dname'];
+$date = date("d-m-Y", strtotime($res2['date']));
+$query3= "SELECT * FROM `doctor details` WHERE dname like '$dname'";
+$run3 = mysqli_query($con,$query3);
+$res3  = mysqli_fetch_assoc($run3);
+
 
 $query1 = "select s.date as date ,s.charge_name as names,s.quantity as quantity,s.price as price from out_patient_billing_details as s 
 where s.patient_id='$pid' and s.token_id='$tid'  order by s.price desc";
 $run1   = mysqli_query($con,$query1);
 $res1   = mysqli_fetch_assoc($run);
 
+
+function getIndianCurrency(float $number)
+{
+    $decimal = round($number - ($no = floor($number)), 2) * 100;
+    $hundred = null;
+    $digits_length = strlen($no);
+    $i = 0;
+    $str = array();
+    $words = array(0 => '', 1 => 'one', 2 => 'two',
+        3 => 'three', 4 => 'four', 5 => 'five', 6 => 'six',
+        7 => 'seven', 8 => 'eight', 9 => 'nine',
+        10 => 'ten', 11 => 'eleven', 12 => 'twelve',
+        13 => 'thirteen', 14 => 'fourteen', 15 => 'fifteen',
+        16 => 'sixteen', 17 => 'seventeen', 18 => 'eighteen',
+        19 => 'nineteen', 20 => 'twenty', 30 => 'thirty',
+        40 => 'forty', 50 => 'fifty', 60 => 'sixty',
+        70 => 'seventy', 80 => 'eighty', 90 => 'ninety');
+    $digits = array('', 'hundred','thousand','lakh', 'crore');
+    while( $i < $digits_length ) {
+        $divider = ($i == 2) ? 10 : 100;
+        $number = floor($no % $divider);
+        $no = floor($no / $divider);
+        $i += $divider == 10 ? 1 : 2;
+        if ($number) {
+            $plural = (($counter = count($str)) && $number > 9) ? 's' : null;
+            $hundred = ($counter == 1 && $str[0]) ? ' and ' : null;
+            $str [] = ($number < 21) ? $words[$number].' '. $digits[$counter]. $plural.' '.$hundred:$words[floor($number / 10) * 10].' '.$words[$number % 10]. ' '.$digits[$counter].$plural.' '.$hundred;
+        } else $str[] = null;
+    }
+    $Rupees = implode('', array_reverse($str));
+    $paise = ($decimal > 0) ? "." . ($words[$decimal / 10] . " " . $words[$decimal % 10]) . ' Paise' : '';
+    return ($Rupees ? $Rupees . '' : '') . $paise;
+}
   
 ?>
 <head>
@@ -50,8 +90,8 @@ $res1   = mysqli_fetch_assoc($run);
 		
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="assets/css/style.css">
+
 	</head>
-<body>
 				
 				<div class="content container-fluid">
 					<!-- <form>
@@ -61,84 +101,56 @@ $res1   = mysqli_fetch_assoc($run);
 						<div class="col-xl-10">
 							<div class="card invoice-info-card">
 								<div class="card-body">
-									<div class="invoice-item invoice-item-one">
+								<?php include 'letterhead.php'; ?>
+					
+								<!-- <div class="line"></div> -->
+								<hr>
+								<h3 style="font-family:Calibri(Body);font-size:30px" align="center"><u><b>OP BILL</b></u></h3><br>
+									<!-- Invoice Item -->
 										<div class="row">
 											<div class="col-md-6">
-												<div class="invoice-logo">
-													<img src="assets/img/logo.png" alt="logo">
-												</div>
 												<div class="invoice-head">
-													<h2>Invoice</h2>
-													<p>Invoice Number : In<?php echo $tid; ?></p>
+													<h2>Billed to</h2>
+													<p><?php echo $res['name']; ?></p>
+													<p><?php echo $res['permanent_address']; ?></p>
+													<p><?php echo $res['patient_phone_number']; ?></p>
 												</div>
 											</div>
 											<div class="col-md-6">
-												<div class="invoice-info">
-													<strong class="customer-text-one">Invoice From</strong>
-													<h6 class="invoice-name">Subhadra Hospitals</h6>
-													<p class="invoice-details">
-														9087484288 <br>
-														SRKR Marg, Balusumoodi<br>
-														534202 ,Bhimavaram - India
-													</p>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									<!-- Invoice Item -->
-									<div class="invoice-item invoice-item-two">
-										<div class="row">
-											<div class="col-md-6">
-												<div class="invoice-info">
-													<strong class="customer-text-one">Billed to</strong>
-													<h6 class="invoice-name"><?php echo $res['name']; ?></h6>
-													<p class="invoice-details invoice-details-two">
-													<?php echo $res['patient_phone_number']; ?> <br>
-													<?php echo $res['permanent_address']; ?>													</p>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="invoice-info invoice-info2">
-													<strong class="customer-text-one">Consultant Doctor</strong>
-													<p class="invoice-details">
-													 <?php echo $res2['doctor_name']; ?><br>
-														Obstetrician - Gynecologist <br>
-														Subhadra Hospital
-													</p>
-													<!-- <div class="invoice-item-box">
-														<p>Recurring : 15 Months</p>
-														<p class="mb-0">PO Number : 54515454</p>
-													</div> -->
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- /Invoice Item -->
-									
-									<!-- Invoice Item -->
-									<!-- <div class="invoice-issues-box">
-										<div class="row">
-											<div class="col-lg-4 col-md-4">
-												<div class="invoice-issues-date">
-													<p>Issue Date : 27 Jul 2022</p>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4">
-												<div class="invoice-issues-date">
-													<p>Admission Date : 27 Aug 2022</p>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4">
-												<div class="invoice-issues-date">
-													<p>Discharge Date : ₹ 1,54,22 </p>
-												</div>
-											</div>
-										</div>
-									</div> -->
-									<!-- /Invoice Item -->
+												<div class="invoice-head">
+													<div class="row">
+													
+													   <div class="col-md-4"> </div>
+													   <div class="col-md-4"> <h2>INVOICE</h2></div>
+													   <div class="col-md-4"> </div>
+														
+													</div>
+													<div class="row">
+														<div class="col-md-4"></div>
+														<div class="col-md-4"><p>Invoice Number  : </p></div>
+														<div class="col-md-4"><p><b> INV<?php echo $tid; ?></b></p></div>
+													</div>
+													<div class="row">
+														<div class="col-md-4"></div>
+														<div class="col-md-4"><p>INPatient Number  : </p></div>
+														<div class="col-md-4"><p><b> <?php echo $pid; ?></b></p></div>
+													</div>
+													<div class="row">
+														<div class="col-md-4"></div>
+														<div class="col-md-4"><p>Date  : </p></div>
+														<div class="col-md-4"><p><b><?php echo $date; ?></b></p></div>
+													</div>
+													<div class="row">
+														<div class="col-md-4"></div>
+														<div class="col-md-4"><p>Consultant Doctor: </p></div>
+														<div class="col-md-4"><p><b> <?php echo $res2['dname']; ?></b></p></div>
+													</div>
+											
+												</div></div>
+										
 
-									<!-- Invoice Item -->
+										</div>
+									
 									<div class="invoice-item invoice-table-wrap">
 										<div class="row">
 											
@@ -149,30 +161,34 @@ $res1   = mysqli_fetch_assoc($run);
 															<tr>
                                                                 <th>Sl No.</th>
 																<th>Description</th>
-																<th>Quantity</th>
+																<th></th>
+																<th >Quantity</th>
 																<th>Amount</th>
-																<th>Date</th>
+														
 															</tr>
 														</thead>
 														<tbody>
-														<!-- select f.charge_name as name,s.quantity as quantity,s.price -->
+				
 														<?php
 															$i = 0;
 															foreach($run1 as $data) 
 															{
+																$newDate = date("d-m-Y", strtotime($data['date']));
 																$i++;
 																$name = $data['names'];
 																$quantity=$data['quantity'];
+
 																$price=$data['price'];
 																$sum = $sum + $price;
 																echo
 															'<tr>
 															<td>'.$i.'</td>
 															<td>'.$name.'</td>
-															<td>'.$quantity.'</td>
-															<td>'.$price.'</td>
-															<td>'.$data['date'].'</td>
-															<td ></tr>';
+															<td></td>
+															<td >'.$quantity.' X '.$price/$quantity.'/-</td>
+															<td align="center">'.$price.'/-</td>
+													
+															</tr>';
 															}
 															?>
 														</tbody>
@@ -184,37 +200,21 @@ $res1   = mysqli_fetch_assoc($run);
 									<!-- /Invoice Item -->
 
 									<div class="row align-items-center justify-content-center">
-										<!-- <div class="col-lg-6 col-md-6">
-											<div class="invoice-terms">
-												<h6>Notes:</h6>
-												<p class="mb-0">Enter customer notes or any other details</p>
-											</div>
-											<div class="invoice-terms">
-												<h6>Terms and Conditions:</h6>
-												<p class="mb-0">Enter customer notes or any other details</p>
-											</div>
-										</div> -->
+										
 										<div class="col-lg-6 col-md-6">
 											<div class="invoice-total-card">
 												<div class="invoice-total-box">
-													<div class="invoice-total-inner">
-														<!-- <p>Taxable <span>$6,660.00</span></p>
-														<p>Additional Charges <span>$6,660.00</span></p> -->
-														<!-- <p>Discount <span>$00.00</span></p> -->
-														<p class="mb-0">Sub total <span>₹<?php echo $sum; ?></span></p>
-													</div>
 													<div class="invoice-total-footer">
-														<h4>Total Amount <span>₹<?php echo $sum; ?></span></h4>
+														<h4>Total Amount <span><?php echo $sum; ?> /-</span></h4>
 													</div>
 												</div>
-											</div>
+											</div><br>
 										</div>
+							
+										<div ><tr><h2 class="invoice-name" style="font-family:Calibri(Body);"><b>Amount in words : Rupees <?php echo ucwords(getIndianCurrency($sum)); ?> Only</b></h2></div>
 									</div>
-									<div class="invoice-sign text-end">
-										<img class="img-fluid d-inline-block" src="assets/img/signature.png" alt="sign">
-										<span class="d-block"></span>
-									</div>
-								</div>
+									
+								</div> 
 							</div>
 						</div>
 					</div>

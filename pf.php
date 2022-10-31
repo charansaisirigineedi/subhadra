@@ -82,9 +82,9 @@ if(isset($_POST['submit']))
     </head>
     <body>
 	
-		<?php include "menu.php"; ?>
-            <div class="page-wrapper">
-				<div class="content container-fluid">
+	<div class="main-wrapper">
+        <?php include 'menu.php'; ?>
+        <div class="page-wrapper" >
 				<div class="page-header">
 						<div class="row">
 							<div class="col">

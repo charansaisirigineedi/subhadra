@@ -41,10 +41,12 @@ $res = mysqli_fetch_assoc($run);
     </head>
     <body>
 	
-		<?php include "menu.php"; ?>
-            <div class="page-wrapper">
-			
-				<div class="content container-fluid">					
+
+		<div class="main-wrapper">
+        <?php include 'menu.php'; ?>
+        <div class="page-wrapper">
+
+            <div class="content container-fluid">					
 				    <div class="row">
 						<div class="col-md-12">
 							<div class="card">

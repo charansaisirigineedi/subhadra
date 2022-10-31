@@ -39,7 +39,7 @@ function autoincemp()
 
 
 $date = $d;
-$query = "INSERT INTO `existing_op_record`(`id`, `token_id`, `date`) VALUES ('$pid','$token','$date')";
+$query = "INSERT INTO `existing_op_record`(`id`, `token_id`, `date`,`dname`) VALUES ('$pid','$token','$date','Dr.Subhashini.V')";
 $run = mysqli_query($con, $query);
 echo" <script>document.location='bop.php?pid=$pid&tid=$token'</script>";
 

@@ -15,6 +15,10 @@ $query = "select name,patient_phone_number,permanent_address from patient_primar
 $run   = mysqli_query($con,$query);
 $res   = mysqli_fetch_assoc($run);
 
+$query2= "select doctor_name,date_of_discharge from patient_surgery_form where id='$pid' and token_id='$tid'";
+$run2 = mysqli_query($con,$query2);
+$res2  = mysqli_fetch_assoc($run2);
+
 $query1 = "select s.charge_name as names,s.quantity as quantity,s.price as price,s.date as date from patient_billing_details as s 
 where s.patient_id='$pid' and s.token_id='$tid' order by s.price desc";
 $run1   = mysqli_query($con,$query1);
@@ -53,12 +57,13 @@ $res1   = mysqli_fetch_assoc($run);
 	</head>
 	<body>
 	
-		<?php include 'menu.php'; ?>			
-			<!-- Page Wrapper -->
-			
-			<div class="page-wrapper" id="page-wrapper">
+	<div class="main-wrapper">
+        <?php include 'menu.php'; ?>
+        <div class="page-wrapper" id="page-wrapper">
+
+
 				<div class="row">
-					<div class="col-xl-3 col-sm-6 col-12 d-flex">
+					<div>
 					<a href="billing.php?pid=<?php echo $pid;?>&tid=<?php echo $tid;?>" class="btn btn-primary">EDIT BILL</a>
 					</div>
 					<div class="text-end">
@@ -66,6 +71,7 @@ $res1   = mysqli_fetch_assoc($run);
 					</div>
 				</div>
 				<div class="content container-fluid">
+				  
 					<div class="row justify-content-center">
 						<div class="col-xl-10">
 							<div class="card invoice-info-card">
@@ -77,18 +83,34 @@ $res1   = mysqli_fetch_assoc($run);
 													<img src="assets/img/logo.png" alt="logo">
 												</div>
 												<div class="invoice-head">
-													<h2>Invoice</h2>
-													<p>Invoice Number : In<?php echo $tid; ?></p>
+													<h2>INVOICE</h2>
+													<p>Invoice Number : INV<?php echo $tid; ?></p>
+													<p>INPatient Number :<?php echo $pid; ?></p>
+													<p>Date :
+													<?php 
+														if(empty($res2['date_of_discharge']))
+													 	{
+															echo '<p style = "color:red;">date is not updated in surgery form';
+														}
+														else 
+														{
+															$newDate = date("d-m-Y", strtotime($res2['date_of_discharge']));
+															echo $newDate;
+														}
+													?></p>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="invoice-info">
-													<strong class="customer-text-one">Invoice From</strong>
-													<h6 class="invoice-name">Subhadra Hospitals</h6>
+													<strong class="customer-text-one">INVOICE FROM</strong>
+													<h4 class="invoice-name"><b>Subhadra Hospitals</b><br>
+													(Hosp.Reg.No.145/2010)</h4>
 													<p class="invoice-details">
-														9087484288 <br>
-														SRKR Marg, Balusumoodi<br>
-														534202 ,Bhimavaram - India
+														J.P.Road<br>
+														opp. Ananda Function Hall<br>
+														534202 ,Bhimavaram - India<br>
+														West Godavari District<br>
+														Andhra Pradesh
 													</p>
 												</div>
 											</div>
@@ -104,21 +126,21 @@ $res1   = mysqli_fetch_assoc($run);
 													<h6 class="invoice-name"><?php echo $res['name']; ?></h6>
 													<p class="invoice-details invoice-details-two">
 													<?php echo $res['patient_phone_number']; ?> <br>
-													<?php echo $res['permanent_address']; ?>													</p>
+													<?php echo $res['permanent_address']; ?></p>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="invoice-info invoice-info2">
 													<strong class="customer-text-one">Consultant Doctor</strong>
 													<p class="invoice-details">
-														Dr M Subhadra<br>
-														Obstetrician - Gynecologist <br>
-														Subhadra Hospital
+													<form>
+														<select name="dname" id="dname"  onchange="dsubmit()" class="form-control form-select" >
+															<option>--Select--</option>
+															<option value="Dr.Sree Ramya Amulya.V">Dr.Sree Ramya Amulya.V</option>
+															<option value="Dr.Subhashini.V">Dr.Subhashini.V</option>
+														</select>
+													</form>
 													</p>
-													<!-- <div class="invoice-item-box">
-														<p>Recurring : 15 Months</p>
-														<p class="mb-0">PO Number : 54515454</p>
-													</div> -->
 												</div>
 											</div>
 										</div>
@@ -160,7 +182,7 @@ $res1   = mysqli_fetch_assoc($run);
 																<th>Description</th>
 																<th>Quantity</th>
 																<th>Amount</th>
-																<th>Date</th>
+														
 															</tr>
 														</thead>
 														<tbody>
@@ -177,11 +199,10 @@ $res1   = mysqli_fetch_assoc($run);
 																$sum = $sum + $price;
 																echo
 																'<tr>
-															<td>'.$i.'</td>
-															<td>'.$name.'</td>
-															<td>'.$quantity.'</td>
-															<td>'.$price.'</td>
-															<td>'.$newDate.'</td>
+																<td>'.$i.'</td>
+																<td>'.$name.'</td>
+																<td>'.$quantity.'X'.$price/$quantity.'</td>
+																<td>'.$price.'/-</td>
 															</tr>';
 															}
 															?>
@@ -221,8 +242,8 @@ $res1   = mysqli_fetch_assoc($run);
 										</div>
 									</div>
 									<div class="invoice-sign text-end">
-										<img class="img-fluid d-inline-block" src="assets/img/signature.png" alt="sign">
-										<span class="d-block"></span>
+										<!-- <img class="img-fluid d-inline-block" src="assets/img/signature.png" alt="sign">
+										<span class="d-block"></span> -->
 									</div>
 								</div>
 							</div>
@@ -256,7 +277,20 @@ $res1   = mysqli_fetch_assoc($run);
 		
 		<!-- Custom JS -->
 		<script src="assets/js/script.js"></script>
-
+		<script>
+			function dsubmit() {
+			let d_name = document.getElementById("dname").value;
+			var xmlhttp=new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function() {
+				if (this.readyState==4 && this.status==200) {
+					console.log(this.responseText);
+					document.getElementById("Dname").value=this.responseText;
+				}
+			}
+			xmlhttp.open("GET","update_dnameip.php?pid=<?php echo $pid;?>&tid=<?php echo $tid;?>&dname="+d_name,true);
+			xmlhttp.send();
+			}
+		</script>
 		<script>
 			var doc = new jsPDF();
 			var specialElementHandlers = {
@@ -273,6 +307,6 @@ $res1   = mysqli_fetch_assoc($run);
 				doc.save('sample-file.pdf');
 			});
 		</script>
-
+	
 	</body>
 </html>

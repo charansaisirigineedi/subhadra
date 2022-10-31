@@ -6,7 +6,7 @@
                     <img src="assets/img/logo.png" alt="Logo">
                 </a>
                 <a href="dashboard.php" class="logo logo-small">
-                    <img src="assets/img/invoice-circle1.png" alt="Logo" width="30" height="30">
+                    <img src="assets/img/logo.png" alt="Logo" width="30" height="30">
                 </a>
             </div>
             <!-- /Logo -->
@@ -65,9 +65,17 @@
                         <li class="submenu">
                             <a href="#"><i class="fas fa-filter"></i><span>FILTERS</span> <span class="menu-arrow"></span></a>
                             <ul>
-                            <li><a href="edd.php"><i class="fas fa-filter fa-lx"></i>EDD</a></li>
-                            <li><a href="patient_list.php"><i class="fas fa-filter fa-lx"></i>Patient List</a></li>
+                            <li><a href="edd.php">EDD</a></li>
+                            <li><a href="patient_list.php">Patient List</a></li>
                             </ul>
+                        </li>
+                        <li class="submenu">
+
+                            <a href="#"><i class="fa fa-list-alt"></i><span>DISCHARGE SUMMARY</span> <span class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="search-discharge.php">Discharge Summary</a></li>
+                            </ul>
+
                         </li>
                         <li class="submenu">
                             <a href="#"><i class="fas fa-book"></i> <span>Booking</span> <span class="menu-arrow"></span></a>
@@ -86,11 +94,14 @@
                             </ul>
 
                         </li>
+                       
                         <li class="submenu">
                             <a href="#"><i class="fas fa-cogs"></i> <span>SETTINGS</span> <span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="patient_details.php">Update Patient Profile</a></li>
-                                <li><a href="fees.php">Charges update</a></li>
+                                <li><a href="search-usf.php">Update Surgery Profiles</a></li>
+                                <li><a href="search-upf.php">Update Pregnancy Profiles</a></li>
+                                <!-- <li><a href="fees.php">Charges update</a></li> -->
                             </ul>
                         </li>
 

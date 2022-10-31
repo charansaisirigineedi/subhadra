@@ -130,10 +130,11 @@ if(isset($_POST['submit']))
     </head>
     <body>
 	
-		<?php include "menu.php"; ?>
+	<div class="main-wrapper">
+        <?php include 'menu.php'; ?>
+        <div class="page-wrapper">
 
-            <div class="page-wrapper">	
-				<div class="content container-fluid">
+            <div class="content container-fluid">
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
@@ -249,7 +250,7 @@ if(isset($_POST['submit']))
 										            <label>Patient Occupation</label>
 										            <input type="text" name="po" class="form-control"required>
 													<div class="invalid-feedback">
-														Please choose "Patient Occupatin"
+														Please choose "Patient Occupation"
                                                     </div>
 									            </div>
 
@@ -424,6 +425,7 @@ if(isset($_POST['submit']))
 			<!-- /Page Wrapper -->
 		
         </div>
+	</div>
 		<!-- /Main Wrapper -->
 		
 		<!-- jQuery -->

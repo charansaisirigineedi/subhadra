@@ -108,12 +108,11 @@ if(isset($_POST['view-bill']))
 	</head>
 	<body>
 
+	<div class="main-wrapper">
         <?php include 'menu.php'; ?>
-			
-					<!-- Page Wrapper -->
-						<div class="page-wrapper">
-					
-						<div class="content container-fluid">
+        <div class="page-wrapper">
+
+            <div class="content container-fluid">
 						<div class="page-header">
 						<div class="row">
 							<div class="col">

@@ -29,12 +29,12 @@ if (isset($_POST['submit'])) {
 	$diet = $_POST['diet'];
 	$activity = $_POST['activity'];
 	$mafu = $_POST['mafu'];
-	$act = "";
-	foreach ($activity as $act1) {
-		$act .= $act1 . ",";
-	}
+	// $act = "";
+	// foreach ($activity as $act1) {
+	// 	$act .= $act1 . ",";
+	// }
 	$query2 = "INSERT INTO `patient_discharge_form`(`id`, `tid`, `admitting_diagnosis`, `treatment_given`, `condition_at_discharge`, `temp`, `pr`, `bp`, `h/l`, `breasts`, `p/a`, `p/v`, `lochia`, `advice_on_discharge`, `diet`, `activity`, `medications_and_follow_up`	) 
-VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl','$breasts','$pa','$pv','$lochia','$aod','$diet','$act','$mafu')";
+VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl','$breasts','$pa','$pv','$lochia','$aod','$diet','$activity','$mafu')";
 	$run2 = mysqli_query($con, $query2);
 	if($run2)
 	{
@@ -88,10 +88,10 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
-									<h3 align="center" class="page-title">DISHCHARGE SUMMARY</h3>
+									<h3 align="center" class="page-title">DISCHARGE SUMMARY</h3>
 								</div>
 								<div class="card-body">
-									<form method="post" autocomplete="off" class="needs-validation" novalidate>
+									<form method="post"  class="needs-validation" novalidate>
 										<div class="form-group">
 											<label><b>NAME&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b> :&nbsp&nbsp<?php echo $res['name'] ?></label>
 										</div>
@@ -117,7 +117,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 										<div class="col-md-12">
 											<div class="form-group">
 												<label><b>ADMITTING DIAGNOSIS</b> </label>
-												<input type="text" name="ad" class="form-control">
+												<input type="text" name="ad" class="form-control" required>
 												<div class="invalid-feedback">
 													Please choose "Diagnosis"
 												</div>
@@ -127,7 +127,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="col-md-6">
 												<div class="form-group">
 													<label><b>TREATMENT GIVEN</b></label>
-													<textarea name="tg" class="form-control"></textarea>
+													<textarea name="tg" class="form-control"required></textarea>
 													<div class="invalid-feedback">
 														Please choose "Treatment Given"
 													</div>
@@ -136,7 +136,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="col-md-6">
 												<div class="form-group">
 													<label><b>CONDITIONS AT DISCHARGE</b></label>
-													<textarea name="cad" class="form-control"></textarea>
+													<textarea name="cad" class="form-control"required></textarea>
 													<div class="invalid-feedback">
 														Please choose "Conditions at Discharge"
 													</div>
@@ -227,28 +227,29 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>ADVICE ON DISCHARGE</b></label>
-														<input list="AOD" name="aod" id="A_name" class="form-control">
+														<textarea name="aod" class="form-control"required></textarea>
+														<!-- <input list="AOD" name="aod" id="A_name" class="form-control"required>
 														<datalist id="AOD">
 
 															<option value="CALL FOR INCREASED PAIN">
 															<option value="FEVER">
 															<option value="AS INCREASED BLEEDING">
-														</datalist>
+														</datalist>-->
 														<div class="invalid-feedback">
 															Please choose "ADVICE ON DISCHARGE"
-														</div>
+														</div> 
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>DIET</b></label>
-
-														<input list="DIET" name="diet" id="A_name" class="form-control">
+														<textarea name="diet" class="form-control"required></textarea>
+														<!-- <input list="DIET" name="diet" id="A_name" class="form-control"required>
 														<datalist id="DIET">
 															<option value="REGULAR">
 															<option value="ADVANCE">
 															<option value="TOLERATED">
-														</datalist>
+														</datalist> -->
 														<div class="invalid-feedback">
 															Please choose "ADVICE ON DISCHARGE"
 														</div>
@@ -259,7 +260,8 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>Activity:</b></label>
-														<div>
+														<textarea name="activity" class="form-control"required></textarea>
+														<!-- <div>
 															<input type="checkbox" id="activity" value=" Pelvic rest for 6 weeks i.e.,no sex" name="activity[]">
 															<label> Pelvic rest for 6 weeks i.e.,no sex</label><br>
 															<input type="checkbox" id="activity" value=" no heavy lifting" name="activity[]">
@@ -267,7 +269,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 															<input type="checkbox" id="activity" value="Slow increase as tolerated" name="activity[]">
 															<label> Slow increase as tolerated</label><br><br>
 
-														</div>
+														</div> -->
 														<div class="invalid-feedback">
 															Please choose "Activity"
 														</div>
@@ -277,7 +279,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>MEDICATIONS AND FOLLOW UP</b> </label>
-														<input type="text" name="mafu"  value="AS PER <?php echo $res1['doctor_name']; ?>" class="form-control">
+														<textarea name="mafu" class="form-control"required>AS PER <?php echo $res1['doctor_name']; ?></textarea>
 														<div class="invalid-feedback">
 															Please choose "MEDICATIONS AND FOLLOW UP"
 														</div>
@@ -310,6 +312,9 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 	<!-- multiple choice -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+
+	<!-- Form Validation JS -->
+	<script src="assets/js/form-validation.js"></script>
 </body>
 setTimeout("print()", 1000);
 </html>

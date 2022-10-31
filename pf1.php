@@ -58,9 +58,11 @@ if(isset($_POST['submit']))
     </head>
     <body>
 	
-		<?php include "menu.php"; ?>
-            <div class="page-wrapper">
-				<div class="content container-fluid">
+	<div class="main-wrapper">
+        <?php include 'menu.php'; ?>
+        <div class="page-wrapper">
+
+            <div class="content container-fluid">
 				<div class="page-header">
 						<div class="row">
 							<div class="col">
@@ -147,8 +149,8 @@ if(isset($_POST['submit']))
                                                     </div>
 									              </div>
 												  <div class="form-group">
-										            <label>Weight of the Baby</label>
-										            <input type="number" name="wb" class="form-control"required>
+										            <label>Weight of the Baby (In KiloGrams-kg)</label>
+										            <input type="number" step="any" min="0" name="wb" class="form-control"required>
 													<div class="invalid-feedback">
 														Please choose "Weight of the baby"
                                                     </div>

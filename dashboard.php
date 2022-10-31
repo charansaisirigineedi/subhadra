@@ -121,6 +121,7 @@ if(isset($_POST['gbsubmit']))
 
     <div class="main-wrapper">
         <?php include 'menu.php'; ?>
+        
         <div class="page-wrapper">
 
             <div class="content container-fluid">

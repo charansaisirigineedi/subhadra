@@ -90,11 +90,27 @@ Version      : 1.0
 		});
 	}
 	
-	// Editor
+	// editor
 	if ($('#editor').length > 0) {
 		ClassicEditor
 		.create( document.querySelector( '#editor' ), {
-			 toolbar: [  'bold', 'italic', 'link' ]
+			toolbar: {
+                items: [
+                    'heading', '|',
+                    'fontfamily', 'fontsize', '|',
+                    'alignment', '|',
+                    'fontColor', 'fontBackgroundColor', '|',
+                    'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', '|',
+                    'link', '|',
+                    'outdent', 'indent', '|',
+                    'bulletedList', 'numberedList', 'todoList', '|',
+                    'code', 'codeBlock', '|',
+                    'insertTable', '|',
+                    'uploadImage', 'blockQuote', '|',
+                    'undo', 'redo'
+                ],
+                shouldNotGroupWhenFull: true
+            }
 		} )
 		.then( editor => {
 			window.editor = editor;
@@ -151,9 +167,14 @@ Version      : 1.0
 	
     // Datatable
 
-    if ($('.datatable').length > 0) {
+	if ($('.datatable').length > 0) {
         $('.datatable').DataTable({
             "bFilter": false,
+        });
+    }
+    if ($('.datatables').length > 0) {
+        $('.datatables').DataTable({
+            "bFilter": true,
         });
     }
 
@@ -390,6 +411,92 @@ Version      : 1.0
         $(".links-info-discount").append(experiencecontent);
         return false;
     });
+	
+	// Summernote
+	
+	if($('#summernote').length > 0) {
+        $('#summernote').summernote({
+		  height: 300,                 // set editor height
+		  minHeight: null,             // set minimum height of editor
+		  maxHeight: null,             // set maximum height of editor
+		  focus: true                  // set focus to editable area after initializing summernote
+		});
+    }
+	
+	// Counter 
+	
+	if($('.counter').length > 0) {
+	   $('.counter').counterUp({
+			delay: 20,
+            time: 2000
+       });
+	}
+	
+	if($('#timer-countdown').length > 0) {
+		$( '#timer-countdown' ).countdown( {
+			from: 180, // 3 minutes (3*60)
+			to: 0, // stop at zero
+			movingUnit: 1000, // 1000 for 1 second increment/decrements
+			timerEnd: undefined,
+			outputPattern: '$day Day $hour : $minute : $second',
+			autostart: true
+		});
+	}
+	
+	if($('#timer-countup').length > 0) {
+		$( '#timer-countup' ).countdown( {
+			from: 0,
+			to: 180 
+		});
+	}
+	
+	if($('#timer-countinbetween').length > 0) {
+		$( '#timer-countinbetween' ).countdown( {
+			from: 30,
+			to: 20 
+		});
+	}
+	
+	if($('#timer-countercallback').length > 0) {
+		$( '#timer-countercallback' ).countdown( {
+			from: 10,
+			to: 0,
+			timerEnd: function() {
+				this.css( { 'text-decoration':'line-through' } ).animate( { 'opacity':.5 }, 500 );
+			} 
+		});
+	}
+	
+	if($('#timer-outputpattern').length > 0) {
+		$( '#timer-outputpattern' ).countdown( {
+			outputPattern: '$day Days $hour Hour $minute Min $second Sec..',
+			from: 60 * 60 * 24 * 3
+		});
+	}
+	
+	// Tooltip
+	
+	if($('[data-bs-toggle="tooltip"]').length > 0) {
+		var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+		var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+		  return new bootstrap.Tooltip(tooltipTriggerEl)
+		})
+	}
+	
+	// Popover
+	
+	if($('.popover-list').length > 0) {
+		var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+		var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+		  return new bootstrap.Popover(popoverTriggerEl)
+		})
+	}
+	
+	// Clipboard 
+	
+	if($('.clipboard').length > 0) {
+		var clipboard = new Clipboard('.btn');
+	}
 
     // Invoices Table Add More
 	
@@ -428,6 +535,38 @@ Version      : 1.0
         $(".add-table-items").append(experiencecontent);
         return false;
     });
+	
+	var right_side_views = '<div class="right-side-views">' +
+		'<ul class="sticky-sidebar siderbar-view">' +
+			'<li class="sidebar-icons">' +
+				'<a class="toggle tipinfo open-layout open-siderbar" href="#" data-toggle="tooltip" data-placement="left" data-bs-original-title="Tooltip on left">' +
+					'<div class="tooltip-five ">' +
+						'<img src="assets/img/icons/siderbar-icon1.svg" class="feather-five" alt="">' +
+ 						'<span class="tooltiptext">Check Layout</span>' +
+					'</div>' +
+				'</a>' +
+			'</li>' +
+			'<li class="sidebar-icons">' +
+	 			'<a class="toggle tipinfo open-settings open-siderbar" href="#" data-toggle="tooltip" data-placement="left" data-bs-original-title="Tooltip on left">' +
+	 				'<div class="tooltip-five">' +
+	 					'<img src="assets/img/icons/siderbar-icon2.svg" class="feather-five" alt="">' +
+	 					'<span class="tooltiptext">Demo Settings</span>' +
+	 				'</div>' +
+	 			'</a>' +
+	 		'</li>' +
+	 		'<li class="sidebar-icons">' +
+	 			'<a class="toggle tipinfo" target="_blank" href="https://themeforest.net/item/kanakku-bootstrap-admin-html-template/29436291?s_rank=11" data-toggle="tooltip" data-placement="left" title="Tooltip on left">' +
+	 				'<div class="tooltip-five">' +
+	 					'<img src="assets/img/icons/siderbar-icon3.svg" class="feather-five" alt="">' +
+	 					'<span class="tooltiptext">Buy Now</span>' +
+	 				'</div>' +
+	 			'</a>' +
+	 		'</li>' +
+		'</ul>' +
+	'</div>' +
+		
+	feather.replace();
+    $("body").append(right_side_views);
 	
 	
 })(jQuery);

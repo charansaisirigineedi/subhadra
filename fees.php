@@ -108,11 +108,11 @@ if(isset($_POST['update']))
 	</head>
 	<body>
 	
-		<?php include 'menu.php'; ?>
-			
-			<!-- Page Wrapper -->
-			<div class="page-wrapper">
-				<div class="content container-fluid">
+	<div class="main-wrapper">
+        <?php include 'menu.php'; ?>
+        <div class="page-wrapper">
+
+            <div class="content container-fluid">
 					<form method="post" clas="form-control">
 					<div class="row">
 						<div class="col-md-12">

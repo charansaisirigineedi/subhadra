@@ -7,7 +7,7 @@ include "check.php";
 date_default_timezone_set("Asia/Kolkata");
 $e = strval(date('Ymd'));
 $d  = substr($e,0,4).'-'.substr($e,4,2).'-'.substr($e,6,2);
-$sql = mysqli_query($con,"SELECT `Name`, `Date`, `Mobile`, `Reason` FROM `prebooking`  where date(date) = '$d'");
+$sql = mysqli_query($con,"SELECT `Name`, `Date`,`time`, `Mobile`, `Reason` FROM `prebooking`  where Date = '$d'");
 
 ?>
 
@@ -43,7 +43,7 @@ $sql = mysqli_query($con,"SELECT `Name`, `Date`, `Mobile`, `Reason` FROM `preboo
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'menu2.php'; ?>
+			<?php include 'menu.php'; ?>
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -53,58 +53,56 @@ $sql = mysqli_query($con,"SELECT `Name`, `Date`, `Mobile`, `Reason` FROM `preboo
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">out patient details</h3>
+								<h3 class="page-title">Todays booking list</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="ou_list.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">out patient details</li>
+									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+									<li class="breadcrumb-item active">Todays booking list</li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<!-- /Page Header -->
                     
-                    <input type="text" id="myInput" onkeyup="searchFun()">
-					
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="card">
+                    <div class="card">
+								<div class="card-header">
+									<h5 class="card-title">Booking Details</h5>
+								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table id= "myTable" class="table table-striped">
+										<table class="table table-striped mb-0">
 											<thead>
 												<tr>
-													<th>Patient ID</th>
+													<th>S No.</th>
 													<th>Name</th>
-                                                    <th>Phone Number</th>
-													<th>Past Records</th>
+													<th>Date</th>
+													<th>Time</th>
+													<th>Mobile</th>
+													<th>Reason</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php
-                                                    while($run = mysqli_fetch_assoc($sql))
-                                                    {
-                                                        echo '<tr>
-                                                        <td>'.$run['id'].'</td>
-                                                        <td>'.$run['name'].'</td>
-                                                        <td>'.$run['patient_phone_number'].'</td>
-														<td><div class="actions">
-														<a href="pr.php?pid='.$run['id'].'" class="btn btn-primary">
-															Add Past Records
-														</a>
-													    </div></td>
-                                                        </tr>';
-                                                    }
-                                                ?>
-											</tbody>
+													if(true)
+													{
+														$i = 0;
+														foreach($sql as $data)
+														{
+															$newDate = date("d-m-Y", strtotime($data['Date']));  
+															echo 
+															'<tr><td>'.++$i.'</td>
+															<td>'.$data['Name'].'</td>
+															<td>'.$newDate.'</td>
+															<td>'.$data['time'].'</td>
+															<td>'.$data['Mobile'].'</td>
+															<td>'.$data['Reason'].'</td>
+															<td></tr>';
+														}
+													}
+												?>
+											</tbody>	
 										</table>
 									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				
-				</div>
-			
+					<div></div>
 				<!-- Footer -->
 				<!-- <footer>
 					<p>Copyright © 2020 Dreamguys.</p>					

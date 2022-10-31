@@ -16,7 +16,7 @@ if(isset($_POST['ouadd']))
 	$reason = $_POST['reason'];
 	$time=$_POST['time'];
 	$dat = $_POST['dat'];	
-	$insert2 = "INSERT INTO `prebooking`(`Name`, `Date`, `time`, `Mobile`, `Reason`) VALUES VALUES ('$name','$dat','$time','$mobile1','$reason')";
+	$insert2 = "INSERT INTO `prebooking`(`Name`, `Date`, `time`, `Mobile`, `Reason`) VALUES ('$name','$dat','$time','$mobile1','$reason')";
 	$insert = mysqli_query($con, $insert2);
 	echo" <script>document.location='prebooking.php'</script>";
 
@@ -57,12 +57,11 @@ if(isset($_POST['ouadd']))
 	</head>
 	<body>
 
+	<div class="main-wrapper">
         <?php include 'menu.php'; ?>
-		   
-			<!-- Page Wrapper -->
-			<div class="page-wrapper">
-			
-				<div class="content container-fluid">
+        <div class="page-wrapper">
+
+            <div class="content container-fluid">
 				<div class="page-header">
 				<div class="row">
 					<div class="col">
@@ -148,7 +147,7 @@ if(isset($_POST['ouadd']))
 												<?php
 													if(true)
 													{
-														$query="SELECT `Name`, `Date`, `Mobile`,`time` `Reason` FROM `prebooking` order by `time`";
+														$query="SELECT `Name`, `Date`, `time`,`Mobile`, `Reason` FROM `prebooking` order by `time`";
 														$gen=mysqli_query($con,$query);
 														$i = 0;
 														foreach($gen as $data)
