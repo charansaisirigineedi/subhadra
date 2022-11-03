@@ -15,14 +15,14 @@ htmlspecialchars($password);
  
  if($counter!=0)
  {
-    if($password=='doctor')
+    if($password=='vishnu@12')
     {
     $_SESSION['SID']=$details['sid'];
     $_SESSION['NAME']=$details['name'];
     echo" <script>document.location='ou_list.php'</script>";
     }
 
-    else{
+    if($password=='vishnu@10'){
         $_SESSION['SID']=$details['sid'];
         $_SESSION['NAME']=$details['name'];
         echo" <script>document.location='dashboard.php'</script>";
@@ -73,7 +73,7 @@ htmlspecialchars($password);
             <div class="login-wrapper">
                 <div class="container">
                     <div class="loginbox">
-                        <div class="login-left">
+                    <div class="login-left">
                             <img class="img-fluid" src="assets/img/logo.png" alt="Logo">
                         </div>
                         <div class="login-right">

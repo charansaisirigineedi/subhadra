@@ -4,7 +4,7 @@ include 'connect.php';
 
 session_start();
 include "check.php";
-$sql = mysqli_query($con,"SELECT ppi.id as id, ppi.name as name, ppi.patient_phone_number as patient_phone_number, pi.tid as token_id from patient_primary_information ppi, patient_discharge_form pi 
+$sql = mysqli_query($con,"SELECT ppi.id as id, ppi.name as name, ppi.patient_phone_number as patient_phone_number, pi.tid as token_id from patient_primary_information ppi, patient_sdischarge_form pi 
 where ppi.id = pi.id  order by pi.date desc");
 ?>
 <!DOCTYPE html>
@@ -12,7 +12,7 @@ where ppi.id = pi.id  order by pi.date desc");
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>	Inpatient List</title>
+        <title>	Discharge Summary List</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -48,23 +48,20 @@ where ppi.id = pi.id  order by pi.date desc");
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">DISCHARGE SUMMARY LIST</h3>
+								<h3 class="page-title">UPDATE DISCHARGE SUMMARY LIST</h3>
 								<div class="col-md-9">
                              		<ul class="list-links mb-4">
-                                		<li class="active"><a href="search-discharge.php">Pregnancy Discharge Form</a></li>
-                                		<li><a href="search-sdischarge.php">Surgery Discharge Form</a></li>
+                                		<li><a href="search-udischarge.php">Update Pregnancy Discharge Form</a></li>
+                                		<li class="active"><a href="search-usdischarge.php">Update Surgery Discharge Form</a></li>
                            		 </ul>
                        		   </div>
 							</div>
 						</div>
-					
+					</div>
 					<!-- /Page Header -->
-					<div class="col-md-4">
-					<form>
-					     <input type="text" id="myInput" onkeyup="searchFun()"  class="form-control"><br>
-					</form>
-					</div></div>
-				
+                    
+                    <input type="text" id="myInput" onkeyup="searchFun()">
+					
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="card">
@@ -77,7 +74,7 @@ where ppi.id = pi.id  order by pi.date desc");
 													<th>Name</th>
                                                     <th>Phone Number</th>
                                                     <th>Token ID</th>
-                                                    <th>View</th>
+                                                    <th>Register</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -89,7 +86,7 @@ where ppi.id = pi.id  order by pi.date desc");
                                                         <td>'.$run['name'].'</td>
                                                         <td>'.$run['patient_phone_number'].'</td>
                                                         <td>'.$run['token_id'].'</td>
-                                                        <td><a href="discharge_summary.php?pid='.$run['id'].'&tid='.$run['token_id'].'"><button class="btn btn-primary">View Discharge Summary</button></a></td>
+                                                        <td><a href="usdischarge_summary.php?pid='.$run['id'].'&tid='.$run['token_id'].'"><button class="btn btn-primary">Update</button></a></td>
                                                         </tr>';
                                                     }
                                                 ?>

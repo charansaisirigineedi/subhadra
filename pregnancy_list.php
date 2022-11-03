@@ -1,13 +1,12 @@
 <?php
-
 include 'connect.php';
-
 session_start();
 include "check.php";
 error_reporting(E_ERROR | E_PARSE);
 if(isset($_POST['submit']))
 {
-	$month = $_POST['mon'];
+    $frdate = $_POST['fromdate'];
+    $todate = $_POST['todate'];
 }
 ?>
 
@@ -17,7 +16,7 @@ if(isset($_POST['submit']))
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>	Inpatient List</title>
+        <title>	Patient List</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -62,39 +61,51 @@ if(isset($_POST['submit']))
 						</div>
 					</div>
 					<!-- /Page Header -->
-						<form method="post">
-							<div class="row">
-							<div class="col-md-4">
-									<select id='mon' name="mon" class="form-control">
-									<option selected value=''>--Select Month--</option>
-									<option value='January'>January</option>
-									<option value='February'>February</option>
-									<option value='March'>March</option>
-									<option value='April'>April</option>
-									<option value='May'>May</option>
-									<option value='June'>June</option>
-									<option value='July'>July</option>
-									<option value='August'>August</option>
-									<option value='September'>September</option>
-									<option value='October'>October</option>
-									<option value='November'>November</option>
-									<option value='December'>December</option>
-									</select> 
-							</div>
-							<div class="col-md-4">
+					<div class="row">
+					<form method="post" class="needs-validation" novalidate>
+					    <div class="row">
+							
+							<div class="col-md-3">
+							<label>Select From Date</label>
+								<div class="form-group">
+								<input type="date" name="fromdate" id="fromdate" class="form-control"> 
+                           </div>	</div>	
+						  
+						   <div class="col-md-3">
+						   <div class="form-group">
+						      <label>Select To Date</label>
+						        <input type="date" name="todate" id="todate" class="form-control">		
+							</div></div>
+							<div class="col-md-3">
+							<label></label>
+							<label></label>
+							<div class="form-group">
+						
 							<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 							</div>
-							
-							<div class="col-md-2">
+							</div>
+                            <div class="col-md-3">
+							<div class="form-group">
+							<label></label>
+							<label></label>
+							<p>
 							
 						    <input type="button" value="Download Pdf" 
 							id="pdf"  onclick="Export()" class="btn btn-primary">
-</div></div>
-						</form>					
+					        </p>
+							</div></div>
+						</form>	</div>			
 						<br>
-											
-					<div id="myTable" class="row">
-					   <h3 align="center" class="page-title"><?php echo $month; ?> Expected patient Delivery List</h3>
+					
+                        <div  id= "myTable"  class="row">
+					<h3  align="center"> Pregnancy Patients list From <?php 
+					$newDate = date("d-m-Y", strtotime($frdate));  
+					$frdate = strval($newDate);
+					echo $frdate; 
+					?> To <?php
+					$newDate = date("d-m-Y", strtotime($todate));  
+					$todate = strval($newDate);
+					 echo $todate; ?> </h3>
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-body">
@@ -102,65 +113,41 @@ if(isset($_POST['submit']))
 										<table  class="table table-striped">
 											<thead>
 												<tr>
-													
 													<th>Name</th>
                                                     <th>Phone Number</th>
 													<th>Patient ID</th>
-													<th>EDD</th>
-													<th>LMP</th>
-													<th>POG</th>
-													<th>Formula</th>
-													<th>High Risk Pregnancy</th>
+													<th>Date of Delivery</th>
+													<th>Type of Delivery</th>
+                                                    <th>Baby Gender</th>
+                                                    <th>Baby Weight</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php
-                                                    if(isset($_POST['submit']))
+												if(isset($_POST['submit']))
+												{
+													$frdate = $_POST['fromdate'];
+													$todate = $_POST['todate'];
+													$sql = mysqli_query($con,"SELECT ppi.name as name,ppi.patient_phone_number as ppn,pi.id as id,pi.token_id as tid,ps.date_of_procedure as d,pi.type_of_delivery as tod,pi.weight as w,pi.gender as g FROM `patient_pregnancy_information`  pi  ,`patient_primary_information` ppi, `patient_surgery_form` ps WHERE  ppi.id=pi.id and  pi.id in (select id from patient_surgery_form) and pi.token_id in (select token_id from patient_surgery_form) and date(pi.time) between '$frdate' and '$todate' order by pi.time asc");
+													while($run = mysqli_fetch_assoc($sql))
 													{
-														$month = $_POST['mon'];
-														$sql = mysqli_query($con,"SELECT id as pi,name ,patient_phone_number as ppn,
-														edd,lmp,pog from patient_primary_information where monthname(edd)='$month'
-														order by edd asc");
-														
+                                                        
+                                                        $newDate = date("d-m-Y", strtotime($run['d']));  
+                                                        $dd = strval($newDate);
+														echo '<tr>
+														<td>'.$run['name'].'</td>
+														<td>'.$run['ppn'].'</td>
+														<td>'.$run['id'].'</td>
 
-														while($run = mysqli_fetch_assoc($sql))
-														{
-															$id=$run['pi'];
-															$sql1=mysqli_query($con,"SELECT g,l,p,a,d,high_risk_pregnancy as hrp from pastrecords where patient_id='$id'");
-															$data = mysqli_fetch_assoc($sql1);
-															$newDate = date("d-m-Y", strtotime($run['edd']));  
-															$edd = strval($newDate);
-															$newDate = date("d-m-Y", strtotime($run['pog']));  
-															$pog = strval($newDate);
-															$newDate = date("d-m-Y", strtotime($run['lmp']));  
-															$lmp = strval($newDate);
-															if($data['hrp'])
-															{
-															echo '<tr>
-															
-															<td>'.$run['name'].'</td> 
-															<td>'.$run['ppn'].'</td>
-															<td>'.$id.'</td>
-															<td>'.$edd.'</td>
-															<td>'.$lmp.'</td>
-															<td>'.$pog.'</td>
-															<td>'.'G<sub><b>'.$data['g'].'</b></sub>'.'L<sub><b>'.$data['l'].'</b></sub>'.'P<sub><b>'.$data['p'].'</b></sub>'.'A<sub><b>'.$data['a'].'</b></sub>'.'D<sub><b>'.$data['d'].'</b></sub>'.'</td>
-														    <td><button class="btn btn-danger">'.$data['hrp'].'</button></td></tr>';
-															}
-															else
-															{
-																echo '<tr>
-																<td>'.$edd.'</td>
-																<td>'.$lmp.'</td>
-																<td>'.$pog.'</td>
-																<td>'.$run['name'].'</td> 
-																<td>'.$run['ppn'].'</td>
-																<td>'.$id.'</td>
-																<td>'.'G<sub><b>'.$data['g'].'</b></sub>'.'L<sub><b>'.$data['l'].'</b></sub>'.'P<sub><b>'.$data['p'].'</b></sub>'.'A<sub><b>'.$data['a'].'</b></sub>'.'D<sub><b>'.$data['d'].'</b></sub>'.'</td>
-														    	<td>'.$data['hrp'].'</button></td></tr>';
-														}	
-														}
+														<td>'.$dd.'</td>
+                                                        <td>'.$run['tod'].'</td>
+                                                        <td>'.$run['g'].'</td>
+                                                        <td>'.$run['w'].'</td>
+                                                        ';
+
+													    
 													}
+												}
                                                 ?>
 											</tbody>
 										</table>
@@ -196,7 +183,7 @@ if(isset($_POST['submit']))
 		<!-- Datatables JS -->
 		<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
 		<script src="assets/plugins/datatables/datatables.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
         <script>
         function generate() {
         var doc = new jsPDF("p", "pt", "a4", true);
@@ -233,11 +220,12 @@ if(isset($_POST['submit']))
                             scale:5
                         }]
                     };
-                   pdfMake.createPdf(docDefinition).download("edd.pdf");
+                   pdfMake.createPdf(docDefinition).download("Pregnancy_list.pdf");
                 }
             });
         }
     </script>
+   
 		<!-- Custom JS -->
 		<script  src="assets/js/script.js"></script>
 

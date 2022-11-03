@@ -14,9 +14,12 @@ $d  = substr($e,0,4).'-'.substr($e,4,2).'-'.substr($e,6,2);
 $token=autoincemp();
 function autoincemp()
 {
+    date_default_timezone_set("Asia/Kolkata");
+    $e = strval(date('Ymd'));
+    $d  = substr($e,0,4).'-'.substr($e,4,2).'-'.substr($e,6,2);
     global $value2;
     global $con;
-    $query = "select token_id from existing_op_record order by token_id desc LIMIT 1";
+    $query = "select token_id from existing_op_record  where date(time)='$d' order by token_id desc LIMIT 1";
     $stmt = mysqli_query($con,$query);
     $rowcount=$stmt->num_rows;
     if ($rowcount > 0) {

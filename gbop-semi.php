@@ -15,7 +15,7 @@ $sum = 0;
 $query = "select name,patient_phone_number,permanent_address from patient_primary_information where id='$pid'";
 $run   = mysqli_query($con,$query);
 $res   = mysqli_fetch_assoc($run);
-$query2= "select dname from existing_op_record where id='$pid' and token_id='$tid'";
+$query2= "select dname ,date from existing_op_record where id='$pid' and token_id='$tid'";
 $run2 = mysqli_query($con,$query2);
 $res2  = mysqli_fetch_assoc($run2);
 $query1 = "select s.date as date, s.charge_name as names,s.quantity as quantity,s.price as price from out_patient_billing_details as s 
@@ -76,7 +76,11 @@ $res1   = mysqli_fetch_assoc($run);
 													<h2>INVOICE</h2>
 													<p>Invoice Number : INV<?php echo $tid; ?></p>
 													<p>INPatient Number :<?php echo $pid; ?></p>
-													<p>Date :<?php  ?></p>
+													<p>Date :<?php 
+													 $newDate = date("d-m-Y", strtotime($res2['date']));  
+													 $dd = strval($newDate);
+													 echo $dd; 
+													 ?></p>
 												</div>
 											</div>
 											<div class="col-md-6">

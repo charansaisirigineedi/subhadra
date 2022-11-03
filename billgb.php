@@ -136,9 +136,9 @@ function getIndianCurrency(float $number)
 													</div>
 													<div class="row">
 														<div class="col-md-4"></div>
-														<div class="col-md-4"></div>
-														<div class="col-md-4"><p>Date :
-													<?php 
+														<div class="col-md-4"><p>Date :</p></div>
+														<div class="col-md-4"><p><b>
+													    <?php 
 														if(empty($res2['date_of_discharge']))
 													 	{
 															echo $d;
@@ -148,7 +148,7 @@ function getIndianCurrency(float $number)
 															$newDate = date("d-m-Y", strtotime($res2['date_of_discharge']));
 															echo $newDate;
 														}
-													?></p></div>
+													?></b></p></div>
 													</div>
 													<div class="row">
 														<div class="col-md-4"></div>
@@ -191,7 +191,7 @@ function getIndianCurrency(float $number)
 																'<tr>
 																<td>'.$i.'</td>
 																<td>'.$name.'</td>
-																<td>'.$quantity.'X'.$price/$quantity.'</td>
+																<td>'.$quantity.' X '.$price/$quantity.'/-</td>
 																<td align="center">'.$price.'/-</td>
 															</tr>';
 															}

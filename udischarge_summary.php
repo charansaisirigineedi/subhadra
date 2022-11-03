@@ -11,8 +11,9 @@ $res = mysqli_fetch_assoc($run);
 
 $run1 = mysqli_query($con, $query1);
 $res1 = mysqli_fetch_assoc($run1);
-$query2 = "select * from  WHERE id='$pid' and token_id='$tid'";
-
+$query2 = "SELECT `id`, `tid`, `admitting_diagnosis`, `treatment_given`, `condition_at_discharge`, `temp`, `pr`, `bp`, `h/l`, `breasts`, `p/a`, `p/v`, `lochia`, `advice_on_discharge`, `diet`, `activity`, `medications_and_follow_up`, `date` FROM `patient_discharge_form`  WHERE id='$pid' and tid='$tid'";
+$r=mysqli_query($con,$query2);
+$res2 = mysqli_fetch_assoc($r);
 if (isset($_POST['submit'])) {
 	$addiag = $_POST['ad'];
 	$trgiven = $_POST['tg'];
@@ -33,12 +34,18 @@ if (isset($_POST['submit'])) {
 	// foreach ($activity as $act1) {
 	// 	$act .= $act1 . ",";
 	// }
-	$query2 = "INSERT INTO `patient_discharge_form`(`id`, `tid`, `admitting_diagnosis`, `treatment_given`, `condition_at_discharge`, `temp`, `pr`, `bp`, `h/l`, `breasts`, `p/a`, `p/v`, `lochia`, `advice_on_discharge`, `diet`, `activity`, `medications_and_follow_up`) 
-VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl','$breasts','$pa','$pv','$lochia','$aod','$diet','$activity','$mafu')";
+    $query2 = "UPDATE `patient_discharge_form` SET 
+	`admitting_diagnosis`='$addiag',`treatment_given`='$trgiven',
+	`condition_at_discharge`='$condatdis',`temp`='$temp',
+	`pr`='$pr',`bp`='$bp',`h/l`='$hl',
+	`breasts`='$breasts',`p/a`='$pa',`p/v`='$pv',
+	`lochia`='$lochia',`advice_on_discharge`='$aod',
+	`diet`='$diet',`activity`='$activity',
+	`medications_and_follow_up`='$mafu' where id='$pid' and tid='$tid'";
 	$run2 = mysqli_query($con, $query2);
 	if($run2)
 	{
-		echo "<script>document.location='search-discharge.php?pid=$pid&tid=$tid';</script>";
+		echo "<script>document.location='search-udischarge.php?pid=$pid&tid=$tid';</script>";
 
 	}
 }
@@ -108,16 +115,35 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 																															echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
 																															echo $res['present_address'] ?></label>
 										</div>
+										<div class="row">
 										<div class="form-group">
-											<label><b>DOA&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b> :&nbsp&nbsp<?php echo $res1['date_of_admission'] ?></label>
+											<label><b>DOA&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b> :&nbsp&nbsp
+											<?php 
+											 $newDate = date("d-m-Y", strtotime($res1['date_of_admission']));  
+											 $dd = strval($newDate);
+											echo $dd; 
+											?></label>
 										</div>
 										<div class="form-group">
-											<label><b>DOD&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b> :&nbsp&nbsp<?php echo $res1['date_of_discharge'] ?></label>
+											<label><b>DOP&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b> :&nbsp&nbsp
+											<?php 
+											 $newDate = date("d-m-Y", strtotime($res1['date_of_procedure']));  
+											 $dd = strval($newDate);
+											echo $dd; 
+											?></label>
+										</div>
+										<div class="form-group">
+											<label><b>DOD&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b> :&nbsp&nbsp
+											<?php 
+											 $newDate = date("d-m-Y", strtotime($res1['date_of_discharge']));  
+											 $dd = strval($newDate);
+											echo $dd; 
+											?></label>
 										</div>
 										<div class="col-md-12">
 											<div class="form-group">
 												<label><b>ADMITTING DIAGNOSIS</b> </label>
-												<input type="text" name="ad"  class="form-control"  required>
+												<input type="text" name="ad" value="<?php echo $res2['admitting_diagnosis'] ?>" class="form-control"  required>
 												<div class="invalid-feedback">
 													Please choose "Diagnosis"
 												</div>
@@ -127,7 +153,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="col-md-6">
 												<div class="form-group">
 													<label><b>TREATMENT GIVEN</b></label>
-													<textarea name="tg" class="form-control" required></textarea>
+													<textarea name="tg" class="form-control"  required><?php echo $res2['treatment_given'] ?></textarea>
 													<div class="invalid-feedback">
 														Please choose "Treatment Given"
 													</div>
@@ -136,7 +162,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="col-md-6">
 												<div class="form-group">
 													<label><b>CONDITIONS AT DISCHARGE</b></label>
-													<textarea name="cad" class="form-control"required></textarea>
+													<textarea name="cad" class="form-control" required><?php echo $res2['condition_at_discharge'] ?></textarea>
 													<div class="invalid-feedback">
 														Please choose "Conditions at Discharge"
 													</div>
@@ -151,7 +177,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>TEMP</b></label>
-													<input type="digit" name="temp" class="form-control" required>
+													<input type="digit" name="temp" value="<?php echo $res2['temp'] ?>"  class="form-control" required>
 													<div class="invalid-feedback">
 														Please choose "Temp"
 													</div>
@@ -160,7 +186,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>PR</b></label>
-													<input type="digit" name="pr" class="form-control" required>
+													<input type="digit" name="pr" value="<?php echo $res2['pr'] ?>"  class="form-control" required>
 													<div class="invalid-feedback">
 														Please choose "PR"
 													</div>
@@ -169,7 +195,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>BP</b></label>
-													<input type="digit" name="bp" class="form-control" required>
+													<input type="digit" name="bp" value="<?php echo $res2['bp'] ?>"  class="form-control" required>
 													<div class="invalid-feedback">
 														Please choose "BP :"
 													</div>
@@ -178,7 +204,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>H/L</b></label>
-													<input type="digit" name="hl" class="form-control" required>
+													<input type="digit" name="hl" value="<?php echo $res2['h/l'] ?>" class="form-control" required>
 													<div class="invalid-feedback">
 														Please choose "H/L :"
 													</div>
@@ -189,7 +215,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>BREASTS</b></label>
-													<input type="digit" name="bre" class="form-control" required>
+													<input type="digit" name="bre"  value="<?php echo $res2['breasts'] ?>" class="form-control" required>
 													<div class="invalid-feedback">
 														Please choose "BREASTS :"
 													</div>
@@ -198,7 +224,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>P/A</b></label>
-													<input type="digit" name="pa" class="form-control" required>
+													<input type="digit" name="pa" value="<?php echo $res2['p/a'] ?>"  class="form-control" required>
 													<div class="invalid-feedback">
 														Please choose "P/A :"
 													</div>
@@ -207,7 +233,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>P/V</b></label>
-													<input type="digit" name="pv" class="form-control" required>
+													<input type="digit" name="pv" value="<?php echo $res2['p/v'] ?>"  class="form-control" required>
 													<div class="invalid-feedback">
 														Please choose "P/V :"
 													</div>
@@ -217,7 +243,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>LOCHIA</b></label>
-													<input type="digit" name="lo" class="form-control" required>
+													<input type="digit" name="lo" value="<?php echo $res2['lochia'] ?>"  class="form-control" required>
 													<div class="invalid-feedback">
 														Please choose "LOCHIA :"
 													</div>
@@ -227,7 +253,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>ADVICE ON DISCHARGE</b></label>
-														<textarea name="aod" class="form-control"required></textarea>
+														<textarea name="aod" value="" class="form-control"required><?php echo $res2['advice_on_discharge'] ?></textarea>
 														<!-- <input list="AOD" name="aod" id="A_name" class="form-control"required>
 														<datalist id="AOD">
 
@@ -243,7 +269,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>DIET</b></label>
-														<textarea name="diet" class="form-control"required></textarea>
+														<textarea name="diet" value="<?php echo $res2['diet'] ?>"  class="form-control"required><?php echo $res2['diet'] ?></textarea>
 														<!-- <input list="DIET" name="diet" id="A_name" class="form-control"required>
 														<datalist id="DIET">
 															<option value="REGULAR">
@@ -251,7 +277,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 															<option value="TOLERATED">
 														</datalist> -->
 														<div class="invalid-feedback">
-															Please choose "ADVICE ON DISCHARGE"
+															Please choose "DIET"
 														</div>
 													</div>
 												</div>
@@ -260,7 +286,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>Activity:</b></label>
-														<textarea name="activity" class="form-control"required></textarea>
+														<textarea name="activity"  value="" class="form-control"required><?php echo $res2['activity'] ?></textarea>
 														<!-- <div>
 															<input type="checkbox" id="activity" value=" Pelvic rest for 6 weeks i.e.,no sex" name="activity[]">
 															<label> Pelvic rest for 6 weeks i.e.,no sex</label><br>
@@ -279,7 +305,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>MEDICATIONS AND FOLLOW UP</b> </label>
-														<textarea name="mafu" class="form-control"required>AS PER <?php echo $res1['doctor_name']; ?></textarea>
+														<textarea name="mafu" value=""  class="form-control"required><?php echo $res2['medications_and_follow_up'] ?></textarea>
 														<div class="invalid-feedback">
 															Please choose "MEDICATIONS AND FOLLOW UP"
 														</div>
@@ -287,7 +313,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 												</div>
 											</div>
 											<div class="text-end">
-												<button type="submit" class="btn btn-primary" name="submit">Submit</button>
+												<button type="submit" class="btn btn-primary" name="submit">Update</button>
 											</div>
 									</form>
 								</div>

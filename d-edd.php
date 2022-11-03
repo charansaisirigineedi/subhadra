@@ -4,7 +4,11 @@ include 'connect.php';
 
 session_start();
 include "check.php";
-
+error_reporting(E_ERROR | E_PARSE);
+if(isset($_POST['submit']))
+{
+	$month = $_POST['mon'];
+}
 ?>
 
 
@@ -60,7 +64,7 @@ include "check.php";
 					<!-- /Page Header -->
 						<form method="post">
 							<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-4">
 									<select id='mon' name="mon" class="form-control">
 									<option selected value=''>--Select Month--</option>
 									<option value='January'>January</option>
@@ -77,27 +81,34 @@ include "check.php";
 									<option value='December'>December</option>
 									</select> 
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-4">
 							<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 							</div>
-							</div>
+							
+							<div class="col-md-2">
+							
+						    <input type="button" value="Download Pdf" 
+							id="pdf"  onclick="Export()" class="btn btn-primary">
+</div></div>
 						</form>					
 						<br>
 											
-					<div class="row">
+					<div id="myTable" class="row">
+					   <h3 align="center" class="page-title"><?php echo $month; ?> Expected patient Delivery List</h3>
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-body">
 									<div class="table-responsive">
-										<table id= "myTable" class="table table-striped">
+										<table  class="table table-striped">
 											<thead>
 												<tr>
-													<th>EDD</th>
-													<th>LMP</th>
-													<th>POG</th>
+													
 													<th>Name</th>
                                                     <th>Phone Number</th>
 													<th>Patient ID</th>
+													<th>EDD</th>
+													<th>LMP</th>
+													<th>POG</th>
 													<th>Formula</th>
 													<th>High Risk Pregnancy</th>
 												</tr>
@@ -107,7 +118,9 @@ include "check.php";
                                                     if(isset($_POST['submit']))
 													{
 														$month = $_POST['mon'];
-														$sql = mysqli_query($con,"SELECT id as pi,name ,patient_phone_number as ppn,edd,lmp,pog from patient_primary_information where monthname(edd)='$month' order by edd asc");
+														$sql = mysqli_query($con,"SELECT id as pi,name ,patient_phone_number as ppn,
+														edd,lmp,pog from patient_primary_information where monthname(edd)='$month'
+														order by edd asc");
 														
 
 														while($run = mysqli_fetch_assoc($sql))
@@ -115,33 +128,37 @@ include "check.php";
 															$id=$run['pi'];
 															$sql1=mysqli_query($con,"SELECT g,l,p,a,d,high_risk_pregnancy as hrp from pastrecords where patient_id='$id'");
 															$data = mysqli_fetch_assoc($sql1);
+															$newDate = date("d-m-Y", strtotime($run['edd']));  
+															$edd = strval($newDate);
+															$newDate = date("d-m-Y", strtotime($run['pog']));  
+															$pog = strval($newDate);
+															$newDate = date("d-m-Y", strtotime($run['lmp']));  
+															$lmp = strval($newDate);
 															if($data['hrp'])
 															{
 															echo '<tr>
-															<td>'.$run['edd'].'</td>
-															<td>'.$run['lmp'].'</td>
-															<td>'.$run['pog'].'</td>
+															
 															<td>'.$run['name'].'</td> 
 															<td>'.$run['ppn'].'</td>
-															<td>'.$run['pi'].'</td>
+															<td>'.$id.'</td>
+															<td>'.$edd.'</td>
+															<td>'.$lmp.'</td>
+															<td>'.$pog.'</td>
 															<td>'.'G<sub><b>'.$data['g'].'</b></sub>'.'L<sub><b>'.$data['l'].'</b></sub>'.'P<sub><b>'.$data['p'].'</b></sub>'.'A<sub><b>'.$data['a'].'</b></sub>'.'D<sub><b>'.$data['d'].'</b></sub>'.'</td>
 														    <td><button class="btn btn-danger">'.$data['hrp'].'</button></td></tr>';
 															}
 															else
 															{
 																echo '<tr>
-																<td>'.$run['edd'].'</td>
-																<td>'.$run['lmp'].'</td>
-																<td>'.$run['pog'].'</td>
+																<td>'.$edd.'</td>
+																<td>'.$lmp.'</td>
+																<td>'.$pog.'</td>
 																<td>'.$run['name'].'</td> 
 																<td>'.$run['ppn'].'</td>
-																<td>'.$run['pi'].'</td>
-																<td>'.'G<sub><b>'.$data['g'].'</b></sub>'.'L<sub><b>'.$data['l'].'</b></sub>'.'P<sub><b>'.$data['p'].'</b></sub>'.'A<sub><b>'.$data['a'].'</b></sub>'.'D<sub><b>'.$data['d'].'</b></sub>'.'</h2></td>
-																<td>'.$data['hrp'].'</td></div></tr>';
-														}
-															
-														    
-														
+																<td>'.$id.'</td>
+																<td>'.'G<sub><b>'.$data['g'].'</b></sub>'.'L<sub><b>'.$data['l'].'</b></sub>'.'P<sub><b>'.$data['p'].'</b></sub>'.'A<sub><b>'.$data['a'].'</b></sub>'.'D<sub><b>'.$data['d'].'</b></sub>'.'</td>
+														    	<td>'.$data['hrp'].'</button></td></tr>';
+														}	
 														}
 													}
                                                 ?>
@@ -179,7 +196,48 @@ include "check.php";
 		<!-- Datatables JS -->
 		<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
 		<script src="assets/plugins/datatables/datatables.min.js"></script>
-		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+        <script>
+        function generate() {
+        var doc = new jsPDF("p", "pt", "a4", true);
+        var a4Width = Number(doc.internal.pageSize.getWidth());
+        doc.fromHTML($("#dataID").html(), 20, 0, {
+                pagesplit: true,
+                "width": (a4Width - 40) // for margin right
+            },
+            function(dispose) {
+                doc.save("PHPLift.pdf");
+            }
+        );
+    }
+    </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+		<script type="text/javascript">
+        function Export() {
+            html2canvas(document.getElementById('myTable'), {
+                 
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL(
+                        {
+                              pixelRatio: 100
+                        }
+                    );
+     
+                     
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 500,
+                            scale:5
+                        }]
+                    };
+                   pdfMake.createPdf(docDefinition).download("edd.pdf");
+                }
+            });
+        }
+    </script>
 		<!-- Custom JS -->
 		<script  src="assets/js/script.js"></script>
 

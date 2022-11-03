@@ -13,6 +13,7 @@ if(isset($_POST['submit']))
 {
 	$date_admit = $_POST['dt_admit'];
 	$time_admit = $_POST['t_admit'];
+	$date_procedure = $_POST['dop'];
 	$date_dicharge = $_POST['d_discharge'];
 	$time_discharge = $_POST['t_discharge'];
 	$room_type = $_POST['roomtype'];
@@ -21,10 +22,10 @@ if(isset($_POST['submit']))
 	$d_name= $_POST['d_name'];
 	$A_name = $_POST['A_name'];
 	$N_staff=$_POST['N_staff'];
-	$sugery="INSERT INTO `patient_surgery_form`(`id`,`token_id`, `date_of_admission`, `time_of_admisssion`,
+	$sugery="INSERT INTO `patient_surgery_form`(`id`,`token_id`, `date_of_admission`, `time_of_admisssion`, `date_of_procedure` ,
 	 `date_of_discharge`, `time_of_discharge`, `admission_room_type`, `no_of_days_of_stay`, `doctor_name`,
 	  `anesthetist_name`,`tod`, `nursing_staff`) 
-	VALUES ('$pid','$tid','$date_admit','$time_admit','$date_dicharge','$time_discharge',
+	VALUES ('$pid','$tid','$date_admit','$time_admit','$date_procedure','$date_dicharge','$time_discharge',
 	'$room_type','$nds','$d_name','$A_name','$tod','$N_staff')";
 	  $run = mysqli_query($con, $sugery);
 
@@ -110,6 +111,13 @@ if(isset($_POST['submit']))
 										            <input type="time" class="form-control" name="t_admit" palceholder="Enter Time"required>
 													<div class="invalid-feedback">
 														Please choose "Time of Admission"
+                                                    </div>
+									            </div>
+												<div class="form-group">
+										            <label>Date of Procedure</label>
+										            <input type="date" class="form-control" name="dop" palceholder="Enter Date of Procedure"required>
+													<div class="invalid-feedback">
+														Please choose "Date of Procedure"
                                                     </div>
 									            </div>
 												<div class="form-group">

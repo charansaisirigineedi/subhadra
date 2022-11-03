@@ -10,6 +10,9 @@ $sql=mysqli_query($con,"select name,lmp,edd,pog from patient_primary_information
 $res=mysqli_fetch_assoc($sql);
 $name=$res['name'];
 
+$sql1=mysqli_query($con,"SELECT `patient_id`, `g`, `l`, `p`, `a`, `d`, `high_risk_pregnancy`, `date` from pastrecords where patient_id='$pid'");
+$res1=mysqli_fetch_assoc($sql1);
+
 if(isset($_POST['submit']))
 {
 	$g = $_POST['g'];
@@ -18,12 +21,10 @@ if(isset($_POST['submit']))
 	$a = $_POST['a'];
 	$d = $_POST['d'];
 	$hrp=$_POST['hrp'];
-		$id=$res1['patient_id'];
-
-
-	    $query="INSERT INTO `pastrecords`(`patient_id`, `g`, `l`, `p`, `a`, `d`, `high_risk_pregnancy`) VALUES ('$pid','$g','$l','$p','$a','$d','$hrp')";
-        $run = mysqli_query($con, $query);	
-    echo "<script>document.location='ou_list.php'</script>";
+    $id=$res1['patient_id'];
+    $query1="UPDATE `pastrecords` SET `g`='$g',`l`='$l',`p`='$p',`a`='$a',`d`='$d',`high_risk_pregnancy`='$hrp' WHERE patient_id='$id'";
+    $run1 = mysqli_query($con, $query1);
+    echo "<script>document.location='udoplist.php'</script>";
 
 }
 
@@ -115,7 +116,7 @@ if(isset($_POST['submit']))
 											<div class="col-md-2">
 											  <div class="form-group">
 										            <label>G</label>
-										            <input type="number" min=0  name="g" id="g"  class="form-control">
+										            <input type="number" min=0  name="g" id="g"  value="<?php echo $res1['g'];?>" class="form-control">
 													<div class="invalid-feedback">
 														Please choose "G"
                                                     </div>
@@ -124,7 +125,7 @@ if(isset($_POST['submit']))
 											<div class="col-md-2">
 											  <div class="form-group">
 										            <label>L</label>
-										            <input type="number" min=0 name="l" id="l"  class="form-control">
+										            <input type="number" min=0 name="l" id="l" value="<?php echo $res1['l'];?>" class="form-control">
 													<div class="invalid-feedback">
 														Please choose "L"
                                                     </div>
@@ -133,7 +134,7 @@ if(isset($_POST['submit']))
                                                 <div class="col-md-2">
 											  <div class="form-group">
 										            <label>P</label>
-										            <input type="number"  min=0 name="p" id="p" class="form-control">
+										            <input type="number"  min=0 name="p" id="p" value="<?php echo $res1['p'];?>" class="form-control">
 													<div class="invalid-feedback">
 														Please choose "P"
                                                     </div>
@@ -141,7 +142,7 @@ if(isset($_POST['submit']))
                                                 <div class="col-md-2">
 											  <div class="form-group">
 										            <label>A</label>
-										            <input type="number"  min=0 name="a" id="a" class="form-control">
+										            <input type="number"  min=0 name="a" id="a" value="<?php echo $res1['a'];?>" class="form-control">
 													<div class="invalid-feedback">
 														Please choose "A"
                                                     </div>
@@ -150,7 +151,7 @@ if(isset($_POST['submit']))
 											<div class="col-md-2">
 											  <div class="form-group">
 										            <label>D</label>
-										            <input type="number"  min=0 name="d" id="d" class="form-control">
+										            <input type="number"  min=0 name="d" id="d" value="<?php echo $res1['d'];?>" class="form-control">
 													<div class="invalid-feedback">
 														Please choose "R"
                                                     </div>
@@ -159,27 +160,18 @@ if(isset($_POST['submit']))
 											<div class="col-md-2">
 											  <div class="form-group">
 										            <label>High Rist Pregnancy</label>
-										            <input list="charges" name="hrp" id="hrp" class="form-control">
-													<datalist id="charges">
-																<option value="Diabetes">
-																<option value="BP">
-																<option value="Asthma">
-																<option value="Obesity">
-																<option value="Heart or Blood disorders">
-													</datalist>
-                                            
+										            <textarea name="hrp" class="form-control" required><?php echo $res1['high_risk_pregnancy'];?></textarea>
 									            </div>
 											</div>
 											
 											</div>
-											
 											</div>
 										</div>
                                                 
 									    </div>
 										</div>
 										<div class="text-end">
-											<button type="submit" name="submit" class="btn btn-primary">Submit</button>
+											<button type="submit" name="submit" class="btn btn-primary">Update</button>
 										</div>
 									</form>
 

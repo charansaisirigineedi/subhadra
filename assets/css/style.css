@@ -2487,7 +2487,7 @@ footer p {
 }
 .login-wrapper .loginbox .login-left {
     align-items: center;
-    background: #18aefa;
+    background:#e4e8eb;
     background-image: url(../img/login.jpg);
     border-radius: 6px 0 0 6px;
     flex-direction: column;

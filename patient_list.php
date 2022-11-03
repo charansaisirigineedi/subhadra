@@ -3,6 +3,13 @@ include 'connect.php';
 session_start();
 include "check.php";
 error_reporting(E_ERROR | E_PARSE);
+
+if(isset($_POST['submit']))
+{
+	$frdate = $_POST['fromdate'];
+	$todate = $_POST['todate'];
+	$sql = mysqli_query($con,"SELECT id as pi,name,patient_phone_number as ppn,date(date) as d from patient_primary_information where date(date) between '$frdate' and '$todate'  order by date asc");
+}
 ?>
 
 
@@ -31,6 +38,7 @@ error_reporting(E_ERROR | E_PARSE);
 		
 		<!-- Main CSS -->
         <link rel="stylesheet" href="assets/css/style.css">
+		
     </head>
     <body>
 	
@@ -56,6 +64,7 @@ error_reporting(E_ERROR | E_PARSE);
 						</div>
 					</div>
 					<!-- /Page Header -->
+					
 					<div class="row">
 					<form method="post" class="needs-validation" novalidate>
 					    <div class="row">
@@ -79,15 +88,35 @@ error_reporting(E_ERROR | E_PARSE);
 							<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 							</div>
 							</div>
+							
+							<div class="col-md-3">
+							<div class="form-group">
+							<label></label>
+							<label></label>
+							<p>
+							
+						    <input type="button" value="Download Pdf" 
+							id="pdf"  onclick="Export()" class="btn btn-primary">
+					        </p>
+							</div></div>
 						</form>	</div>			
 						<br>
 					
-					<div class="row">
+					<div  id= "myTable"  class="row">
+					<h3  align="center"> Out Patients list From <?php 
+					$newDate = date("d-m-Y", strtotime($frdate));  
+					$frdate = strval($newDate);
+					echo $frdate; 
+					?> To <?php
+					$newDate = date("d-m-Y", strtotime($todate));  
+					$todate = strval($newDate);
+					 echo $todate; ?> </h3>
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-body">
-									<div class="table-responsive">
-										<table id= "myTable" class="table table-striped">
+								  
+									<div id= "list" class="table-responsive">
+										<table class="table table-striped">
 											<thead>
 												<tr>
 													<th>Name</th>
@@ -104,23 +133,20 @@ error_reporting(E_ERROR | E_PARSE);
 													$frdate = $_POST['fromdate'];
 													$todate = $_POST['todate'];
 													$sql = mysqli_query($con,"SELECT id as pi,name,patient_phone_number as ppn,date(date) as d from patient_primary_information where date(date) between '$frdate' and '$todate'  order by date asc");
+												
 													while($run = mysqli_fetch_assoc($sql))
 													{
+														
 														$pid=$run['pi'];
-														$sql1=mysqli_query($con,"select patient_id as id from patient_inpatient_form where patient_id='$pid'");
-														$data=mysqli_fetch_assoc($sql1);
+														$newDate = date("d-m-Y", strtotime($run['d']));  
+														$dd = strval($newDate);
 														echo '<tr>
 														<td>'.$run['name'].'</td>
 														<td>'.$run['ppn'].'</td>
 														<td>'.$run['pi'].'</td>
-														<td>'.$run['d'].'</td>';
-													    if($data['id'])
-														{
-														echo '<td>In Patient</td>';
-														}
-														else { echo '<td>Out Patient</td>'; }
-													
-														echo '</tr>';
+														<td>'.$dd.'</td>
+													    <td> Out Patient </td>
+													    </tr>';
 													}
 												}
                                                 ?>
@@ -158,10 +184,48 @@ error_reporting(E_ERROR | E_PARSE);
 		<!-- Datatables JS -->
 		<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
 		<script src="assets/plugins/datatables/datatables.min.js"></script>
-		
-		<!-- Custom JS -->
-		<script  src="assets/js/script.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script>
+        function generate() {
+        var doc = new jsPDF("p", "pt", "a4", true);
+        var a4Width = Number(doc.internal.pageSize.getWidth());
+        doc.fromHTML($("#dataID").html(), 20, 0, {
+                pagesplit: true,
+                "width": (a4Width - 40) // for margin right
+            },
+            function(dispose) {
+                doc.save("PHPLift.pdf");
+            }
+        );
+    }
+    </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
+		<script type="text/javascript">
+        function Export() {
+            html2canvas(document.getElementById('myTable'), {
+                 
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL(
+                        {
+                              pixelRatio: 100
+                        }
+                    );
+     
+                     
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 500,
+                            scale:5
+                        }]
+                    };
+                   pdfMake.createPdf(docDefinition).download("Patient_list.pdf");
+                }
+            });
+        }
+    </script>
         <script>
             const searchFun = () => {
                 let filter = document.getElementById('myInput').value.toUpperCase();

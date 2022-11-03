@@ -28,7 +28,7 @@ $iv = mysqli_fetch_assoc($re);
 $count = $iv['iv'] + $nv['nv'];
 
 
-$query3  = "select g,l,p,a,d from pastrecords where patient_id='$pid'";
+$query3  = "select g,l,p,a,d,high_risk_pregnancy as hrp from pastrecords where patient_id='$pid'";
 $run3    = mysqli_query($con, $query3);
 $data = mysqli_fetch_assoc($run3);
 
@@ -105,7 +105,10 @@ $data4    = mysqli_fetch_assoc($run4);
                                         <i class="fas fa-book-open"></i>
                                     </div>
                                     <div class="db-info">
-                                        <h3><?php echo $na['edd']; ?></h3>
+                                        <h3><?php 
+                                         $newDate = date("d-m-Y", strtotime($na['edd']));  
+                                         $edd = strval($newDate);
+                                        echo $edd; ?></h3>
                                         <h6>EDD</h6>
                                     </div>
                                 </div>
@@ -135,7 +138,7 @@ $data4    = mysqli_fetch_assoc($run4);
                                         <i class="fas fa-book-open"></i>
                                     </div>
                                     <div class="db-info">
-                                        <h3><?php  ?></h3>
+                                        <h3><?php echo $data['hrp']; ?></h3>
                                         <h6>High Risk Pregnancy</h6>
                                     </div>
                                 </div>
@@ -160,9 +163,11 @@ $data4    = mysqli_fetch_assoc($run4);
                                     <tbody>
                                         <?php
                                         while ($run = mysqli_fetch_assoc($run2)) {
+                                            $newDate = date("d-m-Y", strtotime($run['date']));  
+                                            $dd = strval($newDate);
                                             echo '<tr>
                                                         <td>' . $run['token_id'] . '</td>
-                                                        <td>' . $run['date'] . '</td>
+                                                        <td>' . $dd . '</td>
                                                   </tr>';
                                         }
                                         ?>
@@ -189,10 +194,15 @@ $data4    = mysqli_fetch_assoc($run4);
                                     <tbody>
                                         <?php
                                         while ($out = mysqli_fetch_assoc($ru)) {
+                                            $newDate = date("d-m-Y", strtotime($out['doa'] ));  
+                                            $dd = strval($newDate);
+                                            $newDate = date("d-m-Y", strtotime($out['dod'] ));  
+                                            $dd1 = strval($newDate);
+                                            
                                             echo '<tr>
                                                         <td>' . $out['tid'] . '</td>
-                                                        <td>' . $out['doa'] . '</td>
-                                                        <td>' . $out['dod'] . '</td>
+                                                        <td>' . $dd . '</td>
+                                                        <td>' . $dd1. '</td>
                                                         <td>' . $out['tip'] . '</td>
                                                   </tr>';
                                         }

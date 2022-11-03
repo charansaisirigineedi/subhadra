@@ -1,18 +1,20 @@
 <?php
 
 include 'connect.php';
-
 session_start();
 include "check.php";
-$sql = mysqli_query($con,"SELECT ppi.id as id, ppi.name as name, ppi.patient_phone_number as patient_phone_number, pi.tid as token_id from patient_primary_information ppi, patient_discharge_form pi 
-where ppi.id = pi.id  order by pi.date desc");
+$sql = mysqli_query($con,"SELECT eor.token_id  as token_id,eor.id as id,eor.time as date, 
+ppi.name as name, ppi.patient_phone_number as patient_phone_number from patient_surgery_form eor,
+patient_primary_information ppi where eor.id = ppi.id and eor.token_id not in (select tid from patient_sdischarge_form)  and eor.token_id not in (select token_id from patient_pregnancy_information) order by eor.time desc");
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>	Inpatient List</title>
+        <title></title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -48,24 +50,25 @@ where ppi.id = pi.id  order by pi.date desc");
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">DISCHARGE SUMMARY LIST</h3>
+								<h3 class="page-title">SURGERY PATIENTS LIST</h3>
 								<div class="col-md-9">
-                             		<ul class="list-links mb-4">
-                                		<li class="active"><a href="search-discharge.php">Pregnancy Discharge Form</a></li>
-                                		<li><a href="search-sdischarge.php">Surgery Discharge Form</a></li>
-                           		 </ul>
-                       		   </div>
-							</div>
+                                    <ul class="list-links mb-4">
+                                        
+                                        <li ><a href="discharge_list.php">Pregnancy Patients List</a></li>
+                                        <li class="active"><a href="sdischarge_list.php">Surgery Patients List</a></li>
+                                    </ul>
+                          </div>
 						</div>
-					
-					<!-- /Page Header -->
-					<div class="col-md-4">
-					<form>
-					     <input type="text" id="myInput" onkeyup="searchFun()"  class="form-control"><br>
-					</form>
 					</div></div>
-				
+					<!-- /Page Header -->
 					<div class="row">
+						<div class= col-md-6>
+							<input type="text"  id="myInput" onkeyup="searchFun()">
+						</div>
+                    </div>
+                    
+					<div class="row">
+
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-body">
@@ -74,10 +77,10 @@ where ppi.id = pi.id  order by pi.date desc");
 											<thead>
 												<tr>
 													<th>Patient ID</th>
+													<th>TOKEN ID</th>
 													<th>Name</th>
                                                     <th>Phone Number</th>
-                                                    <th>Token ID</th>
-                                                    <th>View</th>
+                                                    <th>Surgery Discharge Form</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -86,10 +89,12 @@ where ppi.id = pi.id  order by pi.date desc");
                                                     {
                                                         echo '<tr>
                                                         <td>'.$run['id'].'</td>
+														<td>'.$run['token_id'].'</td>
                                                         <td>'.$run['name'].'</td>
                                                         <td>'.$run['patient_phone_number'].'</td>
-                                                        <td>'.$run['token_id'].'</td>
-                                                        <td><a href="discharge_summary.php?pid='.$run['id'].'&tid='.$run['token_id'].'"><button class="btn btn-primary">View Discharge Summary</button></a></td>
+                                                        <td><a href="sdischarge_summary_sub.php?pid='.$run['id'].'&tid='.$run['token_id'].'" class="btn btn-primary">
+														Surgery Discharge Summary
+													    </a><td>
                                                         </tr>';
                                                     }
                                                 ?>
@@ -98,6 +103,7 @@ where ppi.id = pi.id  order by pi.date desc");
 									</div>
 								</div>
 							</div>
+
 						</div>
 					</div>
 				

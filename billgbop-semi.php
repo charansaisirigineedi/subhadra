@@ -8,6 +8,9 @@ include "check.php";
 $pid = $_GET['pid'];
 $tid = $_GET['tid'];
 $date = $_GET['date'];
+$newDate = date("d-m-Y", strtotime($date));  
+$date1 = strval($newDate);
+
 
 
 $sum = 0;
@@ -148,7 +151,7 @@ function getIndianCurrency(float $number)
 													<div class="row">
 														<div class="col-md-4"></div>
 														<div class="col-md-4"><p>Date  : </p></div>
-														<div class="col-md-4"><p><b><?php echo $date; ?></b></p></div>
+														<div class="col-md-4"><p><b><?php echo $date1; ?></b></p></div>
 													</div>
 													<div class="row">
 														<div class="col-md-4"></div>

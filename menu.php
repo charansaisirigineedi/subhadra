@@ -6,7 +6,7 @@
                     <img src="assets/img/logo.png" alt="Logo">
                 </a>
                 <a href="dashboard.php" class="logo logo-small">
-                    <img src="assets/img/logo.png" alt="Logo" width="30" height="30">
+                    <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
                 </a>
             </div>
             <!-- /Logo -->
@@ -41,7 +41,7 @@
                                 <li><a href="dashboard.php">HOME</a></li>
                                 <li><a href="fd.php">NEW OUTPATIENT ENTRY</a></li>
                                 <li><a href="search.php">IN PATIENT REGISTRATION</a></li>
-                                <li><a href="patient_bdetails.php">PATIENT DETAILS</a></li>
+                                <!-- <li><a href="patient_bdetails.php">PATIENT DETAILS</a></li> -->
                             </ul>
                         </li>
                         <li class="submenu">
@@ -66,6 +66,7 @@
                             <a href="#"><i class="fas fa-filter"></i><span>FILTERS</span> <span class="menu-arrow"></span></a>
                             <ul>
                             <li><a href="edd.php">EDD</a></li>
+                            <li><a href="pregnancy_list.php">Pregnancy List</a></li>
                             <li><a href="patient_list.php">Patient List</a></li>
                             </ul>
                         </li>
@@ -101,6 +102,7 @@
                                 <li><a href="patient_details.php">Update Patient Profile</a></li>
                                 <li><a href="search-usf.php">Update Surgery Profiles</a></li>
                                 <li><a href="search-upf.php">Update Pregnancy Profiles</a></li>
+                                <li><a href="search-udischarge.php">Update Discharge Profiles</a></li>
                                 <!-- <li><a href="fees.php">Charges update</a></li> -->
                             </ul>
                         </li>

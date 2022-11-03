@@ -8,7 +8,7 @@ $pid = $_GET['pid'];
 $tid = $_GET['tid'];
 $query = "select  * from  patient_primary_information WHERE id='$pid'";
 $query1 = "select * from  patient_surgery_form WHERE id='$pid' and token_id='$tid'";
-$query2 = "select * from  patient_discharge_form WHERE id='$pid' and tid='$tid'";
+$query2 = "select * from  patient_sdischarge_form WHERE id='$pid' and tid='$tid'";
 
 $run = mysqli_query($con, $query);
 $res = mysqli_fetch_assoc($run);
@@ -25,7 +25,7 @@ $res2 = mysqli_fetch_assoc($run2);
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-	<title>ADD OP BILLS</title>
+	<title>DISCHARGE SUMMARY</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="assets/img/favicon.png">
@@ -155,6 +155,7 @@ $res2 = mysqli_fetch_assoc($run2);
 			 ?></p>
 			</div>
 		</div>
+		
 		<div class="row">
 		     <div class="col-md-4">
 			 <p style="font-family:Calibri(Body);font-size:25px"><B>ADMITTING DIAGNOSIS&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;:</B></p></div>
@@ -176,51 +177,7 @@ $res2 = mysqli_fetch_assoc($run2);
 			<p style="font-family:Calibri(Body);font-size:25px"><?php echo$res2['condition_at_discharge']; ?></p>
 			</div>
 		</div>
-		<div class="col-md-12">
-		<p style="font-family:Calibri(Body);font-size:25px"><b>MOTHER - VITALS </b>
-		</div>
-		<div class="row">
-			<div class="col-md-3">
-			<p style="font-family:Calibri(Body);font-size:25px"><b>TEMP&emsp;:</b>&nbsp;<?php echo $res2['temp'];?></p>
-		   </div>
-		   <div class="col-md-3">
-			<p style="font-family:Calibri(Body);font-size:25px"><b>PR&emsp;:</b>&nbsp;<?php echo $res2['pr']; ?></p>
-		   </div>
-		   <div class="col-md-3">
-			<p style="font-family:Calibri(Body);font-size:25px"><b>BP&emsp;:</b>&nbsp;<?php echo $res2['bp']; ?></p>
-		   </div>
-	    	<div class="col-md-3">
-			<p style="font-family:Calibri(Body);font-size:25px"><b>H/L&emsp;:</b>&nbsp;<?php echo $res2['h/l']; ?></p>
-		   </div>
-	   </div>
-	   <div class="row">
-		     <div class="col-md-4">
-			 <p style="font-family:Calibri(Body);font-size:25px"><B>BREASTS&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;:</B></p></div>
-			<div class="col-md-8">
-			<p style="font-family:Calibri(Body);font-size:25px"><?php echo $res2['breasts']; ?></p>
-			</div>
-		</div>
-		<div class="row">
-		     <div class="col-md-4">
-			 <p style="font-family:Calibri(Body);font-size:25px"><B>P/A&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;:</B></p></div>
-			<div class="col-md-8">
-			<p style="font-family:Calibri(Body);font-size:25px"><?php echo $res2['p/a']; ?></p>
-			</div>
-		</div>
-		<div class="row">
-		     <div class="col-md-4">
-			 <p style="font-family:Calibri(Body);font-size:25px"><B>P/V&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;:</B></p></div>
-			<div class="col-md-8">
-			<p style="font-family:Calibri(Body);font-size:25px"><?php echo $res2['p/v']; ?></p>
-			</div>
-		</div>
-		<div class="row">
-		     <div class="col-md-4">
-			 <p style="font-family:Calibri(Body);font-size:25px"><B>LOCHIA&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;:</B></p></div>
-			<div class="col-md-8">
-			<p style="font-family:Calibri(Body);font-size:25px"><?php echo $res2['lochia']; ?></p>
-			</div>
-		</div>
+		
 		<div class="row">
 		     <div class="col-md-4">
 			 <p style="font-family:Calibri(Body);font-size:25px"><B>ADVICE ON DISCHARGE&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;:</B></p></div>

@@ -130,7 +130,7 @@ if(isset($_POST['gbsubmit']))
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="page-title">Welcome <?php echo $name_staff; ?> !</h3>
+                            <h3 class="page-title">Welcome Subhadra Hospitals !</h3>
                             <!-- <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                                     <li class="breadcrumb-item active">Student Dashboard</li>
@@ -196,13 +196,13 @@ if(isset($_POST['gbsubmit']))
                     <div class="col-xl-3 col-sm-6 col-12 d-flex">
                         <div class="card bg-six w-100">
                             <div class="card-body">
-                                <a href="patient_bdetails.php">
+                                <a href="prebooking.php">
                                     <div class="db-widgets d-flex justify-content-between align-items-center">
                                         <div class="db-icon">
                                             <i class="fas fa-file-alt"></i>
                                         </div>
                                         <div class="db-info">
-                                            <h3>Patients List</h3>
+                                            <h3>Pre Booking</h3>
                                         </div>
                                     </div>
                             </div></a>

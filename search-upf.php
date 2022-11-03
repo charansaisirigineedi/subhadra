@@ -75,7 +75,8 @@ where  ppi.id = pi.patient_id and pi.type_of_inpatient='Pregnancy' order by date
 													<th>Name</th>
                                                     <th>Phone Number</th>
                                                     <th>Token ID</th>
-                                                    <th>Register</th>
+                                                    <th>Edit Pregnancy Profile</th>
+													<th></th>
 												</tr>
 											</thead>
 											<tbody>
@@ -87,7 +88,10 @@ where  ppi.id = pi.patient_id and pi.type_of_inpatient='Pregnancy' order by date
                                                         <td>'.$run['name'].'</td>
                                                         <td>'.$run['patient_phone_number'].'</td>
                                                         <td>'.$run['token_id'].'</td>
-                                                        <td><a href="upf.php?pid='.$run['id'].'&tid='.$run['token_id'].'&name='.$run['name'].'"><button class="btn btn-primary">Update Pregnancy Form</button></a></td>
+                                                        <td><a href="upf.php?pid='.$run['id'].'&tid='.$run['token_id'].'&name='.$run['name'].'" class="btn btn-sm bg-success-light me-"><i class="fas fa-pen"></i></a></td>
+														<td>
+														<a href="pf_print.php?pid='.$run['id'].'&tid='.$run['token_id'].'&name='.$run['name'].'" class="btn btn-primary">Print</a>
+														</td>
                                                         </tr>';
                                                     }
                                                 ?>

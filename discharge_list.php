@@ -50,19 +50,23 @@ patient_primary_information ppi where eor.id = ppi.id and eor.token_id not in (s
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">DISHCHARGE LIST</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">DISHCHARGE LIST</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- /Page Header -->
+								<h3 class="page-title">PREGNANCY DISHCHARGE LIST</h3>
+								<div class="col-md-9">
+                             		<ul class="list-links mb-4">
+                                		<li class="active"><a href="discharge_list.php">Pregnancy Patients List</a></li>
+                                		<li><a href="sdischarge_list.php">Surgery Patients List</a></li>
+                           		 </ul>
+                       		 </div>
+                   		 </div>
+					  </div>
+					  <div class="col-md-4">
+					<form>
+					     <input type="text" id="myInput" onkeyup="searchFun()"  class="form-control"><br>
+					</form>
+					</div></div>
                     
-                    <input type="text" id="myInput" onkeyup="searchFun()">
-					
 					<div class="row">
+
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-body">
@@ -74,7 +78,7 @@ patient_primary_information ppi where eor.id = ppi.id and eor.token_id not in (s
 													<th>TOKEN ID</th>
 													<th>Name</th>
                                                     <th>Phone Number</th>
-                                                    <th>Discharge Submit</th>
+                                                    <th>Pregnancy Discharge Form</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -87,7 +91,7 @@ patient_primary_information ppi where eor.id = ppi.id and eor.token_id not in (s
                                                         <td>'.$run['name'].'</td>
                                                         <td>'.$run['patient_phone_number'].'</td>
                                                         <td><a href="discharge_summary_sub.php?pid='.$run['id'].'&tid='.$run['token_id'].'" class="btn btn-primary">
-														Discharge Summary
+														Pregnancy Discharge Summary
 													    </a><td>
                                                         </tr>';
                                                     }

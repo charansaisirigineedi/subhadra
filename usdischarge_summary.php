@@ -12,19 +12,14 @@ $res = mysqli_fetch_assoc($run);
 $run1 = mysqli_query($con, $query1);
 $res1 = mysqli_fetch_assoc($run1);
 
-
+$query2 = "SELECT `id`, `tid`, `admitting_diagnosis`, `treatment_given`, `condition_at_discharge`, `advice_on_discharge`, `diet`, `activity`, `medications_and_follow_up`, `date` FROM `patient_sdischarge_form`  WHERE id='$pid' and tid='$tid'";
+$r=mysqli_query($con,$query2);
+$res2 = mysqli_fetch_assoc($r);
 if (isset($_POST['submit'])) {
 	$addiag = $_POST['ad'];
 	$trgiven = $_POST['tg'];
 	$condatdis = $_POST['cad'];
-	$temp = $_POST['temp'];
-	$pr = $_POST['pr'];
-	$bp = $_POST['bp'];
-	$hl = $_POST['hl'];
-	$breasts = $_POST['bre'];
-	$pa = $_POST['pa'];
-	$pv = $_POST['pv'];
-	$lochia = $_POST['lo'];
+	
 	$aod = $_POST['aod'];
 	$diet = $_POST['diet'];
 	$activity = $_POST['activity'];
@@ -33,15 +28,19 @@ if (isset($_POST['submit'])) {
 	// foreach ($activity as $act1) {
 	// 	$act .= $act1 . ",";
 	// }
-	$query2 = "INSERT INTO `patient_discharge_form`(`id`, `tid`, `admitting_diagnosis`, `treatment_given`, `condition_at_discharge`, `temp`, `pr`, `bp`, `h/l`, `breasts`, `p/a`, `p/v`, `lochia`, `advice_on_discharge`, `diet`, `activity`, `medications_and_follow_up`	) 
-VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl','$breasts','$pa','$pv','$lochia','$aod','$diet','$activity','$mafu')";
+    $query2 = "UPDATE `patient_sdischarge_form` SET 
+	`admitting_diagnosis`='$addiag',`treatment_given`='$trgiven',
+	`condition_at_discharge`='$condatdis',`advice_on_discharge`='$aod',
+	`diet`='$diet',`activity`='$activity',
+	`medications_and_follow_up`='$mafu' where id='$pid' and tid='$tid'";
 	$run2 = mysqli_query($con, $query2);
 	if($run2)
 	{
-		echo "<script>document.location='discharge_summary.php?pid=$pid&tid=$tid';</script>";
+		echo "<script>document.location='search-usdischarge.php?pid=$pid&tid=$tid';</script>";
 
 	}
 }
+
 
 
 ?>
@@ -135,7 +134,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 										<div class="col-md-12">
 											<div class="form-group">
 												<label><b>ADMITTING DIAGNOSIS</b> </label>
-												<input type="text" name="ad" class="form-control" required>
+												<input type="text" name="ad" class="form-control"  value="<?php echo $res2['admitting_diagnosis']; ?>" required>
 												<div class="invalid-feedback">
 													Please choose "Diagnosis"
 												</div>
@@ -145,7 +144,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="col-md-6">
 												<div class="form-group">
 													<label><b>TREATMENT GIVEN</b></label>
-													<textarea name="tg" class="form-control"required></textarea>
+													<textarea name="tg" class="form-control"required><?php echo $res2['treatment_given']; ?></textarea>
 													<div class="invalid-feedback">
 														Please choose "Treatment Given"
 													</div>
@@ -154,7 +153,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="col-md-6">
 												<div class="form-group">
 													<label><b>CONDITIONS AT DISCHARGE</b></label>
-													<textarea name="cad" class="form-control"required></textarea>
+													<textarea name="cad" class="form-control"required><?php echo $res2['condition_at_discharge']; ?></textarea>
 													<div class="invalid-feedback">
 														Please choose "Conditions at Discharge"
 													</div>
@@ -164,88 +163,12 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 
 
 
-										<h5 class="card-title"><b>MOTHER - VITALS</b></h5>
-										<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>TEMP</b></label>
-													<input type="digit" name="temp" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "Temp"
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>PR</b></label>
-													<input type="digit" name="pr" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "PR"
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>BP</b></label>
-													<input type="digit" name="bp" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "BP :"
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>H/L</b></label>
-													<input type="digit" name="hl" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "H/L :"
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>BREASTS</b></label>
-													<input type="digit" name="bre" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "BREASTS :"
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>P/A</b></label>
-													<input type="digit" name="pa" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "P/A :"
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>P/V</b></label>
-													<input type="digit" name="pv" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "P/V :"
-													</div>
-												</div>
-											</div>
-
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>LOCHIA</b></label>
-													<input type="digit" name="lo" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "LOCHIA :"
-													</div>
-												</div>
-											</div>
+																			
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>ADVICE ON DISCHARGE</b></label>
-														<textarea name="aod" class="form-control"required></textarea>
+														<textarea name="aod" class="form-control"required><?php echo $res2['advice_on_discharge']; ?></textarea>
 														<!-- <input list="AOD" name="aod" id="A_name" class="form-control"required>
 														<datalist id="AOD">
 
@@ -261,7 +184,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>DIET</b></label>
-														<textarea name="diet" class="form-control"required></textarea>
+														<textarea name="diet" class="form-control"required><?php echo $res2['diet'] ?></textarea>
 														<!-- <input list="DIET" name="diet" id="A_name" class="form-control"required>
 														<datalist id="DIET">
 															<option value="REGULAR">
@@ -269,7 +192,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 															<option value="TOLERATED">
 														</datalist> -->
 														<div class="invalid-feedback">
-															Please choose "ADVICE ON DISCHARGE"
+															Please choose "DIET"
 														</div>
 													</div>
 												</div>
@@ -278,7 +201,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>Activity:</b></label>
-														<textarea name="activity" class="form-control"required></textarea>
+														<textarea name="activity" class="form-control"required><?php echo $res2['activity'] ?></textarea>
 														<!-- <div>
 															<input type="checkbox" id="activity" value=" Pelvic rest for 6 weeks i.e.,no sex" name="activity[]">
 															<label> Pelvic rest for 6 weeks i.e.,no sex</label><br>
@@ -305,7 +228,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 												</div>
 											</div>
 											<div class="text-end">
-												<button type="submit" class="btn btn-primary" name="submit">Submit </button>
+												<button type="submit" class="btn btn-primary" name="submit">Update</button>
 											</div>
 									</form>
 								</div>

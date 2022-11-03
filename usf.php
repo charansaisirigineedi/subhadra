@@ -9,7 +9,7 @@ include "check.php";
 $pid = $_GET['pid'];
 $tid = $_GET['tid'];
 $name = $_GET['name'];
-$query = "SELECT `id`, `token_id`, `date_of_admission`, `time_of_admisssion`, `date_of_discharge`, `time_of_discharge`,
+$query = "SELECT `id`, `token_id`, `date_of_admission`, `time_of_admisssion`,`date_of_procedure`, `date_of_discharge`, `time_of_discharge`,
  `admission_room_type`, `no_of_days_of_stay`, `doctor_name`, `anesthetist_name`, `tod`, `nursing_staff`, `time`
   FROM `patient_surgery_form` WHERE id='$pid' and token_id='$tid' ";
 
@@ -21,6 +21,7 @@ if(isset($_POST['submit']))
 	$date_admit = $_POST['dt_admit'];
 	$time_admit = $_POST['t_admit'];
 	$date_dicharge = $_POST['d_discharge'];
+	$dop=$_POST['dop'];
 	$time_discharge = $_POST['t_discharge'];
 	$room_type = $_POST['roomtype'];
 	$nds = $_POST['nds'];
@@ -29,11 +30,11 @@ if(isset($_POST['submit']))
 	$A_name = $_POST['A_name'];
 	$N_staff=$_POST['N_staff'];
 	$sugery = "UPDATE `patient_surgery_form` SET `id`='$pid',`token_id`='$tid',
-	`date_of_admission`='$date_admit',`time_of_admisssion`='$time_admit',`date_of_discharge`='$date_dicharge',
+	`date_of_admission`='$date_admit',`time_of_admisssion`='$time_admit',`date_of_procedure`='$dop',`date_of_discharge`='$date_dicharge',
 	`time_of_discharge`='$time_discharge',`admission_room_type`='$room_type ',`no_of_days_of_stay`='$nds',`doctor_name`='$d_name',
 	`anesthetist_name`='$A_name',`tod`='$tod',
 	`nursing_staff`='$N_staff' WHERE id='$pid' and token_id='$tid'";
-	$run = mysqli_query($con, $sugery) or die(mysqli_error());
+	$run = mysqli_query($con, $sugery);
 	if($run){
 	echo" <script>document.location='search-usf.php'</script>";}
 }
@@ -116,6 +117,13 @@ if(isset($_POST['submit']))
 										            <input type="time" class="form-control" value="<?php  echo $res['time_of_admisssion']; ?>" name="t_admit" palceholder="Enter Time"required>
 													<div class="invalid-feedback">
 														Please choose "Time of Admission"
+                                                    </div>
+									            </div>
+												<div class="form-group">
+										            <label>Date of Procedure</label>
+										            <input type="date" class="form-control" name="dop" value="<?php echo $res['date_of_procedure'];?>" required>
+													<div class="invalid-feedback">
+														Please choose "Date of Procedure"
                                                     </div>
 									            </div>
 												<div class="form-group">

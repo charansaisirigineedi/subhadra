@@ -73,6 +73,7 @@ where pi.token_id not in (select token_id from patient_surgery_form) and ppi.id 
                                                     <th>Phone Number</th>
                                                     <th>Token ID</th>
                                                     <th>Register</th>
+													<th></th>
 												</tr>
 											</thead>
 											<tbody>
@@ -85,6 +86,7 @@ where pi.token_id not in (select token_id from patient_surgery_form) and ppi.id 
                                                         <td>'.$run['patient_phone_number'].'</td>
                                                         <td>'.$run['token_id'].'</td>
                                                         <td><a href="sf.php?pid='.$run['id'].'&tid='.$run['token_id'].'"><button class="btn btn-primary">Surgery Form</button></a></td>
+														<td><a href="ipdelete.php?pid='.$run['id'].'&tid='.$run['token_id'].'"><button class="btn btn-primary">Delete</button></a></td>
                                                         </tr>';
                                                     }
                                                 ?>

@@ -5,7 +5,10 @@ include 'connect.php';
 session_start();
 include "check.php";
 $sql = mysqli_query($con,"select * from  patient_primary_information order by date desc");
+if(isset($_POST['submit']))
+{
 
+}
 ?>
 
 
@@ -74,6 +77,7 @@ $sql = mysqli_query($con,"select * from  patient_primary_information order by da
 													<th>Name</th>
                                                     <th>Phone Number</th>
 													<th>Edit Profile</th>
+													<th></th>
 												</tr>
 											</thead>
 											<tbody>
@@ -89,7 +93,10 @@ $sql = mysqli_query($con,"select * from  patient_primary_information order by da
 															<i class="fas fa-pen"></i>
 														</a>
 													    </td>
-                                                        </tr>';
+														<td>
+														<a href="op_print.php?pid='.$run['id'].'" class="btn btn-primary">Print</a>
+														</td>
+														</tr>';
                                                     }
                                                 ?>
 											</tbody>

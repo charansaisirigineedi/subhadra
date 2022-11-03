@@ -17,28 +17,17 @@ if (isset($_POST['submit'])) {
 	$addiag = $_POST['ad'];
 	$trgiven = $_POST['tg'];
 	$condatdis = $_POST['cad'];
-	$temp = $_POST['temp'];
-	$pr = $_POST['pr'];
-	$bp = $_POST['bp'];
-	$hl = $_POST['hl'];
-	$breasts = $_POST['bre'];
-	$pa = $_POST['pa'];
-	$pv = $_POST['pv'];
-	$lochia = $_POST['lo'];
+	
 	$aod = $_POST['aod'];
 	$diet = $_POST['diet'];
 	$activity = $_POST['activity'];
 	$mafu = $_POST['mafu'];
-	// $act = "";
-	// foreach ($activity as $act1) {
-	// 	$act .= $act1 . ",";
-	// }
-	$query2 = "INSERT INTO `patient_discharge_form`(`id`, `tid`, `admitting_diagnosis`, `treatment_given`, `condition_at_discharge`, `temp`, `pr`, `bp`, `h/l`, `breasts`, `p/a`, `p/v`, `lochia`, `advice_on_discharge`, `diet`, `activity`, `medications_and_follow_up`	) 
-VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl','$breasts','$pa','$pv','$lochia','$aod','$diet','$activity','$mafu')";
+	$query2 = "INSERT INTO `patient_sdischarge_form`(`id`, `tid`, `admitting_diagnosis`, `treatment_given`, `condition_at_discharge`,  `advice_on_discharge`, `diet`, `activity`, `medications_and_follow_up`	) 
+VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$aod','$diet','$activity','$mafu')";
 	$run2 = mysqli_query($con, $query2);
 	if($run2)
 	{
-		echo "<script>document.location='discharge_summary.php?pid=$pid&tid=$tid';</script>";
+		echo "<script>document.location='sdischarge_summary.php?pid=$pid&tid=$tid';</script>";
 
 	}
 }
@@ -132,6 +121,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											echo $dd; 
 											?></label>
 										</div>
+
 										<div class="col-md-12">
 											<div class="form-group">
 												<label><b>ADMITTING DIAGNOSIS</b> </label>
@@ -164,83 +154,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 
 
 
-										<h5 class="card-title"><b>MOTHER - VITALS</b></h5>
-										<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>TEMP</b></label>
-													<input type="digit" name="temp" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "Temp"
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>PR</b></label>
-													<input type="digit" name="pr" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "PR"
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>BP</b></label>
-													<input type="digit" name="bp" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "BP :"
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>H/L</b></label>
-													<input type="digit" name="hl" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "H/L :"
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>BREASTS</b></label>
-													<input type="digit" name="bre" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "BREASTS :"
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>P/A</b></label>
-													<input type="digit" name="pa" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "P/A :"
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>P/V</b></label>
-													<input type="digit" name="pv" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "P/V :"
-													</div>
-												</div>
-											</div>
-
-											<div class="col-md-3">
-												<div class="form-group">
-													<label><b>LOCHIA</b></label>
-													<input type="digit" name="lo" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "LOCHIA :"
-													</div>
-												</div>
-											</div>
+																			
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">

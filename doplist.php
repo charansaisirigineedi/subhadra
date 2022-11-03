@@ -1,18 +1,24 @@
 <?php
 
 include 'connect.php';
-
 session_start();
 include "check.php";
-$sql = mysqli_query($con,"SELECT ppi.id as id, ppi.name as name, ppi.patient_phone_number as patient_phone_number, pi.tid as token_id from patient_primary_information ppi, patient_discharge_form pi 
-where ppi.id = pi.id  order by pi.date desc");
+
+date_default_timezone_set("Asia/Kolkata");
+$e = strval(date('Ymd'));
+$d  = substr($e,0,4).'-'.substr($e,4,2).'-'.substr($e,6,2);
+$sql = mysqli_query($con,"SELECT  pif.id as id , pif.name as name , pif.patient_phone_number 
+as patient_phone_number from patient_primary_information pif  where pif.id not in (SELECT patient_id from pastrecords)");
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>	Inpatient List</title>
+        <title>patients-details</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -38,7 +44,7 @@ where ppi.id = pi.id  order by pi.date desc");
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include 'menu.php'; ?>
+			<?php include 'menu2.php'; ?>
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -48,23 +54,20 @@ where ppi.id = pi.id  order by pi.date desc");
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">DISCHARGE SUMMARY LIST</h3>
+								<h3 class="page-title">out patient details</h3>
 								<div class="col-md-9">
                              		<ul class="list-links mb-4">
-                                		<li class="active"><a href="search-discharge.php">Pregnancy Discharge Form</a></li>
-                                		<li><a href="search-sdischarge.php">Surgery Discharge Form</a></li>
+                                		<li><a href="ou_list.php">Today's Out Patients  List</a></li>
+                                		<li class="active"><a href="doplist.php">Out Patients List</a></li>
                            		 </ul>
                        		   </div>
 							</div>
 						</div>
-					
+					</div>
 					<!-- /Page Header -->
-					<div class="col-md-4">
-					<form>
-					     <input type="text" id="myInput" onkeyup="searchFun()"  class="form-control"><br>
-					</form>
-					</div></div>
-				
+                    
+                    <input type="text" id="myInput" onkeyup="searchFun()">
+					
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="card">
@@ -76,20 +79,23 @@ where ppi.id = pi.id  order by pi.date desc");
 													<th>Patient ID</th>
 													<th>Name</th>
                                                     <th>Phone Number</th>
-                                                    <th>Token ID</th>
-                                                    <th>View</th>
+													<th>Past Records</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php
                                                     while($run = mysqli_fetch_assoc($sql))
                                                     {
+
                                                         echo '<tr>
                                                         <td>'.$run['id'].'</td>
                                                         <td>'.$run['name'].'</td>
                                                         <td>'.$run['patient_phone_number'].'</td>
-                                                        <td>'.$run['token_id'].'</td>
-                                                        <td><a href="discharge_summary.php?pid='.$run['id'].'&tid='.$run['token_id'].'"><button class="btn btn-primary">View Discharge Summary</button></a></td>
+														<td><div class="actions">
+														<a href="pr.php?pid='.$run['id'].'" class="btn btn-primary">
+															Add Past Records
+														</a>
+													    </div></td>
                                                         </tr>';
                                                     }
                                                 ?>

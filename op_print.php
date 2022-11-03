@@ -6,102 +6,19 @@ session_start();
 
 include "check.php";
 
-date_default_timezone_set("Asia/Kolkata");
-$e = strval(date('Ymd'));
-$d  = substr($e,0,4).'-'.substr($e,4,2).'-'.substr($e,6,2);
 
-$pid = autoincemp($d);
+$pid = $_GET['pid'];
+$query = "SELECT `id`, `name`, `dob`, `p_age`, `gender`, `patient_phone_number`, 
+`patient_aadhaar`, `caste`, `religion`, `present_address`, `permanent_address`, `patient_qualification`, 
+`patient_occupation`, `spouse_name`, `spouse_contact`, `spose_dob`, 
+`spouse_age`, `spouse_gender`, `spouse_occupation`, `spouse_qualification`, `lmp`, 
+`edd`, `pog`, `cardtype`, `socio_economic_status`, `spouse_aadhaar`, `date` 
+FROM `patient_primary_information` WHERE id='$pid'";
 
-function autoincemp($date)
-{
-    $date =str_replace("-","",$date);
-    echo $date;
-    global $value2;
-    global $con;
-    $query = "select id from patient_primary_information where id LIKE '%".$date."%' order by id desc LIMIT 1";
-    $stmt = mysqli_query($con,$query);
-    $rowcount=$stmt->num_rows;
-    if ($rowcount > 0) {
-    
-      $row = mysqli_fetch_assoc($stmt);
-        $value2 = $row['id'];
-        $value2 = substr($value2,9);
-        $value2 = (int)$value2 + 1;
-        $value2 = $date.sprintf('%s',$value2);
-        $value = 'P'.$value2;
-        return $value;
-    } else {
-        $str=$date;
-        $value2 = $str.sprintf('%s',1);
-        $value = 'P'.$value2;
-        return $value;
-    }
-}
-
-if(isset($_POST['submit']))
-{
-	
-	$fname = $_POST['fname'];
-	$fname=strtoupper($fname);
-	$dob = $_POST['pdob'];
-	$gen = $_POST['gender'];
-	$gen=strtoupper($gen);
-	$ppn = $_POST['ppn'];
-	$pnn1=(int)$ppn;
-	$pan = $_POST['pan'];
-    $pan1=str_replace(' ','',$pan);
-	$pan1=(int)$pan1;
-	$cas = $_POST['caste'];
-	$cas=strtoupper($cas);
-	$rel = $_POST['religion'];
-	$rel=strtoupper($rel);
-	$pra = $_POST['pra'];
-	$pea = $_POST['pea'];
-	$pq = $_POST['pq'];
-	$pq=strtoupper($pq);
-	$po = $_POST['po'];
-	$po=strtoupper($po);
-	$sc=$_POST['sc'];
-	$sc=(int)$sc;
-	$sn=$_POST['sn'];
-	$sn=strtoupper($sn);
-	$so=$_POST['so'];
-	$so=strtoupper($so);
-	$sq=$_POST['sq'];
-	$sq=strtoupper($sq);
-	$sd=$_POST['sdob']; 
-	$sg=$_POST['sgender'];
-	$sg=strtoupper($sg);
-	$lmp=$_POST['lmp'];
-	$edd=$_POST['edd'];
-	$pog=$_POST['pog'];
-	$pog=strtoupper($pog);
-	$cd=$_POST['ct'];
-	$cd=strtoupper($cd);
-	$ses=$_POST['estatus'];
-	$ses=strtoupper($ses);
-	$sa=$_POST['san'];
-	$san=str_replace(' ','',$sa	);
-	$san1=(int)$san;
-	$sage=$_POST['sage'];
-	$age=$_POST['page'];
-
-
-
-	$query = "INSERT INTO `patient_primary_information`(`id`, `name`, `dob`, `p_age`, `gender`, `patient_phone_number`, 
-	`patient_aadhaar`, `caste`, `religion`, `present_address`, `permanent_address`, `patient_qualification`,
-	 `patient_occupation`, `spouse_name`, `spouse_contact`, `spose_dob`, `spouse_age`, `spouse_gender`, 
-	 `spouse_occupation`, `spouse_qualification`, `lmp`, `edd`, `pog`, `cardtype`, `socio_economic_status`, 
-	 `spouse_aadhaar`) VALUES ('$pid','$fname','$dob','$age','$gen',
-	'$pnn1','$pan1','$cas','$rel','$pra','$pea','$pq','$po','$sn',
-	'$sc','$sd','$sage','$sg','$so','$sq','$lmp','$edd','$pog','$cd','$ses','$san1')";
-	  $run = mysqli_query($con, $query);
-	  echo" <script>document.location='eopre.php?pid=$pid'</script>";
-}
+$run = mysqli_query($con, $query);
+$res = mysqli_fetch_assoc($run);
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -130,34 +47,17 @@ if(isset($_POST['submit']))
     </head>
     <body>
 	
-	<div class="main-wrapper">
-        <?php include 'menu.php'; ?>
-        <div class="page-wrapper">
-
-            <div class="content container-fluid">
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">OUT PATIENT REGISTRATION FORM</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">OUT PATIENT REGISTRATION FORM</li>
-								</ul>
+								<h3 class="page-title">PATIENT DETAILS - <?php echo $res['name'];?></h3>
 							</div>
 						</div>
 					</div> 	                    
 					                <div class="form-group row">
 										<div class="col-lg-12">
 											<div class="row">
-											<div class="col-md-6">
-				                                <div class="form-group">
-										                <label>Registration Date</label>
-										                <input type="date" name="rd" id="rd" value="<?php echo $d; ?>" onchange="generate()" class="form-control"required>
-													    <div class="invalid-feedback">
-														Please choose "Registration date"
-                                                        </div>
-													</div>
-                                                </div>	
+			
 									        
 												<div class="col-md-6">
                                                 <div class="form-group">
@@ -182,7 +82,7 @@ if(isset($_POST['submit']))
 												<h5 class="card-title">PATIENT DETAILS</h5>
 												<div class="form-group">
 										            <label>Patient Name</label>
-										            <input type="text" name="fname"  name="fname" onkeypress="return (event.charCode > 64 && 
+										            <input type="text" name="fname"  readonly="readonly"  value="<?php  echo $res['name']; ?>" name="fname" onkeypress="return (event.charCode > 64 && 
 	                                                 event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || 
 													 (event.charCode==32) || (event.charCode==46)" class="form-control"required>
 													<div class="invalid-feedback">
@@ -195,12 +95,12 @@ if(isset($_POST['submit']))
 															<label>Patient DOB</label>
 															<div class="col-md-6">
 																<div class="form-group">
-																	<input type="date" name="pdob" id="pdob" placeholder="Date Of Birth"   onchange="getDob()" class="form-control">
+																	<input type="date" name="pdob" readonly="readonly"   value="<?php  echo $res['dob']; ?>" id="pdob" placeholder="Date Of Birth"   onchange="getDob()" class="form-control">
 																</div>
 															</div>
 															<div class="col-md-6">
 																<div class="form-group">
-																<input type="text" name="page" id="page" readonly="readonly" class="form-control"required>
+																<input type="text" name="page"  readonly="readonly"   value="<?php  echo $res['p_age']; ?>" id="page" readonly="readonly" class="form-control"required>
 																</div>
 															</div>
 														</div>
@@ -209,11 +109,11 @@ if(isset($_POST['submit']))
 												<div class="form-group">
 													<label class="d-block">Patient Gender:</label>
 													<div class="form-check form-check-inline">
-														<input class="form-check-input" type="radio" name="gender" id="gender_male" value="M"required>
+														<input class="form-check-input" type="radio" <?php if( $res['gender']=='M' ){echo "checked";}?>  readonly="readonly"   value="M" name="gender" id="gender_male" value="M"required>
 														<label class="form-check-label" for="gender_male">Male</label>
 													</div>
 													<div class="form-check form-check-inline">
-														<input class="form-check-input" type="radio" name="gender" id="gender_female" value="F" checked>
+														<input class="form-check-input" type="radio" <?php if( $res['gender']=='F' ){echo "checked";}?>  readonly="readonly"  name="gender" id="gender_female" value="F">
 														<label class="form-check-label" for="gender_female">Female</label>
 													</div>
 													<div class="invalid-feedback">
@@ -224,7 +124,7 @@ if(isset($_POST['submit']))
 
 												<div class="form-group">
 										            <label>Patient Phone Number</label>
-										            <input type="text" pattern="[6-9]{1}[0-9]{9}" maxlength=10 name="ppn"name="ppn" class="form-control"required>
+										            <input type="text" pattern="[6-9]{1}[0-9]{9}" maxlength=10 value='<?php echo  $res['patient_phone_number'] ;?>'  readonly="readonly"   name="ppn"name="ppn" class="form-control"required>
 													<div class="invalid-feedback">
 														Please choose "Patient Phone Number"
                                                     </div>
@@ -232,7 +132,7 @@ if(isset($_POST['submit']))
 												
 												<div class="form-group">
 										            <label>Patient Aadhar Number</label>
-										            <input type="text"  id="aadhaarid" name="pan" pattern="^\d{4}\s\d{4}\s\d{4}${12}" maxlength=14 class="form-control"required>
+										            <input type="text"  id="aadhaarid" name="pan" pattern="^\d{4}\s\d{4}\s\d{4}${12}" maxlength=14  readonly="readonly"  value='<?php echo  $res['patient_aadhaar'] ;?>' class="form-control"required>
 													<div class="invalid-feedback">
 														Please choose "Patient Aadhar Number"
                                                     </div>
@@ -240,14 +140,13 @@ if(isset($_POST['submit']))
 												<div class="form-group">
 													<label>Pan Card Number</label>
 													<div>
-													<input type="text" name="ct" maxlength=10 class="form-control"required>
+													<input type="text" name="ct" maxlength=10  class="form-control" value='<?php echo $res['cardtype'];?>'  readonly="readonly"  required>
+												
 													</div>
-													<div class="invalid-feedback">
-																Please choose "card type"
-													</div></div>
+												</div>
 												<div class="form-group">
 										            <label>Patient Qualification</label>
-										            <input type="text" name="pq" class="form-control"required>
+										            <input type="text" name="pq" value='<?php echo $res['patient_qualification'];?>' readonly="readonly"  class="form-control"required>
 													<div class="invalid-feedback">
 														Please choose "Patient Qualification"
                                                     </div>
@@ -255,15 +154,15 @@ if(isset($_POST['submit']))
 
 												<div class="form-group">
 										            <label>Patient Occupation</label>
-										            <input type="text" name="po" class="form-control"required>
+										            <input type="text" name="po" value='<?php echo $res['patient_occupation'];?>'  readonly="readonly"  class="form-control"required>
 													<div class="invalid-feedback">
-														Please choose "Patient Occupation"
+														Please choose "Patient Occupatin"
                                                     </div>
 									            </div>
 
 												<div class="form-group">
 										            <label>Caste</label>
-										            <input type="text" name="caste" class="form-control"required>
+										            <input type="text" name="caste" value='<?php echo $res['caste'];?>'  readonly="readonly"  class="form-control"required>
 													<div class="invalid-feedback">
 														Please choose "Caste"
                                                     </div>
@@ -273,22 +172,21 @@ if(isset($_POST['submit']))
 
 												<div class="form-group">
 										            <label>Present Address</label>
-										            <textarea name="pra" class="form-control"required></textarea>
+										            <textarea name="pra"   readonly="readonly"  class="form-control"required><?php echo $res['present_address'];?></textarea>
 													<div class="invalid-feedback">
 														Please choose "Present Address"
                                                     </div>
 									            </div>
 												<div class="form-group">
 													<label>LMP</label>
-													<input type="date" name="lmp" id="lmp" onchange="getEdd();getPog()" class="form-control">
+													<input type="date" name="lmp" id="lmp"   readonly="readonly"  value="<?php  echo $res['lmp']; ?>"  onchange="getEdd();getPog()"  class="form-control">
 													<div class="invalid-feedback">
 														Please choose "LMP"
 													</div>
-												</div>
-												
+												</div>	
 												<div class="form-group">
 													<label>POG</label>
-													<input type="text" name="pog" id="pog"  class="form-control">
+													<input type="text" name="pog"  readonly="readonly"  id="pog" value='<?php echo $res['pog'];?>' class="form-control">
 													<div class="invalid-feedback">
 														Please choose "POG"
 													</div>
@@ -301,7 +199,7 @@ if(isset($_POST['submit']))
 
 											    <div class="form-group">
 										            <label>Spouse Name</label>
-										            <input type="text" name="sn" class="form-control" onkeypress="return (event.charCode > 64 && 
+										            <input type="text" name="sn" value='<?php echo $res['spouse_name'];?>'  readonly="readonly"  class="form-control" onkeypress="return (event.charCode > 64 && 
 	                                                 event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || 
 													 (event.charCode==32) || (event.charCode==46)" required>
 													<div class="invalid-feedback">
@@ -313,12 +211,12 @@ if(isset($_POST['submit']))
 															<label>Spouse DOB</label>
 															<div class="col-md-6">
 																<div class="form-group">
-																	<input type="date" id="sdob" name="sdob" placeholder="Spouse DOB" onchange="getDob1()" class="form-control">
+																	<input type="date"  id="sdob" name="sdob"  readonly="readonly"  value="<?php  echo $res['spose_dob']; ?>" onchange="getDob1()" class="form-control">
 																</div>
 															</div>
 															<div class="col-md-6">
 																<div class="form-group">
-																<input type="text" name="sage" id="sage" readonly="readonly" class="form-control"required>
+																<input type="text" name="sage" id="sage"  readonly="readonly"  value="<?php  echo $res['spouse_age']; ?>"  readonly="readonly" class="form-control"required>
 																</div>
 															</div>
 														</div>
@@ -327,11 +225,11 @@ if(isset($_POST['submit']))
 												<div class="form-group">
 													<label class="d-block">Spouse Gender:</label>
 													<div class="form-check form-check-inline">
-														<input class="form-check-input" type="radio" name="sgender" id="gender_male" value="M"checked>
+														<input class="form-check-input" <?php if( $res['gender']=='M' ){echo "checked";}?> type="radio"  readonly="readonly"   name="sgender" id="gender_male" value="M"required>
 														<label class="form-check-label" for="gender_male">Male</label>
 													</div>
 													<div class="form-check form-check-inline">
-														<input class="form-check-input" type="radio" name="sgender" id="gender_female" value="F">
+														<input class="form-check-input" <?php if( $res['gender']=='F' ){echo "checked";}?>  type="radio"  readonly="readonly"   name="sgender" id="gender_female" value="F">
 														<label class="form-check-label" for="gender_female">Female</label>
 													</div>
 													<div class="invalid-feedback">
@@ -341,7 +239,7 @@ if(isset($_POST['submit']))
 
 												<div class="form-group">
 										            <label>Spouse Phone Number</label>
-										            <input type="text" pattern="[7-9]{1}[0-9]{9}" maxlength=10 name="sc" class="form-control">
+										            <input type="text" pattern="[7-9]{1}[0-9]{9}" value="<?php  echo $res['spouse_contact']; ?>"  readonly="readonly"   maxlength=10 name="sc" class="form-control">
 													<div class="invalid-feedback">
 														Please choose "Spouse Contact"
                                                     </div>
@@ -349,21 +247,21 @@ if(isset($_POST['submit']))
 												
 												<div class="form-group">
 										            <label>Spouse Aadhar Number</label>
-													<input type="text"  id="aadhaarid1" name="san" pattern="^\d{4}\s\d{4}\s\d{4}${12}" maxlength=14 class="form-control"required>
+													<input type="text"  id="aadhaarid1" name="san" value="<?php  echo $res['spouse_aadhaar']; ?>"  readonly="readonly"   pattern="^\d{4}\s\d{4}\s\d{4}${12}" maxlength=14 class="form-control"required>
 													<div class="invalid-feedback">
 														Please choose "Spouse Aadhar Number"
                                                     </div>
 									            </div>
 												<div class="form-group">
 										            <label>Socio-Economic Status</label>
-										            <input type="text" name="estatus" class="form-control"required>
+										            <input type="text" name="estatus" value='<?php echo $res['socio_economic_status'];?>'  readonly="readonly"  class="form-control"required>
 													<div class="invalid-feedback">
 														Please choose "SE-status"
                                                     </div>
 									            </div>
 												<div class="form-group">
 														<label>Spouse Qualification</label>
-														<input type="text" name="sq" class="form-control">
+														<input type="text" value="<?php  echo $res['spouse_qualification']; ?>"  readonly="readonly"  name="sq" class="form-control">
 														<div class="invalid-feedback">
 															Please choose "Spouse Occupation"
 														</div>
@@ -372,16 +270,15 @@ if(isset($_POST['submit']))
 
 												<div class="form-group">
 														<label>Spouse Occupation</label>
-														<input type="text" name="so" class="form-control"required>
+														<input type="text" name="so" value="<?php  echo $res['spouse_occupation']; ?>"  readonly="readonly"  class="form-control"required>
 														<div class="invalid-feedback">
 															Please choose "Spouse Qualification"
 														</div>
 												</div>
-												
 
 												<div class="form-group">
 										            <label>Religion</label>
-										            <input type="text" name="religion" class="form-control">
+										            <input type="text" name="religion"  value="<?php  echo $res['religion']; ?>"  readonly="readonly"  class="form-control">
 													<div class="invalid-feedback">
 														Please choose "Religion"
                                                     </div>
@@ -390,7 +287,7 @@ if(isset($_POST['submit']))
 
 												<div class="form-group">
 										            <label>Permanent Address</label>
-										            <textarea  name="pea" class="form-control"></textarea>
+										            <textarea  name="pea"  readonly="readonly"  class="form-control"><?php echo $res['permanent_address'];?></textarea>
 													<div class="invalid-feedback">
 														Please choose "Permanent Address"
                                                     </div>
@@ -398,32 +295,15 @@ if(isset($_POST['submit']))
 
 												<div class="form-group">
 													<label>EDD</label>
-													<input type="date" id="edd" name="edd" class="form-control">
+													<input type="date" name="edd"  readonly="readonly"  id="edd" value='<?php echo $res['edd'];?>' class="form-control">
 													<div class="invalid-feedback">
 														Please choose "EDD"
 													</div>
-												</div>	<br>
-										<div class="text-end">
-											<button type="submit" name="submit" class="btn btn-primary">Submit</button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
+												</div><br>
+										
+									</form></div></div></div>
 			
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
 				
-			</div>
-			<!-- /Page Wrapper -->
-		
-        </div>
-	</div>
-		<!-- /Main Wrapper -->
 		
 		<!-- jQuery -->
         <script src="assets/js/jquery-3.6.0.min.js"></script>
@@ -526,6 +406,8 @@ if(isset($_POST['submit']))
 			xmlhttp.send();
 			}
 		</script>
-		
+		<script>
+			setTimeout("print()", 1000);
+		</script>
     </body>
 </html>

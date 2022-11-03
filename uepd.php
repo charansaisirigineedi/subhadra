@@ -208,7 +208,13 @@ if(isset($_POST['update']))
 														Please choose "Patient Aadhar Number"
                                                     </div>
 									            </div>
-
+												<div class="form-group">
+													<label>Pan Card Number</label>
+													<div>
+													<input type="text" name="ct" maxlength=10  class="form-control" value='<?php echo $res['cardtype'];?>'  required>
+												
+													</div>
+												</div>
 												<div class="form-group">
 										            <label>Patient Qualification</label>
 										            <input type="text" name="pq" value='<?php echo $res['patient_qualification'];?>' class="form-control"required>
@@ -233,13 +239,7 @@ if(isset($_POST['update']))
                                                     </div>
 									            </div>
 
-												<div class="form-group">
-										            <label>Socio-Economic Status</label>
-										            <input type="text" name="estatus" value='<?php echo $res['socio_economic_status'];?>'  class="form-control"required>
-													<div class="invalid-feedback">
-														Please choose "SE-status"
-                                                    </div>
-									            </div>
+												
 
 												<div class="form-group">
 										            <label>Present Address</label>
@@ -323,7 +323,13 @@ if(isset($_POST['update']))
 														Please choose "Spouse Aadhar Number"
                                                     </div>
 									            </div>
-
+												<div class="form-group">
+										            <label>Socio-Economic Status</label>
+										            <input type="text" name="estatus" value='<?php echo $res['socio_economic_status'];?>'  class="form-control"required>
+													<div class="invalid-feedback">
+														Please choose "SE-status"
+                                                    </div>
+									            </div>
 												<div class="form-group">
 														<label>Spouse Qualification</label>
 														<input type="text" value="<?php  echo $res['spouse_qualification']; ?>"  name="sq" class="form-control">
@@ -348,18 +354,7 @@ if(isset($_POST['update']))
 														Please choose "Religion"
                                                     </div>
 									            </div>
-												<div class="form-group">
-													<label>Card Type</label>
-													<div>
-														<select name="ct" class="form-control form-select"required>
-															<option value="">-- Select --</option>
-															<option value="white" <?php if( $res['cardtype']=='WHITE' ){echo "selected";}?>>White card</option>
-															<option value="pink" <?php if( $res['cardtype']=='PINK' ){echo "selected";}?>>Pink card</option>
-														</select>
-													</div>
-													<div class="invalid-feedback">
-																Please choose "card type"
-													</div></div>
+												
 
 												<div class="form-group">
 										            <label>Permanent Address</label>

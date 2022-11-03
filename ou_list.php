@@ -50,15 +50,31 @@ and pif.id not in (SELECT patient_id from pastrecords)");
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
+					<!-- Page Header -->
+					<div class="page-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3 class="page-title">Welcome Subhadra Hospitals !</h3>
+                            <!-- <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item active">Student Dashboard</li>
+                                </ul> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Header -->
 
 					<!-- Page Header -->
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">out patient details</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="ou_list.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">out patient details</li>
+								<div class="col-md-9">
+                             		<ul class="list-links mb-4">
+                                		<li class="active"><a href="ou_list.php">Today's Out Patients  List</a></li>
+                                		<li><a href="doplist.php">Out Patients List</a></li>
+                           		 </ul>
+                       		   </div>
 								</ul>
 							</div>
 						</div>

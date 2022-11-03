@@ -4,7 +4,7 @@ include 'connect.php';
 
 session_start();
 include "check.php";
-$sql = mysqli_query($con,"SELECT ppi.id as id, ppi.name as name, ppi.patient_phone_number as patient_phone_number, pi.tid as token_id from patient_primary_information ppi, patient_discharge_form pi 
+$sql = mysqli_query($con,"SELECT ppi.id as id, ppi.name as name, ppi.patient_phone_number as patient_phone_number, pi.tid as token_id from patient_primary_information ppi, patient_sdischarge_form pi 
 where ppi.id = pi.id  order by pi.date desc");
 ?>
 <!DOCTYPE html>
@@ -51,10 +51,10 @@ where ppi.id = pi.id  order by pi.date desc");
 								<h3 class="page-title">DISCHARGE SUMMARY LIST</h3>
 								<div class="col-md-9">
                              		<ul class="list-links mb-4">
-                                		<li class="active"><a href="search-discharge.php">Pregnancy Discharge Form</a></li>
-                                		<li><a href="search-sdischarge.php">Surgery Discharge Form</a></li>
+                                		<li><a href="search-discharge.php">Pregnancy Discharge Form</a></li>
+                                		<li class="active"><a href="search-sdischarge.php">Surgery Discharge Form</a></li>
                            		 </ul>
-                       		   </div>
+                              </div>
 							</div>
 						</div>
 					
@@ -89,7 +89,7 @@ where ppi.id = pi.id  order by pi.date desc");
                                                         <td>'.$run['name'].'</td>
                                                         <td>'.$run['patient_phone_number'].'</td>
                                                         <td>'.$run['token_id'].'</td>
-                                                        <td><a href="discharge_summary.php?pid='.$run['id'].'&tid='.$run['token_id'].'"><button class="btn btn-primary">View Discharge Summary</button></a></td>
+                                                        <td><a href="sdischarge_summary.php?pid='.$run['id'].'&tid='.$run['token_id'].'"><button class="btn btn-primary">View Discharge Summary</button></a></td>
                                                         </tr>';
                                                     }
                                                 ?>

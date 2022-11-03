@@ -79,7 +79,10 @@ $res = mysqli_fetch_assoc($run);
                                                     </li>
                                                     <li>
                                                         <span class="title-span">DOB:</span>
-                                                        <span class="info-span"><?php echo $res['dob']; ?></span>
+                                                        <span class="info-span"><?php 
+                                                         $newDate = date("d-m-Y", strtotime($res['dob']));  
+                                                         $dd = strval($newDate);
+                                                        echo $dd; ?></span>
                                                     </li>
                                                     <li>
                                                         <span class="title-span">Spouse Name:</span>

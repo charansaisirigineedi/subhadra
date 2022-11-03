@@ -49,10 +49,12 @@ where ppi.id = pi.id  order by pi.date desc");
 						<div class="row">
 							<div class="col">
 								<h3 class="page-title">UPDATE DISCHARGE SUMMARY LIST</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">UPDATE DISCHARGE SUMMARY LIST</li>
-								</ul>
+								<div class="col-md-9">
+                             		<ul class="list-links mb-4">
+                                		<li class="active"><a href="search-udischarge.php">Update Pregnancy Discharge Form</a></li>
+                                		<li><a href="search-usdischarge.php">Update Surgery Discharge Form</a></li>
+                           		 </ul>
+                       		   </div>
 							</div>
 						</div>
 					</div>
@@ -84,7 +86,7 @@ where ppi.id = pi.id  order by pi.date desc");
                                                         <td>'.$run['name'].'</td>
                                                         <td>'.$run['patient_phone_number'].'</td>
                                                         <td>'.$run['token_id'].'</td>
-                                                        <td><a href="udischarge_summary.php?pid='.$run['id'].'&tid='.$run['token_id'].'"><button class="btn btn-primary">View Surgery Form</button></a></td>
+                                                        <td><a href="udischarge_summary.php?pid='.$run['id'].'&tid='.$run['token_id'].'"><button class="btn btn-primary">Update</button></a></td>
                                                         </tr>';
                                                     }
                                                 ?>

@@ -126,50 +126,7 @@ if(isset($_POST['ouadd']))
 							</div>
 						</div>
 					</div>
-					<div class="card">
-								<div class="card-header">
-									<h5 class="card-title">Booking Details</h5>
-								</div>
-								<div class="card-body">
-									<div class="table-responsive">
-										<table class="table table-striped mb-0">
-											<thead>
-												<tr>
-													<th>S No.</th>
-													<th>Name</th>
-													<th>Date</th>
-													<th>Time</th>
-													<th>Mobile</th>
-													<th>Reason</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php
-													if(true)
-													{
-														$query="SELECT `Name`, `Date`, `time`,`Mobile`, `Reason` FROM `prebooking` order by `time`";
-														$gen=mysqli_query($con,$query);
-														$i = 0;
-														foreach($gen as $data)
-														{
-															$newDate = date("d-m-Y", strtotime($data['Date']));  
-															echo 
-															'<tr><td>'.++$i.'</td>
-															<td>'.$data['Name'].'</td>
-															<td>'.$newDate.'</td>
-															<td>'.$data['time'].'</td>
-															<td>'.$data['Mobile'].'</td>
-															<td>'.$data['Reason'].'</td>
-															<td></tr>';
-														}
-													}
-												?>
-											</tbody>	
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>
+											</div>
 				</div>
 			</div>
 			<!-- /Page Wrapper -->

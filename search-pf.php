@@ -76,6 +76,7 @@ where pi.token_id not in (select token_id from patient_surgery_form) and ppi.id 
                                                     <th>Phone Number</th>
                                                     <th>Token ID</th>
                                                     <th>Register</th>
+													<th></th>
 												</tr>
 											</thead>
 											<tbody>
@@ -88,6 +89,7 @@ where pi.token_id not in (select token_id from patient_surgery_form) and ppi.id 
                                                         <td>'.$run['patient_phone_number'].'</td>
                                                         <td>'.$run['token_id'].'</td>
                                                         <td><a href="pf2.php?pid='.$run['id'].'&tid='.$run['token_id'].'&name='.$run['name'].'"><button class="btn btn-primary">Pregnancy Form</button></a></td>
+														<td><a href="pipdelete.php?pid='.$run['id'].'&tid='.$run['token_id'].'"><button class="btn btn-primary">Delete</button></a></td>
                                                         </tr>';
                                                     }
                                                 ?>

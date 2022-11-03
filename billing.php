@@ -245,13 +245,15 @@ if(isset($_POST['view-bill']))
 														foreach($gen as $data)
 														{
                                                             $pp = $data['price'] / $data['quantity'];
+															$newDate = date("d-m-Y", strtotime($data['date']));  
+															$dd = strval($newDate);
 															echo 
 															'<tr><td>'.++$i.'</td>
 															<td>'.$data['charge_name'].'</td>
 															<td>₹'.$pp.'</td>
 															<td>'.$data['quantity'].'</td>
 															<td>₹'.$data['price'].'</td>
-															<td>'.$data['date'].'</td>';
+															<td>'.$dd.'</td>';
 
 															echo '<td><a href="delete.php?time='.$data['time'].'&pid='.$pid.'&tid='.$token_id.'" class="btn btn-primary">Delete</a><td></tr>';
 														}
