@@ -1,6 +1,6 @@
 <html>
-    <body>
- <?php
+
+<body> <?php
 include 'connect.php';
 if (isset($_POST['submit'])) {
     $emp=autoincemp();
@@ -31,11 +31,9 @@ function autoincemp()
     }
 }
       
-?>
-        <form action="#" method="post">
-            ID:<input type="text" name="emp">
-            <button class="submit" name="submit" type="submit" onclick="message()">Submit</button>
-</form>
-
+?> <form action="#" method="post"> ID:<input type="text" name="emp">
+		<button class="submit" name="submit" type="submit" onclick="message()">Submit</button>
+	</form>
 </body>
+
 </html>

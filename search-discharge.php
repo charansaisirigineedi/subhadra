@@ -9,79 +9,68 @@ where ppi.id = pi.id  order by pi.date desc");
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>	Inpatient List</title>
-		
-		<!-- Favicon -->
-        <link rel="shortcut icon" href="assets/img/favicon.png">
-	
-		<!-- Fontfamily -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
-		
-		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-		
-		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
-		
-		<!-- Datatables CSS -->
-		<link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
-		
-		<!-- Main CSS -->
-        <link rel="stylesheet" href="assets/css/style.css">
-    </head>
-    <body>
-	
-		<!-- Main Wrapper -->
-        <div class="main-wrapper">
-		
-			<?php include 'menu.php'; ?>
-			
-			<!-- Page Wrapper -->
-            <div class="page-wrapper">
-                <div class="content container-fluid">
 
-					<!-- Page Header -->
-					<div class="page-header">
-						<div class="row">
-							<div class="col">
-								<h3 class="page-title">DISCHARGE SUMMARY LIST</h3>
-								<div class="col-md-9">
-                             		<ul class="list-links mb-4">
-                                		<li class="active"><a href="search-discharge.php">Pregnancy Discharge Form</a></li>
-                                		<li><a href="search-sdischarge.php">Surgery Discharge Form</a></li>
-                           		 </ul>
-                       		   </div>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title> Inpatient List</title>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/img/favicon.png">
+	<!-- Fontfamily -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+	<!-- Datatables CSS -->
+	<link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+	<!-- Main Wrapper -->
+	<div class="main-wrapper"> <?php include 'menu.php'; ?>
+		<!-- Page Wrapper -->
+		<div class="page-wrapper">
+			<div class="content container-fluid">
+				<!-- Page Header -->
+				<div class="page-header">
+					<div class="row">
+						<div class="col">
+							<h3 class="page-title">DISCHARGE SUMMARY LIST</h3>
+							<div class="col-md-9">
+								<ul class="list-links mb-4">
+									<li class="active"><a href="search-discharge.php">Pregnancy Discharge Form</a></li>
+									<li><a href="search-sdischarge.php">Surgery Discharge Form</a></li>
+								</ul>
 							</div>
 						</div>
-					
+					</div>
 					<!-- /Page Header -->
 					<div class="col-md-4">
-					<form>
-					     <input type="text" id="myInput" onkeyup="searchFun()"  class="form-control"><br>
-					</form>
-					</div></div>
-				
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="card">
-								<div class="card-body">
-									<div class="table-responsive">
-										<table id= "myTable" class="table table-striped">
-											<thead>
-												<tr>
-													<th>Patient ID</th>
-													<th>Name</th>
-                                                    <th>Phone Number</th>
-                                                    <th>Token ID</th>
-                                                    <th>View</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php
+						<form>
+							<input type="text" id="myInput" onkeyup="searchFun()" class="form-control"><br>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-body">
+								<div class="table-responsive">
+									<table id="myTable" class="table table-striped">
+										<thead>
+											<tr>
+												<th>Patient ID</th>
+												<th>Name</th>
+												<th>Phone Number</th>
+												<th>Token ID</th>
+												<th>View</th>
+											</tr>
+										</thead>
+										<tbody> <?php
                                                     while($run = mysqli_fetch_assoc($sql))
                                                     {
                                                         echo '<tr>
@@ -92,69 +81,51 @@ where ppi.id = pi.id  order by pi.date desc");
                                                         <td><a href="discharge_summary.php?pid='.$run['id'].'&tid='.$run['token_id'].'"><button class="btn btn-primary">View Discharge Summary</button></a></td>
                                                         </tr>';
                                                     }
-                                                ?>
-											</tbody>
-										</table>
-									</div>
+                                                ?> </tbody>
+									</table>
 								</div>
 							</div>
 						</div>
 					</div>
-				
 				</div>
-			
-				
-				
 			</div>
-			<!-- /Page Wrapper -->
-		
-        </div>
-		<!-- /Main Wrapper -->
-		
-		<!-- jQuery -->
-        <script src="assets/js/jquery-3.6.0.min.js"></script>
-		
-		<!-- Bootstrap Core JS -->
-        <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-		
-		<!-- Slimscroll JS -->
-        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-		
-		<!-- Datatables JS -->
-		<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
-		<script src="assets/plugins/datatables/datatables.min.js"></script>
-		
-		<!-- Custom JS -->
-		<script  src="assets/js/script.js"></script>
+		</div>
+		<!-- /Page Wrapper -->
+	</div>
+	<!-- /Main Wrapper -->
+	<!-- jQuery -->
+	<script src="assets/js/jquery-3.6.0.min.js"></script>
+	<!-- Bootstrap Core JS -->
+	<script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Slimscroll JS -->
+	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<!-- Datatables JS -->
+	<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="assets/plugins/datatables/datatables.min.js"></script>
+	<!-- Custom JS -->
+	<script src="assets/js/script.js"></script>
+	<script>
+	const searchFun = () => {
+		let filter = document.getElementById('myInput').value.toUpperCase();
+		let myTable = document.getElementById('myTable');
+		let tr = myTable.getElementsByTagName('tr');
+		for(var i = 0; i < tr.length; i++) {
+			let td = tr[i].getElementsByTagName('td')[1];
+			let t1 = tr[i].getElementsByTagName('td')[0];
+			let t2 = tr[i].getElementsByTagName('td')[2];
+			if(td || t2) {
+				let textvlaue = td.textContent || td.innerHTML;
+				let phone = t2.textContent || t2.innerHTML;
+				let pid = t1.textContent || t1.innerHTML;
+				if(textvlaue.toUpperCase().indexOf(filter) > -1 || phone.indexOf(filter) > -1 || pid.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}
+		}
+	}
+	</script>
+</body>
 
-        <script>
-            const searchFun = () => {
-                let filter = document.getElementById('myInput').value.toUpperCase();
-                
-                let myTable = document.getElementById('myTable');
-                
-                let tr = myTable.getElementsByTagName('tr');
-
-                for(var i=0;i<tr.length;i++){
-                    let td = tr[i].getElementsByTagName('td')[1];
-                    let t1 = tr[i].getElementsByTagName('td')[0];
-                    let t2 = tr[i].getElementsByTagName('td')[2];
-             
-                    if(td || t2){
-                        let textvlaue = td.textContent || td.innerHTML;
-                        let phone = t2.textContent || t2.innerHTML;
-                        let pid = t1.textContent || t1.innerHTML;
-                        if(textvlaue.toUpperCase().indexOf(filter)>-1 || phone.indexOf(filter)>-1 || pid.toUpperCase().indexOf(filter)>-1){
-                            tr[i].style.display = "";
-                        }
-                        else{
-                            tr[i].style.display = "none";
-                        }
-                    }
-                }
-
-            }
-        </script>
-		
-    </body>
 </html>

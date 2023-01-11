@@ -62,83 +62,83 @@ function getIndianCurrency(float $number)
     return ($Rupees ? $Rupees . '' : '') . $paise;
 }
 ?>
+
 <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>IP BILLS</title>
-		
-		<!-- Favicon -->
-        <link rel="shortcut icon" href="assets/img/favicon.png">
-		
-		
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
-		
-		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-		
-		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
-		
-		<!-- Select2 CSS -->
-		<link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
-		
-		<!-- Datepicker CSS -->
-		<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
-		
-		<!-- Main CSS -->
-		<link rel="stylesheet" href="assets/css/style.css">
-	</head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>IP BILLS</title>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/img/favicon.png">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+	<!-- Select2 CSS -->
+	<link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+	<!-- Datepicker CSS -->
+	<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
 
 <body>
-	
-                <div class="content container-fluid">
-					<!-- <form>
+	<div class="content container-fluid">
+		<!-- <form>
 						<button id="cmd">generate PDF</button>
 					</from> -->
-					<div class="row justify-content-center">
-						<div class="col-xl-10">
-							<div class="card invoice-info-card">
-								<div class="card-body">
-								<?php include 'letterhead.php'; ?>
-					
-								<!-- <div class="line"></div> -->
-								<hr>
-								<h3 style="font-family:Calibri(Body);font-size:30px" align="center"><u><b>IP BILL</b></u></h3><br>
-									<!-- Invoice Item -->
-										<div class="row">
-											<div class="col-md-6">
-												<div class="invoice-head">
-													<h2>Billed to</h2>
-													<p><?php echo $res['name']; ?></p>
-													<p><?php echo $res['permanent_address']; ?></p>
-													<p><?php echo $res['patient_phone_number']; ?></p>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="invoice-head">
-													<div class="row">
-													
-													   <div class="col-md-4"> </div>
-													   <div class="col-md-4"> <h2>INVOICE</h2></div>
-													   <div class="col-md-4"> </div>
-														
-													</div>
-													<div class="row">
-														<div class="col-md-4"></div>
-														<div class="col-md-4"><p>Invoice Number  : </p></div>
-														<div class="col-md-4"><p><b> INV<?php echo $tid; ?></b></p></div>
-													</div>
-													<div class="row">
-														<div class="col-md-4"></div>
-														<div class="col-md-4"><p>INPatient Number  : </p></div>
-														<div class="col-md-4"><p><b> <?php echo $pid; ?></b></p></div>
-													</div>
-													<div class="row">
-														<div class="col-md-4"></div>
-														<div class="col-md-4"><p>Date :</p></div>
-														<div class="col-md-4"><p><b>
-													    <?php 
+		<div class="row justify-content-center">
+			<div class="col-xl-10">
+				<div class="card invoice-info-card">
+					<div class="card-body"> <?php include 'letterhead.php'; ?>
+						<!-- <div class="line"></div> -->
+						<hr>
+						<h3 style="font-family:Calibri(Body);font-size:30px" align="center"><u><b>IP BILL</b></u></h3><br>
+						<!-- Invoice Item -->
+						<div class="row">
+							<div class="col-md-6">
+								<div class="invoice-head">
+									<h2>Billed to</h2>
+									<p><?php echo $res['name']; ?></p>
+									<p><?php echo $res['permanent_address']; ?></p>
+									<p><?php echo $res['patient_phone_number']; ?></p>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="invoice-head">
+									<div class="row">
+										<div class="col-md-4"> </div>
+										<div class="col-md-4">
+											<h2>INVOICE</h2>
+										</div>
+										<div class="col-md-4"> </div>
+									</div>
+									<div class="row">
+										<div class="col-md-4"></div>
+										<div class="col-md-4">
+											<p>Invoice Number : </p>
+										</div>
+										<div class="col-md-4">
+											<p><b> INV<?php echo $tid; ?></b></p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4"></div>
+										<div class="col-md-4">
+											<p>INPatient Number : </p>
+										</div>
+										<div class="col-md-4">
+											<p><b> <?php echo $pid; ?></b></p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4"></div>
+										<div class="col-md-4">
+											<p>Date :</p>
+										</div>
+										<div class="col-md-4">
+											<p><b> <?php 
 														if(empty($res2['date_of_discharge']))
 													 	{
 															echo $d;
@@ -148,36 +148,35 @@ function getIndianCurrency(float $number)
 															$newDate = date("d-m-Y", strtotime($res2['date_of_discharge']));
 															echo $newDate;
 														}
-													?></b></p></div>
-													</div>
-													<div class="row">
-														<div class="col-md-4"></div>
-														<div class="col-md-4"><p>Consultant Doctor: </p></div>
-														<div class="col-md-4"><p><b> <?php echo $dname; ?></b></p></div>
-													</div>
-											
-												</div></div>
-										
-
+													?></b></p>
 										</div>
-									
-									<div class="invoice-item invoice-table-wrap">
-										<div class="row">
-											
-											<div class="col-md-12">
-												<div class="table-responsive">
-													<table class="invoice-table table table-center mb-0">
-														<thead>
-															<tr>
-                                                                <th>Sl No.</th>
-																<th>Description</th>
-																<th>Quantity</th>
-																<th>Amount</th>
-															
-															</tr>
-														</thead>
-														<tbody>
-														<?php
+									</div>
+									<div class="row">
+										<div class="col-md-4"></div>
+										<div class="col-md-4">
+											<p>Consultant Doctor: </p>
+										</div>
+										<div class="col-md-4">
+											<p><b> <?php echo $dname; ?></b></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="invoice-item invoice-table-wrap">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="table-responsive">
+										<table class="invoice-table table table-center mb-0">
+											<thead>
+												<tr>
+													<th>Sl No.</th>
+													<th>Description</th>
+													<th>Quantity</th>
+													<th>Amount</th>
+												</tr>
+											</thead>
+											<tbody> <?php
 															$i = 0;
 															foreach($run1 as $data) 
 															{
@@ -194,35 +193,33 @@ function getIndianCurrency(float $number)
 																<td align="center">'.$price.'/-</td>
 															</tr>';
 															}
-															?>
-														</tbody>
-													</table>
-												</div>
-											</div>
-										</div>
+															?> </tbody>
+										</table>
 									</div>
-									<!-- /Invoice Item -->
-
-									<div class="row align-items-center justify-content-center">
-										<div class="col-lg-6 col-md-6">
-											<div class="invoice-total-card">
-												<div class="invoice-total-box">
-													<div class="invoice-total-footer">
-														<h4>Total Amount <span><?php echo $sum; ?> /-</span></h4>
-													</div>
-												</div><br>
-											</div>
-								
-										</div>
-										<div ><tr><h2 class="invoice-name" style="font-family:Calibri(Body);"><b>Amount in words : Rupees <?php echo ucwords(getIndianCurrency($sum)); ?> Only</b></h2></div>
-								
-									</div>
-									
 								</div>
+							</div>
+						</div>
+						<!-- /Invoice Item -->
+						<div class="row align-items-center justify-content-center">
+							<div class="col-lg-6 col-md-6">
+								<div class="invoice-total-card">
+									<div class="invoice-total-box">
+										<div class="invoice-total-footer">
+											<h4>Total Amount <span><?php echo $sum; ?> /-</span></h4>
+										</div>
+									</div><br>
+								</div>
+							</div>
+							<div>
+								<tr>
+									<h2 class="invoice-name" style="font-family:Calibri(Body);"><b>Amount in words : Rupees <?php echo ucwords(getIndianCurrency($sum)); ?> Only</b></h2>
 							</div>
 						</div>
 					</div>
 				</div>
-				<script>
-					setTimeout("print()", 1000);
-				</script>
+			</div>
+		</div>
+	</div>
+	<script>
+	setTimeout("print()", 1000);
+	</script>

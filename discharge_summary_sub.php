@@ -48,37 +48,27 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 	<title> Patient Details</title>
-
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="assets/img/favicon.png">
-
 	<!-- Fontfamily -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
-
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-
 	<!-- Fontawesome CSS -->
 	<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
 	<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
-
 	<!-- Datatables CSS -->
 	<link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
-
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-
 	<!-- Main Wrapper -->
-	<div class="main-wrapper">
-
-		<?php include 'menu.php'; ?>
+	<div class="main-wrapper"> <?php include 'menu.php'; ?>
 		<!-- Page Wrapper -->
 		<div class="page-wrapper">
 			<div class="content container-fluid">
-
 				<div class="page-header">
 					<div class="row">
 						<div class="col-md-12">
@@ -87,7 +77,7 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 									<h3 align="center" class="page-title">DISCHARGE SUMMARY FORM</h3>
 								</div>
 								<div class="card-body">
-									<form method="post"  class="needs-validation" novalidate>
+									<form method="post" class="needs-validation" novalidate>
 										<div class="form-group">
 											<label><b>NAME&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b> :&nbsp&nbsp<?php echo $res['name'] ?></label>
 										</div>
@@ -105,24 +95,21 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 																															echo $res['present_address'] ?></label>
 										</div>
 										<div class="form-group">
-											<label><b>DOA&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b> :&nbsp&nbsp
-											<?php 
+											<label><b>DOA&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b> :&nbsp&nbsp <?php 
 											 $newDate = date("d-m-Y", strtotime($res1['date_of_admission']));  
 											 $dd = strval($newDate);
 											echo $dd; 
 											?></label>
 										</div>
 										<div class="form-group">
-											<label><b>DOP&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b> :&nbsp&nbsp
-											<?php 
+											<label><b>DOP&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b> :&nbsp&nbsp <?php 
 											 $newDate = date("d-m-Y", strtotime($res1['date_of_procedure']));  
 											 $dd = strval($newDate);
 											echo $dd; 
 											?></label>
 										</div>
 										<div class="form-group">
-											<label><b>DOD&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b> :&nbsp&nbsp
-											<?php 
+											<label><b>DOD&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b> :&nbsp&nbsp <?php 
 											 $newDate = date("d-m-Y", strtotime($res1['date_of_discharge']));  
 											 $dd = strval($newDate);
 											echo $dd; 
@@ -132,70 +119,53 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 											<div class="form-group">
 												<label><b>ADMITTING DIAGNOSIS</b> </label>
 												<input type="text" name="ad" class="form-control" required>
-												<div class="invalid-feedback">
-													Please choose "Diagnosis"
-												</div>
+												<div class="invalid-feedback"> Please choose "Diagnosis" </div>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group">
 													<label><b>TREATMENT GIVEN</b></label>
-													<textarea name="tg" class="form-control"required></textarea>
-													<div class="invalid-feedback">
-														Please choose "Treatment Given"
-													</div>
+													<textarea name="tg" class="form-control" required></textarea>
+													<div class="invalid-feedback"> Please choose "Treatment Given" </div>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label><b>CONDITIONS AT DISCHARGE</b></label>
-													<textarea name="cad" class="form-control"required></textarea>
-													<div class="invalid-feedback">
-														Please choose "Conditions at Discharge"
-													</div>
+													<textarea name="cad" class="form-control" required></textarea>
+													<div class="invalid-feedback"> Please choose "Conditions at Discharge" </div>
 												</div>
 											</div>
 										</div>
-
-
-
 										<h5 class="card-title"><b>MOTHER - VITALS</b></h5>
 										<div class="row">
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>TEMP</b></label>
 													<input type="digit" name="temp" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "Temp"
-													</div>
+													<div class="invalid-feedback"> Please choose "Temp" </div>
 												</div>
 											</div>
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>PR</b></label>
 													<input type="digit" name="pr" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "PR"
-													</div>
+													<div class="invalid-feedback"> Please choose "PR" </div>
 												</div>
 											</div>
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>BP</b></label>
 													<input type="digit" name="bp" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "BP :"
-													</div>
+													<div class="invalid-feedback"> Please choose "BP :" </div>
 												</div>
 											</div>
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>H/L</b></label>
 													<input type="digit" name="hl" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "H/L :"
-													</div>
+													<div class="invalid-feedback"> Please choose "H/L :" </div>
 												</div>
 											</div>
 										</div>
@@ -204,58 +174,43 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 												<div class="form-group">
 													<label><b>BREASTS</b></label>
 													<input type="digit" name="bre" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "BREASTS :"
-													</div>
+													<div class="invalid-feedback"> Please choose "BREASTS :" </div>
 												</div>
 											</div>
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>P/A</b></label>
 													<input type="digit" name="pa" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "P/A :"
-													</div>
+													<div class="invalid-feedback"> Please choose "P/A :" </div>
 												</div>
 											</div>
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>P/V</b></label>
 													<input type="digit" name="pv" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "P/V :"
-													</div>
+													<div class="invalid-feedback"> Please choose "P/V :" </div>
 												</div>
 											</div>
-
 											<div class="col-md-3">
 												<div class="form-group">
 													<label><b>LOCHIA</b></label>
 													<input type="digit" name="lo" class="form-control" required>
-													<div class="invalid-feedback">
-														Please choose "LOCHIA :"
-													</div>
+													<div class="invalid-feedback"> Please choose "LOCHIA :" </div>
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>ADVICE ON DISCHARGE</b></label>
-														<textarea name="aod" class="form-control"required></textarea>
-														
-														<div class="invalid-feedback">
-															Please choose "ADVICE ON DISCHARGE"
-														</div> 
+														<textarea name="aod" class="form-control" required></textarea>
+														<div class="invalid-feedback"> Please choose "ADVICE ON DISCHARGE" </div>
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>DIET</b></label>
-														<textarea name="diet" class="form-control"required></textarea>
-														
-														<div class="invalid-feedback">
-															Please choose "ADVICE ON DISCHARGE"
-														</div>
+														<textarea name="diet" class="form-control" required></textarea>
+														<div class="invalid-feedback"> Please choose "ADVICE ON DISCHARGE" </div>
 													</div>
 												</div>
 											</div>
@@ -263,21 +218,15 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>Activity:</b></label>
-														<textarea name="activity" class="form-control"required></textarea>
-														
-														<div class="invalid-feedback">
-															Please choose "Activity"
-														</div>
+														<textarea name="activity" class="form-control" required></textarea>
+														<div class="invalid-feedback"> Please choose "Activity" </div>
 													</div>
 												</div>
-
 												<div class="col-md-6">
 													<div class="form-group">
 														<label><b>MEDICATIONS AND FOLLOW UP</b> </label>
-														<textarea name="mafu" class="form-control"required>AS PER <?php echo $res1['doctor_name']; ?></textarea>
-														<div class="invalid-feedback">
-															Please choose "MEDICATIONS AND FOLLOW UP"
-														</div>
+														<textarea name="mafu" class="form-control" required>AS PER <?php echo $res1['doctor_name']; ?></textarea>
+														<div class="invalid-feedback"> Please choose "MEDICATIONS AND FOLLOW UP" </div>
 													</div>
 												</div>
 											</div>
@@ -295,21 +244,17 @@ VALUES ('$pid','$tid','$addiag','$trgiven','$condatdis','$temp','$pr','$bp','$hl
 	</div>
 	<!-- jQuery -->
 	<script src="assets/js/jquery-3.6.0.min.js"></script>
-
 	<!-- Bootstrap Core JS -->
 	<script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 	<!-- Slimscroll JS -->
 	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
 	<!-- Custom JS -->
 	<script src="assets/js/script.js"></script>
 	<!-- multiple choice -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
-
 	<!-- Form Validation JS -->
 	<script src="assets/js/form-validation.js"></script>
-</body>
-setTimeout("print()", 1000);
+</body> setTimeout("print()", 1000);
+
 </html>

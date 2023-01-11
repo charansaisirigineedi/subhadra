@@ -1,6 +1,6 @@
 <html>
-<body>
-<?php
+
+<body> <?php
 include 'connect.php';
 date_default_timezone_set("Asia/Kolkata");
 if (isset($_POST['submit'])) {
@@ -33,11 +33,9 @@ function autoincemp()
     }
 }
       
-?>
-        <form action="#" method="post">
-            ID:<input type="text" name="emp">
-            <button class="submit" name="submit" type="submit" onclick="message()">Submit</button>
-</form>
-
+?> <form action="#" method="post"> ID:<input type="text" name="emp">
+		<button class="submit" name="submit" type="submit" onclick="message()">Submit</button>
+	</form>
 </body>
+
 </html>
