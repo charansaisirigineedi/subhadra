@@ -3,20 +3,19 @@ include 'connect.php';
 session_start();
 include "check.php";
 error_reporting(E_ERROR | E_PARSE);
-
 if(isset($_POST['submit']))
 {
-	$frdate = $_POST['fromdate'];
-	$todate = $_POST['todate'];
-	$sql = mysqli_query($con,"SELECT id as pi,name,patient_phone_number as ppn,date(date) as d from patient_primary_information where date(date) between '$frdate' and '$todate'  order by date asc");
+    $frdate = $_POST['fromdate'];
+    $todate = $_POST['todate'];
 }
+
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+	<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
         <title>	Patient List</title>
 		
@@ -42,14 +41,14 @@ if(isset($_POST['submit']))
     </head>
     <body>
 	
-		<!-- Main Wrapper -->
-        <div class="main-wrapper">
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">
 		
-			<?php include 'menu.php'; ?>
-			
-			<!-- Page Wrapper -->
-            <div class="page-wrapper">
-                <div class="content container-fluid">
+		<?php include 'menu.php'; ?>
+		
+		<!-- Page Wrapper -->
+		<div class="page-wrapper">
+			<div class="content container-fluid">
 
 					<!-- Page Header -->
 					<div class="page-header">
@@ -122,7 +121,7 @@ if(isset($_POST['submit']))
 													<th>Name</th>
                                                     <th>Phone Number</th>
 													<th>Patient ID</th>
-													<th>Date </th>
+													<th>Date Of Visit</th>
 													<th>Patient Type</th>
 												</tr>
 											</thead>
@@ -132,7 +131,7 @@ if(isset($_POST['submit']))
 												{
 													$frdate = $_POST['fromdate'];
 													$todate = $_POST['todate'];
-													$sql = mysqli_query($con,"SELECT id as pi,name,patient_phone_number as ppn,date(date) as d from patient_primary_information where date(date) between '$frdate' and '$todate'  order by date asc");
+													$sql = mysqli_query($con,"SELECT ppi.id as pi,ppi.name as name,ppi.patient_phone_number as ppn ,eor.date as d from patient_primary_information ppi , existing_op_record eor  where  ppi.id=eor.id and date(eor.date) between '$frdate' and '$todate'  order by eor.date asc");
 												
 													while($run = mysqli_fetch_assoc($sql))
 													{
@@ -171,7 +170,6 @@ if(isset($_POST['submit']))
 		
         </div>
 		<!-- /Main Wrapper -->
-		
 		<!-- jQuery -->
         <script src="assets/js/jquery-3.6.0.min.js"></script>
 		
@@ -199,7 +197,7 @@ if(isset($_POST['submit']))
         );
     }
     </script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
 		<script type="text/javascript">

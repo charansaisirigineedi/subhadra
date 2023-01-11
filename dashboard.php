@@ -202,7 +202,7 @@ if(isset($_POST['gbsubmit']))
                                             <i class="fas fa-file-alt"></i>
                                         </div>
                                         <div class="db-info">
-                                            <h3>Pre Booking</h3>
+                                            <h3>Appointments</h3>
                                         </div>
                                     </div>
                             </div></a>

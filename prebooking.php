@@ -65,10 +65,10 @@ if(isset($_POST['ouadd']))
 				<div class="page-header">
 				<div class="row">
 					<div class="col">
-						<h3 class="page-title"><b>Pre-Booking:</b></h3>  
+						<h3 class="page-title"><b>Appointments:</b></h3>  
 						<ul class="breadcrumb">
 							<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-							<li class="breadcrumb-item active">pre-booking</li>
+							<li class="breadcrumb-item active">Appointments</li>
 						</ul>
 					</div>
 				</div>
@@ -79,7 +79,7 @@ if(isset($_POST['ouadd']))
 								<div class="card-body">
 									<form class="invoices-form" method="post">
 										<div class="invoice-add-table">
-											<h4>Pre-Booking</h4>
+											<h4>Appointments</h4>
 											<div class="table-responsive">
 												<table class="table table-center add-table-items">
 													<thead>
@@ -124,6 +124,9 @@ if(isset($_POST['ouadd']))
 									</form>
 								</div>
 							</div>
+							<div class="text-end">
+								<a href="prebooking_list.php"><button class="btn btn-primary">Appointments List</button></a>
+							<div>
 						</div>
 					</div>
 											</div>

@@ -59,11 +59,13 @@ $res1   = mysqli_fetch_assoc($run);
         <?php include 'menu.php'; ?>
         <div class="page-wrapper" id="page-wrapper">
 				<div class="row">
-					<div class="col-xl-3 col-sm-6 col-12 d-flex">
-						<a href="bop.php?pid=<?php echo $pid;?>&tid=<?php echo $tid;?>" class="btn btn-primary">EDIT BILL</a>
+					<div class="col-md-6">
+					<a href="bop.php?pid=<?php echo $pid;?>&tid=<?php echo $tid;?>" class="btn btn-primary">EDIT BILL</a>
 					</div>
+					<div class="col-md-6">
 					<div class="text-end">
-						<input type="button" class="btn btn-primary" value="Print" onclick="window.open('billgbop.php?pid=<?php echo $pid;?>&tid=<?php echo $tid;?>','popUpWindow','height=920,width=720,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');">
+					<input type="button" class="btn btn-primary" value="Print" onclick="window.open('billgbop.php?pid=<?php echo $pid;?>&tid=<?php echo $tid;?>','popUpWindow','height=920,width=720,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');">
+					</div>
 					</div>
 				</div>
 				<div class="row justify-content-center">

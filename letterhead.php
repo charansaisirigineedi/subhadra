@@ -1,5 +1,5 @@
         <div align="center">
-				<h1 style="font-family:Calibri(Body);font-size:60px;color:deepskyblue"><b>SUBHADRA HOSPITALS</b></h1>
+				<h1 style="font-family:Calibri(Body);font-size:60px;color:black"><b>SUBHADRA HOSPITALS</b></h1>
 		</div>
 		<div align="center">
 			<h3 style="font-family:Calibri(Body);font-size:20px"><b>J.P.ROAD,OPP.ANANDA FUNCTION HALL,BHIMAVARAM-534202,W.G Dt, A.P </b></h3>

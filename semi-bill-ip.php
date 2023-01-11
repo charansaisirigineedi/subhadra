@@ -132,6 +132,11 @@ $sql = mysqli_query($con,"select distinct(token_id) as token_id,patient_id,date 
 		<!-- Datatables JS -->
 		<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
 		<script src="assets/plugins/datatables/datatables.min.js"></script>
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+	    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+
 		
 		<!-- Custom JS -->
 		<script  src="assets/js/script.js"></script>
@@ -163,6 +168,7 @@ $sql = mysqli_query($con,"select distinct(token_id) as token_id,patient_id,date 
                 }
 
             }
+
         </script>
 		
     </body>

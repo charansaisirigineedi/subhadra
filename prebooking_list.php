@@ -7,8 +7,7 @@ include "check.php";
 date_default_timezone_set("Asia/Kolkata");
 $e = strval(date('Ymd'));
 $d  = substr($e,0,4).'-'.substr($e,4,2).'-'.substr($e,6,2);
-$sql = mysqli_query($con,"SELECT `Name`, `Date`,`time`, `Mobile`, `Reason` FROM `prebooking`  where Date = '$d'");
-
+$sql = mysqli_query($con,"SELECT `Name`, `Date`,`time`, `Mobile`, `Reason`, `time1` FROM `prebooking`  where Date = '$d'");
 ?>
 
 
@@ -53,10 +52,10 @@ $sql = mysqli_query($con,"SELECT `Name`, `Date`,`time`, `Mobile`, `Reason` FROM 
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">Todays booking list</h3>
+								<h3 class="page-title">Todays Appointment lists</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">Todays booking list</li>
+									<li class="breadcrumb-item active">Todays Appointments list</li>
 								</ul>
 							</div>
 						</div>
@@ -65,7 +64,7 @@ $sql = mysqli_query($con,"SELECT `Name`, `Date`,`time`, `Mobile`, `Reason` FROM 
                     
                     <div class="card">
 								<div class="card-header">
-									<h5 class="card-title">Booking Details</h5>
+									<h5 class="card-title">Appointment Details</h5>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
@@ -78,6 +77,7 @@ $sql = mysqli_query($con,"SELECT `Name`, `Date`,`time`, `Mobile`, `Reason` FROM 
 													<th>Time</th>
 													<th>Mobile</th>
 													<th>Reason</th>
+													<th></th>
 												</tr>
 											</thead>
 											<tbody>
@@ -95,12 +95,14 @@ $sql = mysqli_query($con,"SELECT `Name`, `Date`,`time`, `Mobile`, `Reason` FROM 
 															<td>'.$data['time'].'</td>
 															<td>'.$data['Mobile'].'</td>
 															<td>'.$data['Reason'].'</td>
+															<td><a href="apdelete.php?name='.$data['Name'].'&date='.$data['Date'].'&time='.$data['time'].'&time1='.$data['time1'].'"><button  class="btn btn-danger">Delete</button></a></td>
 															<td></tr>';
 														}
 													}
 												?>
 											</tbody>	
 										</table>
+										
 									</div>
 					<div></div>
 				<!-- Footer -->

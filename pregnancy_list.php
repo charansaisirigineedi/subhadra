@@ -128,7 +128,9 @@ if(isset($_POST['submit']))
 												{
 													$frdate = $_POST['fromdate'];
 													$todate = $_POST['todate'];
-													$sql = mysqli_query($con,"SELECT ppi.name as name,ppi.patient_phone_number as ppn,pi.id as id,pi.token_id as tid,ps.date_of_procedure as d,pi.type_of_delivery as tod,pi.weight as w,pi.gender as g FROM `patient_pregnancy_information`  pi  ,`patient_primary_information` ppi, `patient_surgery_form` ps WHERE  ppi.id=pi.id and  pi.id in (select id from patient_surgery_form) and pi.token_id in (select token_id from patient_surgery_form) and date(pi.time) between '$frdate' and '$todate' order by pi.time asc");
+													$sql = mysqli_query($con,"SELECT ppi.name as name,ppi.patient_phone_number as ppn,pi.id as id,pi.token_id as tid,
+													ps.date_of_procedure as d,pi.type_of_delivery as tod,pi.weight as w,pi.gender as g FROM `patient_pregnancy_information`  pi  ,`patient_primary_information` ppi, `patient_surgery_form` ps WHERE  pi.id=ppi.id and pi.id=ps.id and pi.token_id = ps.token_id
+													and ps.date_of_procedure between  '$frdate' and '$todate' order by ps.date_of_procedure asc");
 													while($run = mysqli_fetch_assoc($sql))
 													{
                                                         
@@ -198,7 +200,7 @@ if(isset($_POST['submit']))
         );
     }
     </script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
 		<script type="text/javascript">

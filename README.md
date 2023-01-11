@@ -6,11 +6,6 @@ Project Team:
     Team Member - Kambhampati Heam Sai Praneeth (https://github.com/praneethmcr)
     Team Member - Srikanth Peethambaram
     
-Technology Stack Used:
-    1.HTML5,CSS,BOOTSTRAP
-    2.Raw PHP
-    3.JavaScript
-    4.Ajax
-    
+The project is developed in LAMP framework
 
 You can see the project at @www.bvrmol.in/subhadra

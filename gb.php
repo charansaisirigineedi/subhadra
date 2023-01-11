@@ -63,11 +63,13 @@ $res1   = mysqli_fetch_assoc($run);
 
 
 				<div class="row">
-					<div>
+					<div class="col-md-6">
 					<a href="billing.php?pid=<?php echo $pid;?>&tid=<?php echo $tid;?>" class="btn btn-primary">EDIT BILL</a>
 					</div>
+					<div class="col-md-6">
 					<div class="text-end">
 					<input type="button" class="btn btn-primary" value="Print" onclick="window.open('billgb.php?pid=<?php echo $pid;?>&tid=<?php echo $tid;?>','popUpWindow','height=920,width=720,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');">
+					</div>
 					</div>
 				</div>
 				<div class="content container-fluid">

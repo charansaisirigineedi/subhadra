@@ -8,8 +8,7 @@ date_default_timezone_set("Asia/Kolkata");
 $e = strval(date('Ymd'));
 $d  = substr($e,0,4).'-'.substr($e,4,2).'-'.substr($e,6,2);
 $sql = mysqli_query($con,"SELECT  pif.id as id , pif.name as name , pif.patient_phone_number 
-as patient_phone_number from patient_primary_information pif  where date(pif.date) = '$d'
-and pif.id not in (SELECT patient_id from pastrecords)");
+as patient_phone_number from patient_primary_information pif,existing_op_record eor  where eor.date = '$d' and eor.id=pif.id");
 
 ?>
 
@@ -71,8 +70,7 @@ and pif.id not in (SELECT patient_id from pastrecords)");
 								<ul class="breadcrumb">
 								<div class="col-md-9">
                              		<ul class="list-links mb-4">
-                                		<li class="active"><a href="ou_list.php">Today's Out Patients  List</a></li>
-                                		<li><a href="doplist.php">Out Patients List</a></li>
+                                		<li><a href="ou_list.php">Today's Out Patients  List</a></li>
                            		 </ul>
                        		   </div>
 								</ul>
@@ -107,7 +105,7 @@ and pif.id not in (SELECT patient_id from pastrecords)");
                                                         <td>'.$run['name'].'</td>
                                                         <td>'.$run['patient_phone_number'].'</td>
 														<td><div class="actions">
-														<a href="pr.php?pid='.$run['id'].'" class="btn btn-primary">
+														<a href="pr_check.php?pid='.$run['id'].'" class="btn btn-primary">
 															Add Past Records
 														</a>
 													    </div></td>

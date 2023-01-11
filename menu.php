@@ -79,10 +79,10 @@
 
                         </li>
                         <li class="submenu">
-                            <a href="#"><i class="fas fa-book"></i> <span>Booking</span> <span class="menu-arrow"></span></a>
+                            <a href="#"><i class="fas fa-book"></i> <span>APPOINTMENTS</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="prebooking.php">Booking</a></li>
-                                <li><a href="prebooking_list.php">Today Booking List</a></li>
+                                <li><a href="prebooking.php">Appointments</a></li>
+                                <li><a href="prebooking_list.php">Today Appointments List</a></li>
                             </ul>
                         </li>
 
