@@ -6,6 +6,6 @@ Project Team:
     Team Member - Kambhampati Heam Sai Praneeth (https://github.com/praneethmcr)
     Team Member - Srikanth Peethambaram
     
-The project is developed in LAMP framework
+The project is developed in WAMP (Windows - Apache - MySql - PHP) framework
 
 You can see the project at @www.bvrmol.in/subhadra
