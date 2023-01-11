@@ -97,30 +97,17 @@ function getIndianCurrency(float $number)
 <body>
 
 				<div class="content container-fluid">
-					<!-- <form>
-						<button id="cmd">generate PDF</button>
-					</from> -->
 					<div class="row justify-content-center">
 						<div class="col-xl-10">
 							<div class="card invoice-info-card">
 								<div class="card-body">
 								<?php include 'letterhead.php'; ?>
 					
-								<!-- <div class="line"></div> -->
 								<hr>
 								<h3 style="font-family:Calibri(Body);font-size:30px" align="center"><u><b>OP BILL</b></u></h3><br>
 									<!-- Invoice Item -->
 										<div class="row">
 											
-											<!-- <div class="col-md-6">
-												<div class="invoice-head">
-													<h2>INVOICE</h2>
-													<p>Invoice Number : <b>INV<?php echo $tid; ?></b></p>
-													<p>INPatient Number :<b><?php echo $pid; ?></b></p>
-													<p>Date :<b><?php echo $date; ?></b></p>
-													<p>Consultant Doctor: <b><?php echo $res2['dname']; ?></b></p>
-												</div>
-											</div> -->
 											<div class="col-md-6">
 												<div class="invoice-head">
 													<h2>Billed to</h2>
@@ -158,47 +145,9 @@ function getIndianCurrency(float $number)
 														<div class="col-md-4"><p>Consultant Doctor: </p></div>
 														<div class="col-md-4"><p><b> <?php echo $res2['dname']; ?></b></p></div>
 													</div>
-													<!-- <p>Invoice Number&nbsp;&nbsp;&emsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&emsp;&emsp; <b> INV<?php echo $tid; ?></b></p>
-													<p>INPatient Number&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&emsp;&emsp;<b> <?php echo $pid; ?></b></p>
-													<p>Date&nbsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;:&nbsp;&nbsp;&nbsp;&emsp;&emsp;<b><?php echo $date; ?></b></p>
-													<p>Consultant Doctor&emsp;: <b><?php echo $res2['dname']; ?></b></p> -->
 												</div></div>
 										
-											<!-- <div class="col-md-4">
-												<div class="invoice-info invoice-info2">
-													<strong class="customer-text-one">Consultant Doctor</strong>
-													<p class="invoice-details">
-													 <?php //echo $res2['dname']; ?><br>
-													 <?php //echo $res3['designation']; ?><br>
-													 <?php //echo $res3['regno']; ?><br>
-													</p>
-													
 												</div>
-											</div> -->
-										</div>
-									<!-- /Invoice Item -->
-								
-									<!-- Invoice Item -->
-									<!-- <div class="invoice-issues-box">
-										<div class="row">
-											<div class="col-lg-4 col-md-4">
-												<div class="invoice-issues-date">
-													<p>Issue Date : 27 Jul 2022</p>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4">
-												<div class="invoice-issues-date">
-													<p>Admission Date : 27 Aug 2022</p>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4">
-												<div class="invoice-issues-date">
-													<p>Discharge Date : ₹ 1,54,22 </p>
-												</div>
-											</div>
-										</div>
-									</div> -->
-									<!-- /Invoice Item -->
 
 									<div class="invoice-item invoice-table-wrap">
 										<div class="row">
@@ -216,7 +165,6 @@ function getIndianCurrency(float $number)
 															</tr>
 														</thead>
 														<tbody>
-														<!-- select f.charge_name as name,s.quantity as quantity,s.price -->
 														<?php
 															$i = 0;
 															foreach($run1 as $data) 
@@ -247,16 +195,6 @@ function getIndianCurrency(float $number)
 									<!-- /Invoice Item -->
 
 									<div class="row align-items-center justify-content-center">
-										<!-- <div class="col-lg-6 col-md-6">
-											<div class="invoice-terms">
-												<h6>Notes:</h6>
-												<p class="mb-0">Enter customer notes or any other details</p>
-											</div>
-											<div class="invoice-terms">
-												<h6>Terms and Conditions:</h6>
-												<p class="mb-0">Enter customer notes or any other details</p>
-											</div>
-										</div> -->
 										<div class="col-lg-6 col-md-6">
 											<div class="invoice-total-card">
 												<div class="invoice-total-box">

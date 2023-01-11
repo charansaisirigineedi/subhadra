@@ -24,10 +24,7 @@ if (isset($_POST['submit'])) {
 	$diet = $_POST['diet'];
 	$activity = $_POST['activity'];
 	$mafu = $_POST['mafu'];
-	// $act = "";
-	// foreach ($activity as $act1) {
-	// 	$act .= $act1 . ",";
-	// }
+	
     $query2 = "UPDATE `patient_sdischarge_form` SET 
 	`admitting_diagnosis`='$addiag',`treatment_given`='$trgiven',
 	`condition_at_discharge`='$condatdis',`advice_on_discharge`='$aod',
@@ -169,13 +166,7 @@ if (isset($_POST['submit'])) {
 													<div class="form-group">
 														<label><b>ADVICE ON DISCHARGE</b></label>
 														<textarea name="aod" class="form-control"required><?php echo $res2['advice_on_discharge']; ?></textarea>
-														<!-- <input list="AOD" name="aod" id="A_name" class="form-control"required>
-														<datalist id="AOD">
-
-															<option value="CALL FOR INCREASED PAIN">
-															<option value="FEVER">
-															<option value="AS INCREASED BLEEDING">
-														</datalist>-->
+														
 														<div class="invalid-feedback">
 															Please choose "ADVICE ON DISCHARGE"
 														</div> 
@@ -185,12 +176,7 @@ if (isset($_POST['submit'])) {
 													<div class="form-group">
 														<label><b>DIET</b></label>
 														<textarea name="diet" class="form-control"required><?php echo $res2['diet'] ?></textarea>
-														<!-- <input list="DIET" name="diet" id="A_name" class="form-control"required>
-														<datalist id="DIET">
-															<option value="REGULAR">
-															<option value="ADVANCE">
-															<option value="TOLERATED">
-														</datalist> -->
+														
 														<div class="invalid-feedback">
 															Please choose "DIET"
 														</div>
@@ -202,15 +188,7 @@ if (isset($_POST['submit'])) {
 													<div class="form-group">
 														<label><b>Activity:</b></label>
 														<textarea name="activity" class="form-control"required><?php echo $res2['activity'] ?></textarea>
-														<!-- <div>
-															<input type="checkbox" id="activity" value=" Pelvic rest for 6 weeks i.e.,no sex" name="activity[]">
-															<label> Pelvic rest for 6 weeks i.e.,no sex</label><br>
-															<input type="checkbox" id="activity" value=" no heavy lifting" name="activity[]">
-															<label> no heavy lifting</label><br>
-															<input type="checkbox" id="activity" value="Slow increase as tolerated" name="activity[]">
-															<label> Slow increase as tolerated</label><br><br>
-
-														</div> -->
+														
 														<div class="invalid-feedback">
 															Please choose "Activity"
 														</div>

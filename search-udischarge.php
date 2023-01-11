@@ -100,11 +100,6 @@ where ppi.id = pi.id  order by pi.date desc");
 				
 				</div>
 			
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
 				
 			</div>
 			<!-- /Page Wrapper -->

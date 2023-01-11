@@ -40,23 +40,10 @@
                             <a href="#"><i class="fas fa-user-graduate"></i> <span>DASHBOARD</span><span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="ou_list.php">HOME</a></li>
-                                <!-- <li><a href="fd.php">NEW OUTPATIENT ENTRY</a></li>
-                                <li><a href="search.php">IN PATIENT REGISTRATION</a></li>
-                                <li><a href="patient_bdetails.php">PATIENT DETAILS</a></li> -->
+                                
                             </ul>
                         </li>
-                        <!-- <li class="submenu">
-                            <a href="#"><i class="fas fa-address-book"></i> <span>BILLING ACTIVITY</span><span class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="search-ip.php">IN PATIENT BILLING ACTIVITY</a></li>
-                                 <li><a href="search-eop.php">OUT PATIENT BILLING ENTRY</a></li> 
-                                <li><a href="search-aop.php">OUT PATIENT BILLING ACTIVITY</a></li>
-                                <li><a href="search-ipb.php">IN PATIENT VIEW BILLS</a></li>
-                                <li><a href="search-sopb.php">OUT PATIENT VIEW BILLS</a></li>
-                                <li><a href="iosearch.php">IN PATIENT BILLS</a></li>
-                                <li><a href="searchfop.php">OUT PATIENT BILLS</a></li>
-                            </ul>
-                        </li> -->
+                        
                         <li class="submenu">
                             <a href="#"><i class="fas fa-filter"></i><span>FILTERS</span> <span class="menu-arrow"></span></a>
                             <ul>
@@ -64,12 +51,7 @@
                            
                             </ul>
                         </li>
-                        <!-- <li class="submenu">
-                            <a href="#"><i class="fas fa-book"></i> <span>Booking</span> <span class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="prebooking.php">Booking</a></li>
-                            </ul>
-                        </li>--->
+                        
 
                         <li class="submenu">
 
@@ -81,13 +63,7 @@
                             </ul>
 
                         </li>
-                        <!-- <li class="submenu">
-                            <a href="#"><i class="fas fa-cogs"></i> <span>SETTINGS</span> <span class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="patient_details.php">Update Patient Profile</a></li>
-                                <li><a href="fees.php">Charges update</a></li>
-                            </ul>
-                        </li> -->
+                       
 
                     </ul>
                 </div>

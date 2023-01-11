@@ -150,7 +150,6 @@ if(isset($_POST['view-bill']))
 													<tbody>
 														<tr class="add-row">
                                                             <td>
-                                                            <!-- <label for="browser">Choose your browser from the list:</label> -->
                                                             <input list="charges" name="charge" id="charge" class="form-control" onchange="get_price();">
 
                                                                 <datalist id="charges">

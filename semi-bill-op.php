@@ -106,11 +106,7 @@ $sql = mysqli_query($con,"select distinct(token_id) as token_id,patient_id,date 
 				
 				</div>
 			
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
+				
 				
 			</div>
 			<!-- /Page Wrapper -->

@@ -172,11 +172,7 @@ $sql = mysqli_query($con,"select distinct(eor.token_id) as tid,
 				
 				</div>
 			
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
+				
 				
 			</div>
 			<!-- /Page Wrapper -->

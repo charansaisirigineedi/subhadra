@@ -105,11 +105,7 @@ $sql = mysqli_query($con,"SELECT `Name`, `Date`,`time`, `Mobile`, `Reason`, `tim
 										
 									</div>
 					<div></div>
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
+				
 				
 			</div>
 			<!-- /Page Wrapper -->

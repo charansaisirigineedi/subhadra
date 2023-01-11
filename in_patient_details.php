@@ -106,11 +106,7 @@ where pg.patient_id=pp.id ");
 				
 				</div>
 			
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
+				
 				
 			</div>
 			<!-- /Page Wrapper -->

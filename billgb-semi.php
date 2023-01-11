@@ -175,7 +175,6 @@ function getIndianCurrency(float $number)
 															</tr>
 														</thead>
 														<tbody>
-														<!-- select f.charge_name as name,s.quantity as quantity,s.price -->
 														<?php
 															$i = 0;
 															foreach($run1 as $data) 

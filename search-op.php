@@ -100,11 +100,7 @@ $sql = mysqli_query($con,"select eor.id as id, eor.token_id as token_id, ppi.nam
 				
 				</div>
 			
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
+				
 				
 			</div>
 			<!-- /Page Wrapper -->

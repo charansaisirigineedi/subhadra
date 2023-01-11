@@ -237,14 +237,7 @@ $data4    = mysqli_fetch_assoc($run4);
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-md-6">
-                    <div class="card flex-fill"><br>
-                        <div>
-                            <h4>&nbsp&nbspBills</h4>
-                        </div>
-
-                    </div>
-                </div> -->
+                
 
             </div>
         </div>

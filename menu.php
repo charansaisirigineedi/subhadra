@@ -41,14 +41,12 @@
                                 <li><a href="dashboard.php">HOME</a></li>
                                 <li><a href="fd.php">NEW OUTPATIENT ENTRY</a></li>
                                 <li><a href="search.php">IN PATIENT REGISTRATION</a></li>
-                                <!-- <li><a href="patient_bdetails.php">PATIENT DETAILS</a></li> -->
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="#"><i class="fas fa-address-book"></i> <span>BILLING ACTIVITY</span><span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="search-ip.php">IN PATIENT BILLING ACTIVITY</a></li>
-                                <!-- <li><a href="search-eop.php">OUT PATIENT BILLING ENTRY</a></li> -->
                                 <li><a href="search-aop.php">OUT PATIENT BILLING ACTIVITY</a></li>
                                 
                             </ul>
@@ -103,7 +101,6 @@
                                 <li><a href="search-usf.php">Update Surgery Profiles</a></li>
                                 <li><a href="search-upf.php">Update Pregnancy Profiles</a></li>
                                 <li><a href="search-udischarge.php">Update Discharge Profiles</a></li>
-                                <!-- <li><a href="fees.php">Charges update</a></li> -->
                             </ul>
                         </li>
 

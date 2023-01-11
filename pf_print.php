@@ -73,14 +73,10 @@ $query1 = "SELECT `id`, `token_id`, `mother_age_at_time_of_marriage`, `mother_ag
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <!-- <div class="card-header">
-									<h5 class="card-title">Two Column Vertical Form</h5>
-								</div> -->
+                       
                         <div class="card-body">
                             <form method="post" autocomplete="off" class="needs-validation" novalidate>
-                                <!-- <h5 class="card-title">Personal Information</h5> -->
                                 <form method="post" autocomplete="off" class="needs-validation"novalidate>
-										<!-- <h5 class="card-title">Personal Information</h5> -->
 										<div class="row">
 											<div class="col-md-6">
                                                 <div class="form-group">
@@ -155,14 +151,7 @@ $query1 = "SELECT `id`, `token_id`, `mother_age_at_time_of_marriage`, `mother_ag
                                                 <div class="form-group">
                                                     <label>Anesthetian Name(if any)</label>
                                                     <textarea class="form-control" disabled="disabled" name="A_name"required><?php  echo $res['anesthetist_name']; ?></textarea>
-													<!-- <input list="charges" name="A_name" id="A_name" class="form-control">
-													<datalist id="charges">
 													
-                                                        <option value="Dr.Anand">
-                                                        <option value="Dr.Rama Krishna">
-                                                        <option value="Dr.Bhanu" >
-                                                        <option value="Dr.Anil">
-                                                    </datalist> -->
                                                 </div>												
                                                 <div class="form-group">
 											        <label>Type of Pregnancy</label>

@@ -100,11 +100,7 @@ $sql = mysqli_query($con,"SELECT ppi.id as id, ppi.name as name, ppi.patient_pho
 				
 				</div>
 			
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
+				
 				
 			</div>
 			<!-- /Page Wrapper -->

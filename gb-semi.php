@@ -65,9 +65,7 @@ $run1   = mysqli_query($con,$query1);
 					<input type="button"  class="btn btn-primary" value="Print" onclick="window.open('billgb-semi.php?pid=<?php echo $pid;?>&tid=<?php echo $tid;?>&date=<?php echo $dat; ?>','popUpWindow','height=920,width=720,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');">
 				</div>
 				<div class="content container-fluid">
-					<!-- <form>
-						<button id="cmd">generate PDF</button>
-					</from> -->
+					
 					<div class="row justify-content-center">
 						<div class="col-xl-10">
 							<div class="card invoice-info-card">
@@ -141,27 +139,7 @@ $run1   = mysqli_query($con,$query1);
 											</div>
 										</div>
 									</div>
-									<!-- Invoice Item -->
-									<!-- <div class="invoice-issues-box">
-										<div class="row">
-											<div class="col-lg-4 col-md-4">
-												<div class="invoice-issues-date">
-													<p>Issue Date : 27 Jul 2022</p>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4">
-												<div class="invoice-issues-date">
-													<p>Admission Date : 27 Aug 2022</p>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4">
-												<div class="invoice-issues-date">
-													<p>Discharge Date : ₹ 1,54,22 </p>
-												</div>
-											</div>
-										</div>
-									</div> -->
-									<!-- /Invoice Item -->
+								
 
 									<!-- Invoice Item -->
 									<div class="invoice-item invoice-table-wrap">
@@ -180,7 +158,6 @@ $run1   = mysqli_query($con,$query1);
 															</tr>
 														</thead>
 														<tbody>
-														<!-- select f.charge_name as name,s.quantity as quantity,s.price -->
 														<?php
 															$i = 0;
 															foreach($run1 as $data) 
@@ -210,23 +187,12 @@ $run1   = mysqli_query($con,$query1);
 									<!-- /Invoice Item -->
 
 									<div class="row align-items-center justify-content-center">
-										<!-- <div class="col-lg-6 col-md-6">
-											<div class="invoice-terms">
-												<h6>Notes:</h6>
-												<p class="mb-0">Enter customer notes or any other details</p>
-											</div>
-											<div class="invoice-terms">
-												<h6>Terms and Conditions:</h6>
-												<p class="mb-0">Enter customer notes or any other details</p>
-											</div>
-										</div> -->
+										
 										<div class="col-lg-6 col-md-6">
 											<div class="invoice-total-card">
 												<div class="invoice-total-box">
 													<div class="invoice-total-inner">
-														<!-- <p>Taxable <span>$6,660.00</span></p>
-														<p>Additional Charges <span>$6,660.00</span></p> -->
-														<!-- <p>Discount <span>$00.00</span></p> -->
+														
 														<p class="mb-0">Sub total <span>₹<?php echo $sum; ?></span></p>
 													</div>
 													<div class="invoice-total-footer">
@@ -237,8 +203,7 @@ $run1   = mysqli_query($con,$query1);
 										</div>
 									</div>
 									<div class="invoice-sign text-end">
-										<!-- <img class="img-fluid d-inline-block" src="assets/img/signature.png" alt="sign">
-										<span class="d-block"></span> -->
+										
 									</div>
 								</div>
 							</div>

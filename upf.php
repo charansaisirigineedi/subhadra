@@ -115,14 +115,10 @@ echo" <script>document.location='search-upf.php'</script>";
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <!-- <div class="card-header">
-									<h5 class="card-title">Two Column Vertical Form</h5>
-								</div> -->
+                        
                         <div class="card-body">
                             <form method="post" autocomplete="off" class="needs-validation" novalidate>
-                                <!-- <h5 class="card-title">Personal Information</h5> -->
                                 <form method="post" autocomplete="off" class="needs-validation"novalidate>
-										<!-- <h5 class="card-title">Personal Information</h5> -->
 										<div class="row">
 											<div class="col-md-6">
                                                 <div class="form-group">
@@ -204,14 +200,7 @@ echo" <script>document.location='search-upf.php'</script>";
                                                 <div class="form-group">
                                                     <label>Anesthetian Name(if any)</label>
                                                     <textarea class="form-control"  name="A_name"required><?php  echo $res['anesthetist_name']; ?></textarea>
-													<!-- <input list="charges" name="A_name" id="A_name" class="form-control">
-													<datalist id="charges">
-													
-                                                        <option value="Dr.Anand">
-                                                        <option value="Dr.Rama Krishna">
-                                                        <option value="Dr.Bhanu" >
-                                                        <option value="Dr.Anil">
-                                                    </datalist> -->
+												
                                                 </div>												
                                                 <div class="form-group">
 											        <label>Type of Pregnancy</label>
@@ -327,11 +316,7 @@ echo" <script>document.location='search-upf.php'</script>";
 
     </div>
 
-    <!-- Footer -->
-    <!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-    <!-- /Footer -->
+
 
     </div>
     <!-- /Page Wrapper -->

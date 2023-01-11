@@ -149,27 +149,7 @@ $res1   = mysqli_fetch_assoc($run);
 									</div>
 									<!-- /Invoice Item -->
 									
-									<!-- Invoice Item -->
-									<!-- <div class="invoice-issues-box">
-										<div class="row">
-											<div class="col-lg-4 col-md-4">
-												<div class="invoice-issues-date">
-													<p>Issue Date : 27 Jul 2022</p>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4">
-												<div class="invoice-issues-date">
-													<p>Admission Date : 27 Aug 2022</p>
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4">
-												<div class="invoice-issues-date">
-													<p>Discharge Date : ₹ 1,54,22 </p>
-												</div>
-											</div>
-										</div>
-									</div> -->
-									<!-- /Invoice Item -->
+									
 
 									<!-- Invoice Item -->
 									<div class="invoice-item invoice-table-wrap">
@@ -188,7 +168,6 @@ $res1   = mysqli_fetch_assoc($run);
 															</tr>
 														</thead>
 														<tbody>
-														<!-- select f.charge_name as name,s.quantity as quantity,s.price -->
 														<?php
 															$i = 0;
 															foreach($run1 as $data) 
@@ -217,23 +196,12 @@ $res1   = mysqli_fetch_assoc($run);
 									<!-- /Invoice Item -->
 
 									<div class="row align-items-center justify-content-center">
-										<!-- <div class="col-lg-6 col-md-6">
-											<div class="invoice-terms">
-												<h6>Notes:</h6>
-												<p class="mb-0">Enter customer notes or any other details</p>
-											</div>
-											<div class="invoice-terms">
-												<h6>Terms and Conditions:</h6>
-												<p class="mb-0">Enter customer notes or any other details</p>
-											</div>
-										</div> -->
+										
 										<div class="col-lg-6 col-md-6">
 											<div class="invoice-total-card">
 												<div class="invoice-total-box">
 													<div class="invoice-total-inner">
-														<!-- <p>Taxable <span>$6,660.00</span></p>
-														<p>Additional Charges <span>$6,660.00</span></p> -->
-														<!-- <p>Discount <span>$00.00</span></p> -->
+														
 														<p class="mb-0">Sub total <span>₹<?php echo $sum; ?></span></p>
 													</div>
 													<div class="invoice-total-footer">
@@ -244,8 +212,7 @@ $res1   = mysqli_fetch_assoc($run);
 										</div>
 									</div>
 									<div class="invoice-sign text-end">
-										<!-- <img class="img-fluid d-inline-block" src="assets/img/signature.png" alt="sign">
-										<span class="d-block"></span> -->
+										
 									</div>
 								</div>
 							</div>

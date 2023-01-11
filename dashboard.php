@@ -131,10 +131,7 @@ if(isset($_POST['gbsubmit']))
                     <div class="row">
                         <div class="col-sm-12">
                             <h3 class="page-title">Welcome Subhadra Hospitals !</h3>
-                            <!-- <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Student Dashboard</li>
-                                </ul> -->
+                            
                         </div>
                     </div>
                 </div>
@@ -223,22 +220,7 @@ if(isset($_POST['gbsubmit']))
                                         REGISTRATION</a>
                                 </div>
                             </div>
-                            <!-- <div class="card-body">
-                                <div >
-                                    <a href="search-eop.php" class="btn btn-primary">EXISTING OUT PATIENT REGISTRATION</a>
-                                 </div>
-                          </div> -->
-                            <!-- <div class="card-body">
-                                <div>
-                                    <a href="search-aop.php" class="btn btn-primary">OUT Patient Bill Activity Entry Details</a>
-                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <div >
-                                    <a href="searchfop.php" class="btn btn-primary">OUT PATIENT BILL</a>
-                                 </div>
-                            </div>--->
-                        </div>
+                           </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-6">
                         <div class="card flex-fill"><br>
@@ -255,20 +237,7 @@ if(isset($_POST['gbsubmit']))
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="search-pf.php" class="btn btn-primary">PREGNANCY FORM</a>
                             </div>
-                            <!-- <div class="card-body">
-                           <a href="search-pf.php" class="btn btn-primary">PREGNANCY FORM</a>
-                         </div>   -->
-                            <!-- <div class="card-body">
-                                <div>
-                                    <a href="search-ip.php" class="btn btn-primary">IN Patient Bill Activity Entry Details</a>
-                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <div>
-                                    <a href="iosearch.php" class="btn btn-primary">IN Patient Bill Details</a>
-                                 </div>
-                            </div> -->
-                        </div>
+                             </div>
                     </div>
                 </div>
 

@@ -107,11 +107,7 @@ as patient_phone_number from patient_primary_information pif  , pastrecords pr w
 				
 				</div>
 			
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
+			
 				
 			</div>
 			<!-- /Page Wrapper -->

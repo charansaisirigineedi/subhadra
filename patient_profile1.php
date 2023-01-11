@@ -107,43 +107,14 @@ $res = mysqli_fetch_assoc($run);
 										<div class="row mt-3">                                           
 										</div>
 										
-										<!-- <div class="row follow-sec">
-                                            <div class="col-md-4 mb-3">
-                                                <div class="blue-box">
-                                                    <h3><?php echo $res['lmp']; ?></h3>
-                                                    <p>LMP</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <div class="blue-box">
-                                                    <h3><?php echo $res['edd']; ?></h3>
-                                                    <p>Expected Date of Delivery</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <div class="blue-box">
-                                                    <h3><?php echo $res['pog']; ?></h3>
-                                                    <p>POG</p>
-                                                </div>
-                                            </div>
-										</div> -->
+										
 										
 									</div>
 								</div>								
 							</div>
 						</div>
 					</div>				
-				<!-- </div> -->
 				
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
-			<!-- </div> -->
-			<!-- /Page Wrapper -->
-		
-        <!-- </div> -->
 		<!-- /Main Wrapper -->
 		
 		<!-- jQuery -->

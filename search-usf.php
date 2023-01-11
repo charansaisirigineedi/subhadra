@@ -102,11 +102,6 @@ where ppi.id = pi.patient_id and pi.type_of_inpatient='Surgery' order by date de
 				
 				</div>
 			
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
 				
 			</div>
 			<!-- /Page Wrapper -->

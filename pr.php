@@ -109,8 +109,7 @@ if(isset($_POST['submit']))
 							<div class="card">
 								<div class="card-body">
 									<form method="post" class="needs-validation" novalidate>
-									 <!-- <h3 class="page-title">Patient Past Record</h3> -->
-										<!-- <h5 class="card-title">Personal Information</h5> -->
+									 
 										<div class="row">
 											<div class="col-md-2">
 											  <div class="form-group">
@@ -189,11 +188,7 @@ if(isset($_POST['submit']))
 					
 				</div>
 			
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
+				
 				
 			</div>
 			<!-- /Page Wrapper -->

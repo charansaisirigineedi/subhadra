@@ -107,11 +107,7 @@ patient_primary_information ppi where eor.id = ppi.id and eor.token_id not in (s
 				
 				</div>
 			
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
+				
 				
 			</div>
 			<!-- /Page Wrapper -->

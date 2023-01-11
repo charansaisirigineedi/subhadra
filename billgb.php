@@ -177,7 +177,6 @@ function getIndianCurrency(float $number)
 															</tr>
 														</thead>
 														<tbody>
-														<!-- select f.charge_name as name,s.quantity as quantity,s.price -->
 														<?php
 															$i = 0;
 															foreach($run1 as $data) 
@@ -205,16 +204,6 @@ function getIndianCurrency(float $number)
 									<!-- /Invoice Item -->
 
 									<div class="row align-items-center justify-content-center">
-										<!-- <div class="col-lg-6 col-md-6">
-											<div class="invoice-terms">
-												<h6>Notes:</h6>
-												<p class="mb-0">Enter customer notes or any other details</p>
-											</div>
-											<div class="invoice-terms">
-												<h6>Terms and Conditions:</h6>
-												<p class="mb-0">Enter customer notes or any other details</p>
-											</div>
-										</div> -->
 										<div class="col-lg-6 col-md-6">
 											<div class="invoice-total-card">
 												<div class="invoice-total-box">

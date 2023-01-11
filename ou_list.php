@@ -54,10 +54,7 @@ as patient_phone_number from patient_primary_information pif,existing_op_record 
                     <div class="row">
                         <div class="col-sm-12">
                             <h3 class="page-title">Welcome Subhadra Hospitals !</h3>
-                            <!-- <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Student Dashboard</li>
-                                </ul> -->
+                            
                         </div>
                     </div>
                 </div>
@@ -122,11 +119,7 @@ as patient_phone_number from patient_primary_information pif,existing_op_record 
 				
 				</div>
 			
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
+				
 				
 			</div>
 			<!-- /Page Wrapper -->

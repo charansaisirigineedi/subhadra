@@ -102,11 +102,7 @@ as patient_phone_number , pif.type_of_inpatient as toi from  patient_surgery_for
 				
 				</div>
 			
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
+				
 				
 			</div>
 			<!-- /Page Wrapper -->

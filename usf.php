@@ -93,12 +93,9 @@ if(isset($_POST['submit']))
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
-								<!-- <div class="card-header">
-									<h5 class="card-title">Two Column Vertical Form</h5>
-								</div> -->
+								
 								<div class="card-body">
 									<form method="post" autocomplete="off" class="needs-validation"novalidate>
-										<!-- <h5 class="card-title">Personal Information</h5> -->
 										<div class="row">
 											<div class="col-md-6">
                                                 <div class="form-group">
@@ -221,11 +218,7 @@ if(isset($_POST['submit']))
 					
 				</div>
 			
-				<!-- Footer -->
-				<!-- <footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer> -->
-				<!-- /Footer -->
+				
 				
 			</div>
 			<!-- /Page Wrapper -->

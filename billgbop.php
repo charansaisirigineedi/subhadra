@@ -94,16 +94,14 @@ function getIndianCurrency(float $number)
 	</head>
 				
 				<div class="content container-fluid">
-					<!-- <form>
-						<button id="cmd">generate PDF</button>
-					</from> -->
+					
 					<div class="row justify-content-center">
 						<div class="col-xl-10">
 							<div class="card invoice-info-card">
 								<div class="card-body">
 								<?php include 'letterhead.php'; ?>
 					
-								<!-- <div class="line"></div> -->
+								
 								<hr>
 								<h3 style="font-family:Calibri(Body);font-size:30px" align="center"><u><b>OP BILL</b></u></h3><br>
 									<!-- Invoice Item -->
