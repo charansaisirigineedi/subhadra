@@ -360,7 +360,7 @@ if(isset($_POST['submit']))
 			e.target.value = e.target.value.replace(/(\d{4})(\d+)/g, '$1 $2')
 		})
 		/* Jquery */
-		$('#aadhaarid').keyup(function() {
+		$('#aadhaarid1').keyup(function() {
 			$(this).val($(this).val().replace(/(\d{4})(\d+)/g, '$1 $2'))
 		});
 		</script>

@@ -13,7 +13,7 @@ $sql = mysqli_query($con,"select * from  patient_primary_information order by da
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-	<title>existing op list</title>
+	<title>Existing OP List</title>
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="assets/img/favicon.png">
 	<!-- Fontfamily -->

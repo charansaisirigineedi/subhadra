@@ -88,17 +88,17 @@ if(isset($_POST['view-bill']))
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="assets/css/style.css">
 	<script>
-	const dataT = {};
-	const dataF = {};
-	<?php 
-				$get = "select charge_id as ci,charge_name as cn,charge_amount as ca from fee_charges";
-				$run = mysqli_query($con, $get);
-				while($get = mysqli_fetch_array($run))
-				{
-					echo 'dataT.'.$get['ci'].'= '.$get['ca'].'; ';
-                    echo 'dataF.'.$get['ci'].'= "'.$get['cn'].'"; ';
-				}
-			?>
+		const dataT = {};
+		const dataF = {};
+		<?php 
+			$get = "select charge_id as ci,charge_name as cn,charge_amount as ca from fee_charges";
+			$run = mysqli_query($con, $get);
+			while($get = mysqli_fetch_array($run))
+			{
+				echo 'dataT.'.$get['ci'].'= '.$get['ca'].'; ';
+				echo 'dataF.'.$get['ci'].'= "'.$get['cn'].'"; ';
+			}
+		?>
 	</script>
 </head>
 
@@ -138,14 +138,16 @@ if(isset($_POST['view-bill']))
 												<tr class="add-row">
 													<td>
 														<input list="charges" name="charge" id="charge" class="form-control" onchange="get_price();">
-														<datalist id="charges"> <?php
-                                                                        $run = "select charge_id,charge_name from fee_charges";
-                                                                        $get = mysqli_query($con, $run);
-                                                                        while($da = mysqli_fetch_array($get))
-                                                                        {
-                                                                            echo '<option id='.$da['charge_id'].' value="'.$da['charge_name'].'">';
-                                                                        }
-                                                                    ?> </datalist>
+														<datalist id="charges"> 
+															<?php
+																$run = "select charge_id,charge_name from fee_charges";
+																$get = mysqli_query($con, $run);
+																while($da = mysqli_fetch_array($get))
+																{
+																	echo '<option id='.$da['charge_id'].' value="'.$da['charge_name'].'">';
+																}
+															?> 
+														</datalist>
 													</td>
 													<td>
 														<input type="text" name="prc" id="prc" value=0 oninput="multiply()" class="form-control">

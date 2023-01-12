@@ -16,77 +16,9 @@ $out_count = mysqli_fetch_assoc($run1);
 
 $query1    = "select count(token_id) as in_count from patient_inpatient_form where monthname(time)='$mon'";
 $run1      = mysqli_query($con, $query1);
-$in_count = mysqli_fetch_assoc($run1);
+$in_count  = mysqli_fetch_assoc($run1);
 
-$query2  = "select price from patient_billing_details";
-$run2    = mysqli_query($con, $query2);
-$revenue = 0;
-
-while($amount  = mysqli_fetch_assoc($run2))
-{
-    $revenue = $revenue + $amount['price'];
-}
 $total_count = $out_count['ou']+$in_count['in_count'];
-
-if(isset($_POST['bdaesubmit']))
-{
-    $pid = $_POST['bdae_pid'];
-
-    if(empty($pid))
-    {
-        echo"<script>alert('Patient ID empty. Please enter PID!')</script>";
-        echo" <script>document.location='dashboard.php'</script>";
-    }
-    else
-    {
-        $query = "select id from patient_primary_information where id='$pid'";
-        $res = mysqli_query($con, $query);
-        $res = mysqli_fetch_assoc($res);
-        if($pid == $res['id'])
-        {
-            $query4 = "select token_id from patient_pregnancy_information where id='$pid' order by time desc limit 1";
-            $res2 = mysqli_query($con, $query4);
-            $res2 = mysqli_fetch_assoc($res2);
-            $tid = $res2['token_id'];
-            echo" <script>document.location='billing.php?pid=$pid&tid=$tid'</script>";
-        }
-        else
-        {
-            echo"<script>alert('Not an existing PATIENT!')</script>";
-        }
-    }
-
-}
-
-if(isset($_POST['gbsubmit']))
-{
-    $pid = $_POST['gb_pid'];
-
-    if(empty($pid))
-    {
-        echo"<script>alert('Patient ID empty. Please enter PID!')</script>";
-        echo" <script>document.location='dashboard.php'</script>";
-    }
-    else
-    {
-        $query = "select id from patient_primary_information where id='$pid'";
-        $res = mysqli_query($con, $query);
-        $res = mysqli_fetch_assoc($res);
-        if($pid == $res['id'])
-        {
-            $query4 = "select token_id from patient_inpatient_form where patient_id='$pid' order by time desc limit 1";
-            $res2 = mysqli_query($con, $query4);
-            $res2 = mysqli_fetch_assoc($res2);
-            $tid = $res2['token_id'];
-            echo" <script>document.location='gb.php?pid=$pid&tid=$tid'</script>";
-        }
-        else
-        {
-            echo"<script>alert('Not an existing PATIENT!')</script>";
-        }
-    }
-
-}
 
 ?>
 <!DOCTYPE html>
@@ -95,7 +27,7 @@ if(isset($_POST['gbsubmit']))
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-	<title>subhadra-hospitals dashboard</title>
+	<title>Subhadra-Hospitals Dashboard</title>
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="assets/img/favicon.png">
 	<!-- Fontfamily -->

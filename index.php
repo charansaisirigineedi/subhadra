@@ -5,8 +5,8 @@ include 'connect.php';
 if(isset($_POST['login']))
 {
 
-$password=$_POST['pass'];
-htmlspecialchars($password);
+ $password=$_POST['pass'];
+ htmlspecialchars($password);
  $query= "select sid,name from  staff  where spw='$password'";
  $result=mysqli_query($con,$query) or die (mysqli_error($con));
  $details=mysqli_fetch_assoc($result);
@@ -15,26 +15,25 @@ htmlspecialchars($password);
  
  if($counter!=0)
  {
+	
     if($password=='vishnu@12')
     {
-    $_SESSION['SID']=$details['sid'];
-    $_SESSION['NAME']=$details['name'];
-    echo" <script>document.location='ou_list.php'</script>";
+		$_SESSION['SID']=$details['sid'];
+		$_SESSION['NAME']=$details['name'];
+		echo" <script>document.location='ou_list.php'</script>";
     }
 
-    if($password=='vishnu@10'){
+    if($password=='vishnu@10')
+	{
         $_SESSION['SID']=$details['sid'];
         $_SESSION['NAME']=$details['name'];
         echo" <script>document.location='dashboard.php'</script>";
-
     }
-
 
  }
  else
  {
     echo "<script type='text/javascript'>alert('Inavalid Username or Password')</script>";
-
  }
 
 }

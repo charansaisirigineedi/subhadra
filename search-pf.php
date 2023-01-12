@@ -14,7 +14,7 @@ where pi.token_id not in (select token_id from patient_surgery_form) and ppi.id 
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-	<title> Inpatient List</title>
+	<title>Pregnancy Inpatient List</title>
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="assets/img/favicon.png">
 	<!-- Fontfamily -->
