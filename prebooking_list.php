@@ -7,7 +7,7 @@ include "check.php";
 date_default_timezone_set("Asia/Kolkata");
 $e = strval(date('Ymd'));
 $d  = substr($e,0,4).'-'.substr($e,4,2).'-'.substr($e,6,2);
-$sql = mysqli_query($con,"SELECT `Name`, `Date`,`time`, `Mobile`, `Reason`, `time1` FROM `prebooking`  where Date = '$d'");
+$sql = mysqli_query($con,"SELECT `Name`, `Date`,`time`, `Mobile`, `Reason` FROM `prebooking`  where Date = '$d'");
 ?>
 <!DOCTYPE html>
 <html lang="en">

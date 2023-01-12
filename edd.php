@@ -102,7 +102,7 @@ if(isset($_POST['submit']))
                                                     if(isset($_POST['submit']))
 													{
 														$month = $_POST['mon'];
-														$sql = mysqli_query($con,"SELECT id as pi,name ,patient_phone_number as ppn,
+														$sql = mysqli_query($con,"SELECT id as pi,name,patient_phone_number as ppn,
 														edd,lmp,pog from patient_primary_information where monthname(edd)='$month'
 														order by edd asc");
 														
@@ -120,29 +120,28 @@ if(isset($_POST['submit']))
 															$lmp = strval($newDate);
 															if($data['hrp'])
 															{
-															echo '<tr>
-															
-															<td>'.$run['name'].'</td> 
-															<td>'.$run['ppn'].'</td>
-															<td>'.$id.'</td>
-															<td>'.$edd.'</td>
-															<td>'.$lmp.'</td>
-															<td>'.$pog.'</td>
-															<td>'.'G<sub><b>'.$data['g'].'</b></sub>'.'L<sub><b>'.$data['l'].'</b></sub>'.'P<sub><b>'.$data['p'].'</b></sub>'.'A<sub><b>'.$data['a'].'</b></sub>'.'D<sub><b>'.$data['d'].'</b></sub>'.'</td>
-														    <td><button class="btn btn-danger">'.$data['hrp'].'</button></td></tr>';
+																echo '<tr>
+																<td>'.$run['name'].'</td> 
+																<td>'.$run['ppn'].'</td>
+																<td>'.$id.'</td>
+																<td>'.$edd.'</td>
+																<td>'.$lmp.'</td>
+																<td>'.$pog.'</td>
+																<td>'.'G<sub><b>'.$data['g'].'</b></sub>'.'L<sub><b>'.$data['l'].'</b></sub>'.'P<sub><b>'.$data['p'].'</b></sub>'.'A<sub><b>'.$data['a'].'</b></sub>'.'D<sub><b>'.$data['d'].'</b></sub>'.'</td>
+																<td><button class="btn btn-danger">'.$data['hrp'].'</button></td></tr>';
 															}
 															else
 															{
 																echo '<tr>
-																<td>'.$edd.'</td>
-																<td>'.$lmp.'</td>
-																<td>'.$pog.'</td>
 																<td>'.$run['name'].'</td> 
 																<td>'.$run['ppn'].'</td>
 																<td>'.$id.'</td>
+																<td>'.$edd.'</td>
+																<td>'.$lmp.'</td>
+																<td>'.$pog.'</td>
 																<td>'.'G<sub><b>'.$data['g'].'</b></sub>'.'L<sub><b>'.$data['l'].'</b></sub>'.'P<sub><b>'.$data['p'].'</b></sub>'.'A<sub><b>'.$data['a'].'</b></sub>'.'D<sub><b>'.$data['d'].'</b></sub>'.'</td>
-														    	<td>'.$data['hrp'].'</button></td></tr>';
-														}	
+														    	<td>--</button></td></tr>';
+															}	
 														}
 													}
                                                 ?> </tbody>

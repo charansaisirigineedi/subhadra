@@ -95,8 +95,8 @@ if(isset($_POST['submit']))
 	 `spouse_aadhaar`) VALUES ('$pid','$fname','$dob','$age','$gen',
 	'$pnn1','$pan1','$cas','$rel','$pra','$pea','$pq','$po','$sn',
 	'$sc','$sd','$sage','$sg','$so','$sq','$lmp','$edd','$pog','$cd','$ses','$san1')";
-	  $run = mysqli_query($con, $query);
-	  echo" <script>document.location='eopre.php?pid=$pid'</script>";
+	$run = mysqli_query($con, $query);
+	echo" <script>document.location='eopre.php?pid=$pid'</script>";
 }
 
 ?>
