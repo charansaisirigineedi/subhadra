@@ -9,7 +9,9 @@ include "check.php";
 $pid = $_GET['pid'];
 $tid = $_GET['tid'];
 $dat = $_GET['date'];
-
+$originalDate = $dat;
+$dateObject = DateTime::createFromFormat("Y-m-d", $originalDate);
+$convertedDate = $dateObject->format("d-m-Y");
 
 $sum = 0;
 
@@ -135,17 +137,7 @@ function getIndianCurrency(float $number)
 										<p>Date :</p>
 									</div>
 									<div class="col-md-4">
-										<p><b> <?php 
-											if(empty($res2['date_of_discharge']))
-											 {
-												echo $d;
-											}
-											else 
-											{
-												$newDate = date("d-m-Y", strtotime($res2['date_of_discharge']));
-												echo $newDate;
-											}
-										?></b></p>
+										<p><b> <?php echo $convertedDate; ?></b></p>
 									</div>
 								</div>
 								<div class="row">

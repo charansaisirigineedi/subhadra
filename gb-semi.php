@@ -9,7 +9,9 @@ include "check.php";
 $pid = $_GET['pid'];
 $tid = $_GET['tid'];
 $dat = $_GET['date'];
-
+$originalDate = $dat;
+$dateObject = DateTime::createFromFormat("Y-m-d", $originalDate);
+$convertedDate = $dateObject->format("d-m-Y");
 
 $sum = 0;
 
@@ -67,17 +69,7 @@ $run1   = mysqli_query($con,$query1);
 												<h2>INVOICE</h2>
 												<p>Invoice Number : INV<?php echo $tid; ?></p>
 												<p>INPatient Number :<?php echo $pid; ?></p>
-												<p>Date : <?php 
-														if(empty($res2['date_of_discharge']))
-													 	{
-															echo '<p style = "color:red;">date is not updated in surgery form';
-														}
-														else 
-														{
-															$newDate = date("d-m-Y", strtotime($res2['date_of_discharge']));
-															echo $newDate;
-														}
-													?></p>
+												<p>Date : <?php echo $convertedDate; ?></p>
 											</div>
 										</div>
 										<div class="col-md-6">
