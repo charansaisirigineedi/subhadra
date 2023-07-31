@@ -30,7 +30,7 @@ To set up and run the application, follow the steps below:
 
 - Once the database is set up, update the database credentials in the **connect.php** file to establish a connection between the application and the database.
 
-- Now, you can access the application by navigating to [localhost/subhadra](http://localhost/subhadra/) in your web browser.
+- Now, you can access the application by navigating to [localhost/subhadra/codebase](http://localhost/subhadra/codebase) in your web browser.
 
 > The default password to access the application is **test@2**.
 
