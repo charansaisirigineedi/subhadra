@@ -16,14 +16,14 @@ if(isset($_POST['login']))
  if($counter!=0)
  {
 	
-    if($password=='test@1')
+    if($sid =='doctor')
     {
 		$_SESSION['SID']=$details['sid'];
 		$_SESSION['NAME']=$details['name'];
 		echo" <script>document.location='ou_list.php'</script>";
     }
 
-    if($password=='test@2')
+    if($sid =='admin')
 	{
         $_SESSION['SID']=$details['sid'];
         $_SESSION['NAME']=$details['name'];

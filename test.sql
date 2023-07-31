@@ -34,13 +34,6 @@ CREATE TABLE `doctor details` (
   `regno` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `doctor details`
---
-
-INSERT INTO `doctor details` (`did`, `dname`, `designation`, `regno`) VALUES
-('D001', 'Dr.Sree Ramya Amulya.V', 'M.S.(OB/GYN),F.MAS,D.MAS', 'Reg.No:68984'),
-('D002', 'Dr.Subhashini.V', 'M.B.B.S.', 'Reg.No :10111\r\n');
 
 -- --------------------------------------------------------
 
@@ -321,7 +314,7 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`sid`, `spw`, `name`) VALUES
 ('doctor', 'test@1', 'Doctor'),
-('doctor2', 'test@2', 'Doctor1');
+('admin', 'test@2', 'Admin');
 
 --
 -- Indexes for dumped tables
