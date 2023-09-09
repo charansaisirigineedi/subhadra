@@ -39,6 +39,7 @@ To set up and run the application, follow the steps below:
 
 1. [Charan Sai Sirigineedi](https://www.github.com/charanmcr)
 2. [Hema Sai Praneeth Kambhampati](https://www.github.com/praneethmcr)
+3. [Srikanth Peethambaram](https://www.github.com/srikanthpeethambaram)
 
 
 ## Look Out
